@@ -1,6 +1,6 @@
 import { useAuth } from "@/context/Auth"
 import { useEffect } from "react";
-import { useNavigate, Navigate } from "react-router-dom"
+import { useNavigate } from "react-router-dom"
 import ThemeSwitch from '@/components/theme-switch'
 import { Button } from "@/components/ui/button"
 import { IconCurrency, IconInfoCircle } from '@tabler/icons-react'
