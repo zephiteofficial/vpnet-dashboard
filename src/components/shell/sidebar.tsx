@@ -94,7 +94,9 @@ export default function Sidebar({
             <div
               className={`flex flex-col justify-end truncate ${isCollapsed ? 'invisible w-0' : 'visible w-auto'}`}
             >
-              <span className='font-medium'>VPNet</span>
+              <span className='font-medium'>
+                VPNet
+              </span>
               <span className='text-xs text-muted-foreground'>User Dashboard</span>
             </div>
           </div>

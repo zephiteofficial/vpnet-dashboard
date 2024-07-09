@@ -9,25 +9,31 @@ const router = createHashRouter([
   {
     path: '/login',
     lazy: async () => ({
-      Component: (await import('@/pages/authentication/login.tsx')).default,
+      Component: (await import('@/pages/authentication/login/login')).default,
     }),
   },
   {
     path: '/signup',
     lazy: async () => ({
-      Component: (await import('@/pages/authentication/signup.tsx')).default,
+      Component: (await import('@/pages/authentication/signup/signup')).default,
     }),
   },
   {
     path: '/verify',
     lazy: async () => ({
-      Component: (await import('@/pages/authentication/verify.tsx')).default,
+      Component: (await import('@/pages/authentication/signup/verify')).default,
     }),
   },
   {
     path: '/forgot-password',
     lazy: async () => ({
-      Component: (await import('@/pages/authentication/reset.tsx')).default,
+      Component: (await import('@/pages/authentication/forgot/forgot')).default,
+    }),
+  },
+  {
+    path: '/reset-password',
+    lazy: async () => ({
+      Component: (await import('@/pages/authentication/forgot/forgot-verify')).default,
     }),
   },
 

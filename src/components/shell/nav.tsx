@@ -84,7 +84,7 @@ export default function Nav({links, isCollapsed, className, closeNav,}: NavProps
       </TooltipContent>
     </Tooltip>
     ):(
-    <Button className='mx-2 mb-2' onClick={signOut} variant="outline">Log out</Button>
+    <Button className='mx-2 mb-2 hover:bg-destructive' onClick={signOut} variant="outline">Log out</Button>
   )
   return (
     <div className="flex flex-col h-full">
@@ -134,6 +134,7 @@ function NavLink({
           size: 'sm',
         }),
         'h-12 justify-start text-wrap rounded-none px-6',
+        checkActiveNav(href)? 'text-primary' : '',
         subLink && 'h-10 w-full border-l border-l-slate-500 px-2'
       )}
       aria-current={checkActiveNav(href) ? 'page' : undefined}

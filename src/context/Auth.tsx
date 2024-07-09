@@ -16,6 +16,8 @@ type State = {
   logIn: (username: string, password: string) => Promise<CognitoUserSession>;
   logOut: () => void;
   getSession: () => Promise<any>;
+  forgotPassword: (username: string) => Promise<any>;
+  passwordConfirm: (username: string, code: string, newPassword: string) => Promise<any>;
 };
 
 const AuthContext = createContext<State | undefined>(undefined);
@@ -193,8 +195,58 @@ const AuthProvider = ({ children }: { children: ReactNode }) => {
       }
     });
   }, []);
+  const forgotPassword = useCallback((username: string) => {
+    return new Promise((resolve, reject) => {
+      const User = new CognitoUser({
+        Username: username,
+        Pool: UserPool,
+      });
+      User.forgotPassword({
+        onSuccess: (data) => {
+          toast({
+            title: `Success!`,
+            description: `A password reset code has been sent to ${username}.`,
+          });
+          resolve(data);
+        },
+        onFailure: (error) => {
+          toast({
+            variant: "destructive",
+            title: "Error.",
+            description: error.message
+          });
+          reject(error);
+        },
+      });
+    });
+  }, []);
+  const passwordConfirm = useCallback((username: string, code: string, newPassword: string) => {
+    return new Promise((resolve, reject) => {
+      const User = new CognitoUser({
+        Username: username,
+        Pool: UserPool,
+      });
+      User.confirmPassword(code, newPassword, {
+        onSuccess: (data) => {
+          toast({
+            title: `Success!`,
+            description: `You can now login with your new password.`,
+          });
+          resolve(data);
+        },
+        onFailure: (error) => {
+          toast({
+            variant: "destructive",
+            title: "Error.",
+            description: error.message
+          });
+          reject(error);
+        },
+      });
+    });
+  }, []);
 
-  const values = useMemo(() => ({ user, signUp, confirmSignUp, resendConfirmationCode, logIn, logOut, getSession }), [user, signUp, confirmSignUp, resendConfirmationCode, logIn, logOut, getSession]);
+  const values = useMemo(() => ({ user, signUp, confirmSignUp, resendConfirmationCode, logIn, logOut, getSession, forgotPassword, passwordConfirm }), [user, signUp, confirmSignUp, resendConfirmationCode, logIn, logOut, getSession, forgotPassword, passwordConfirm]);
   return <AuthContext.Provider value={values}>{children}</AuthContext.Provider>;
 };
 
