@@ -1,10 +1,10 @@
-import { createBrowserRouter } from 'react-router-dom'
+import { createHashRouter } from 'react-router-dom'
 import GeneralError from '@/pages/errors/general-error.tsx'
 import NotFoundError from '@/pages/errors/not-found-error.tsx'
 import MaintenanceError from '@/pages/errors/maintenance-error.tsx'
 import UnauthorisedError from '@/pages/errors/unauthorised-error.tsx'
 
-const router = createBrowserRouter([
+const router = createHashRouter([
   // Auth routes
   {
     path: '/login',
