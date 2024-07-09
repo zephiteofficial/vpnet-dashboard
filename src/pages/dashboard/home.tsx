@@ -96,7 +96,7 @@ export default function HomePage() {
               </CardContent>
               <CardFooter>
                 <Button onClick={navigateToProfile} className="w-full h-8" variant="outline">
-                  <p className="mb-1">Manage Subscription</p>
+                  Manage Subscription
                 </Button>
               </CardFooter>
             </Card>
@@ -128,7 +128,7 @@ export default function HomePage() {
               </CardContent>
               <CardFooter>
                 <Button onClick={navigateToShop} className="w-full h-8" variant="outline">
-                  <p className="mb-1">Buy More</p>
+                Buy More
                 </Button>
               </CardFooter>
             </Card>
@@ -161,7 +161,7 @@ export default function HomePage() {
               <CardFooter>
                 <AlertDialogTrigger className="w-full h-8" asChild>
                   <Button className="w-full h-8" variant="outline">
-                    <div><p className="mb-1">Disconnect</p></div>
+                  Disconnect
                   </Button>
                 </AlertDialogTrigger>
               </CardFooter>
