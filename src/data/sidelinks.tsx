@@ -32,19 +32,19 @@ export const sidelinks: SideLink[] = [
   {
     title: 'Servers',
     label: '',
-    href: '/tasks',
+    href: '/servers',
     icon: <IconServer size={18} />,
   },
   {
-    title: 'Subscriptions',
+    title: 'Shop',
     label: '',
-    href: '/chats',
+    href: '/shop',
     icon: <IconShoppingCart size={18} />,
   },
   {
     title: 'Profile',
     label: '',
-    href: '/apps',
+    href: '/profile',
     icon: <IconUser size={18} />,
   },
   {
