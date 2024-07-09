@@ -5,11 +5,10 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { useAuth } from "@/context/Auth"
-import { Toaster } from "@/components/ui/toaster"
 import { useToast } from "@/components/ui/use-toast";
 
 
-export function Signup() {
+export default function Signup() {
   const { signUp, getSession } = useAuth();
   const [username, setUsername] = useState("")
   const [email, setEmail] = useState("")
@@ -22,7 +21,7 @@ export function Signup() {
     getSession().then((data) => {
       console.log(data);
       console.log("User is already logged in");
-      navigate("/home");
+      navigate("/");
     }).catch((error) => {
       console.log(error);
     });
@@ -30,12 +29,20 @@ export function Signup() {
 
   const handleSubmit = async (event: FormEvent<HTMLButtonElement>) => {
     event.preventDefault();
-    var validRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+    var emailRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+    var usernameRegex = /^[a-zA-Z0-9_]*$/;           
     if (username.length < 1) {
       toast({
         variant: "destructive",
         title: "Username is required.",
         description: "Please make sure you have entered a username.",
+      });
+    }
+    else if (username.match(usernameRegex) === null) {
+      toast({
+        variant: "destructive",
+        title: "Invalid username.",
+        description: "Please make sure you have entered a valid username.",
       });
     }
     else if (email.length < 1) {
@@ -45,7 +52,7 @@ export function Signup() {
         description: "Please make sure you have entered an email.",
       });
     }
-    else if (email.match(validRegex) === null) {
+    else if (email.match(emailRegex) === null) {
       toast({
         variant: "destructive",
         title: "Invalid email.",
@@ -76,17 +83,17 @@ export function Signup() {
     }
   }
   return (
-    <>
-      <Card className="mx-auto max-w-sm">
+    <div className="flex justify-center items-center h-screen">
+      <Card className="mx-4 w-96">
         <CardHeader>
-          <CardTitle className="text-xl">Sign Up</CardTitle>
+          <CardTitle className="text-2xl">Sign Up</CardTitle>
           <CardDescription>
             Enter your information to create an account
           </CardDescription>
         </CardHeader>
         <CardContent>
           <div className="grid gap-4">
-            <div className="grid gap-4">
+            <div className="grid gap-2">
               <Label htmlFor="username">Username</Label>
               <Input id="username" placeholder="arsh" required onChange={event=> setUsername(event.target.value)}/>
             </div>
@@ -120,7 +127,6 @@ export function Signup() {
           </div>
         </CardContent>
       </Card>
-      <Toaster />
-    </>
+    </div>
   )
 }

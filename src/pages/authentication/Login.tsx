@@ -11,10 +11,9 @@ import {
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { useAuth } from "@/context/Auth"
-import { Toaster } from "@/components/ui/toaster"
 import { useToast } from "@/components/ui/use-toast";
 
-export function Login() {
+export default function Login() {
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
   const { toast } = useToast()
@@ -25,7 +24,7 @@ export function Login() {
     getSession().then((data) => {
       console.log(data);
       console.log("User is already logged in");
-      navigate("/home");
+      navigate("/");
     }).catch((error) => {
       console.log(error);
     });
@@ -58,7 +57,7 @@ export function Login() {
     else {
       logIn(email, password).then((data) => {
         if (data) {
-          navigate("/home");
+          navigate("/");
         }
       }).catch((error) => {
         console.log(error);
@@ -66,8 +65,8 @@ export function Login() {
     }
   }
   return (
-    <>
-      <Card className="mx-auto max-w-sm">
+    <div className="flex justify-center items-center h-screen">
+      <Card className="mx-4 w-96">
         <CardHeader>
           <CardTitle className="text-2xl">Login</CardTitle>
           <CardDescription>
@@ -107,7 +106,6 @@ export function Login() {
           </div>
         </CardContent>
       </Card>
-      <Toaster />
-    </>
+    </div>
   )
 }

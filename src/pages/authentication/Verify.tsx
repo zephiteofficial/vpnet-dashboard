@@ -5,11 +5,10 @@ import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { useToast } from "@/components/ui/use-toast";
 import { useAuth } from "@/context/Auth"
-import { Toaster } from "@/components/ui/toaster"
 import { FormEvent, useState } from "react"
 
 
-export function Verify() {
+export default function Verify() {
   const { state } = useLocation();
   if (!state?.fromApp) {
     return <Navigate to="/login" />;
@@ -55,8 +54,8 @@ export function Verify() {
     return <Navigate to="/login" />;
   }
   else return (
-    <>
-      <Card className="mx-auto max-w-sm">
+    <div className="flex justify-center items-center h-screen">
+      <Card className="mx-4 w-96">
         <CardHeader>
           <CardTitle className="text-2xl">Email Confirmation</CardTitle>
           <CardDescription>
@@ -85,7 +84,6 @@ export function Verify() {
           </div>
         </CardContent>
       </Card>
-      <Toaster />
-    </>
+    </div>
   )
 }
