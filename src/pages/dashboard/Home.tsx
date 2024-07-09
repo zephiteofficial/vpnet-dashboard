@@ -5,10 +5,8 @@ import ThemeSwitch from '@/components/theme-switch'
 import { Button } from "@/components/ui/button"
 import { IconCurrency } from '@tabler/icons-react'
 import { Layout } from '@/components/custom/layout'
-import { useToast } from "@/components/ui/use-toast";
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle,} from "@/components/ui/card"
+import { Card, CardHeader, CardTitle,} from "@/components/ui/card"
 import { Skeleton } from "@/components/ui/skeleton"
-import { Car } from "lucide-react";
 
 
 export default function HomePage() {
