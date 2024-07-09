@@ -9,25 +9,25 @@ const router = createBrowserRouter([
   {
     path: '/login',
     lazy: async () => ({
-      Component: (await import('./pages/authentication/login')).default,
+      Component: (await import('./pages/authentication/login.tsx')).default,
     }),
   },
   {
     path: '/signup',
     lazy: async () => ({
-      Component: (await import('./pages/authentication/signup')).default,
+      Component: (await import('@/pages/authentication/signup.tsx')).default,
     }),
   },
   {
     path: '/verify',
     lazy: async () => ({
-      Component: (await import('./pages/authentication/verify')).default,
+      Component: (await import('./pages/authentication/verify.tsx')).default,
     }),
   },
   {
     path: '/forgot-password',
     lazy: async () => ({
-      Component: (await import('./pages/authentication/reset')).default,
+      Component: (await import('./pages/authentication/reset.tsx')).default,
     }),
   },
 
@@ -43,7 +43,7 @@ const router = createBrowserRouter([
       {
         index: true,
         lazy: async () => ({
-          Component: (await import('./pages/dashboard/home')).default,
+          Component: (await import('./pages/dashboard/home.tsx')).default,
         }),
       },
       {
