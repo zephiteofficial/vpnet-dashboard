@@ -1,5 +1,6 @@
 {
   "name": "vpnet-dashboard",
+  "homepage": "https://dash.vp-net.org/",
   "private": true,
   "version": "0.0.0",
   "type": "module",
