@@ -1,15 +1,15 @@
 import { createBrowserRouter } from 'react-router-dom'
-import GeneralError from './pages/errors/general-error'
-import NotFoundError from './pages/errors/not-found-error'
-import MaintenanceError from './pages/errors/maintenance-error'
-import UnauthorisedError from './pages/errors/unauthorised-error.tsx'
+import GeneralError from '@/pages/errors/general-error.tsx'
+import NotFoundError from '@/pages/errors/not-found-error.tsx'
+import MaintenanceError from '@/pages/errors/maintenance-error.tsx'
+import UnauthorisedError from '@/pages/errors/unauthorised-error.tsx'
 
 const router = createBrowserRouter([
   // Auth routes
   {
     path: '/login',
     lazy: async () => ({
-      Component: (await import('./pages/authentication/login.tsx')).default,
+      Component: (await import('@/pages/authentication/login.tsx')).default,
     }),
   },
   {
@@ -21,13 +21,13 @@ const router = createBrowserRouter([
   {
     path: '/verify',
     lazy: async () => ({
-      Component: (await import('./pages/authentication/verify.tsx')).default,
+      Component: (await import('@/pages/authentication/verify.tsx')).default,
     }),
   },
   {
     path: '/forgot-password',
     lazy: async () => ({
-      Component: (await import('./pages/authentication/reset.tsx')).default,
+      Component: (await import('@/pages/authentication/reset.tsx')).default,
     }),
   },
 
@@ -43,7 +43,7 @@ const router = createBrowserRouter([
       {
         index: true,
         lazy: async () => ({
-          Component: (await import('./pages/dashboard/home.tsx')).default,
+          Component: (await import('@/pages/dashboard/home.tsx')).default,
         }),
       },
       {
