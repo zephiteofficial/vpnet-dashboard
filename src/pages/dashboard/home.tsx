@@ -107,7 +107,7 @@ export default function HomePage() {
                 <AlertDialogHeader>
                   <AlertDialogTitle>About Additional Bandwidth</AlertDialogTitle>
                   <AlertDialogDescription>
-                    If you run out of your monthly bandwidth, you can purchase additional bandwidth to continue using the service without any interruptions. This additional bandwidth dosen't expire and can be used anytime.
+                    If you run out of your monthly bandwidth, you can purchase additional bandwidth to continue using the service without any interruptions. This additional bandwidth dosen't expire and will be used whenever you run out of your monthly bandwidth.
                   </AlertDialogDescription>
                 </AlertDialogHeader>
                 <AlertDialogFooter>
