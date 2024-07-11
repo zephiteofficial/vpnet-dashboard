@@ -7,13 +7,12 @@ import { Badge } from "@/components/ui/badge"
 import {
   Table,
   TableBody,
-  TableCaption,
   TableCell,
   TableHead,
   TableHeader,
   TableRow,
 } from "@/components/ui/table"
-import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter } from '@/components/ui/card'
+import { Card, CardHeader, CardContent, CardFooter } from '@/components/ui/card'
 
 
 export default function ServerPage() {
