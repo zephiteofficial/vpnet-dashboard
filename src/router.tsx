@@ -49,13 +49,13 @@ const router = createHashRouter([
       {
         index: true,
         lazy: async () => ({
-          Component: (await import('@/pages/dashboard/home.tsx')).default,
+          Component: (await import('@/pages/dashboard/home')).default,
         }),
       },
       {
         path: '/servers',
         lazy: async () => ({
-          Component: (await import('@/components/coming-soon')).default,
+          Component: (await import('@/pages/dashboard/servers')).default,
         }),
       },
       {

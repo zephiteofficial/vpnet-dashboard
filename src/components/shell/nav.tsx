@@ -133,7 +133,7 @@ function NavLink({
           variant: checkActiveNav(href) ? 'secondary' : 'ghost',
           size: 'sm',
         }),
-        'h-12 justify-start text-wrap rounded-none px-6',
+        'h-12 justify-start text-wrap rounded-none px-6 hover:bg-secondary',
         checkActiveNav(href)? 'text-primary' : '',
         subLink && 'h-10 w-full border-l border-l-slate-500 px-2'
       )}

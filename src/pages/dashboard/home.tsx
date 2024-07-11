@@ -1,5 +1,3 @@
-import { useAuth } from "@/context/Auth"
-import { useEffect } from "react";
 import { useNavigate } from "react-router-dom"
 import ThemeSwitch from '@/components/theme-switch'
 import { Button } from "@/components/ui/button"
@@ -21,20 +19,9 @@ import { Badge } from "@/components/ui/badge"
 
 
 export default function HomePage() {
-  const { getSession } = useAuth();
   const navigate = useNavigate();
 
   const homepageDetailsLoaded = true;
-
-  useEffect(() => {
-    getSession().then((data) => {
-      console.log(data);
-    }).catch((error) => {
-      console.log(error);
-      console.log("Redirecting to login page");
-      navigate("/login");
-    });
-  }, [])
 
   function navigateToProfile() {
     navigate("/profile");
@@ -50,6 +37,7 @@ export default function HomePage() {
   const additionalBandwidthTitleString = homepageDetailsLoaded? (`of excess overage availaible`) : (<Skeleton className="mt-2 w-[128px] h-[8px] rounded-full" />);
   const connectedDevicesTitle = homepageDetailsLoaded? (`0 Devices`) : (<Skeleton className="mt-2 w-[100px] h-[28px] rounded-full" />);
   const connectedDevicesString = homepageDetailsLoaded? (`out of 0 supported devices`) : (<Skeleton className="mt-2 w-[128px] h-[8px] rounded-full" />);
+  
   return (
     <Layout>
 
@@ -82,7 +70,6 @@ export default function HomePage() {
                 <AlertDialogAction>Okay</AlertDialogAction>
               </AlertDialogFooter>
             </AlertDialogContent>
-
             <Card className="bg-inherit col-span-2">
               <CardHeader className="pb-2">
                 <div className="flex">
@@ -114,7 +101,6 @@ export default function HomePage() {
                   <AlertDialogAction>Okay</AlertDialogAction>
                 </AlertDialogFooter>
             </AlertDialogContent>
-
             <Card className="bg-inherit col-span-2">
               <CardHeader className="pb-2">
                 <div className="flex">
@@ -146,8 +132,7 @@ export default function HomePage() {
                   <AlertDialogAction>Okay</AlertDialogAction>
                 </AlertDialogFooter>
             </AlertDialogContent>
-
-            <Card className="bg-inherit col-span-2 ">
+            <Card className="bg-inherit col-span-2 row-start-2">
               <CardHeader className="pb-2">
                 <div className="flex">
                   <CardDescription className="text-secondary-foreground">Connected Devices</CardDescription>
@@ -167,6 +152,7 @@ export default function HomePage() {
               </CardFooter>
             </Card>
           </AlertDialog>
+          
           </div>
         </Layout.Body>
     </Layout>
