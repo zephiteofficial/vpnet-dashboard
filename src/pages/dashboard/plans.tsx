@@ -61,8 +61,8 @@ export default function Plans() {
 
         <Layout.Body>
           <div>
-            <p className='flex text-3xl mb-2 font-bold justify-center'>Pricing Plans</p>
-            <p className='flex text-lg font-semibold justify-center'>Choose the right plan that fits your needs</p>
+            <p className='flex text-xl lg:text-2xl xl:text-3xl mb-2 font-bold justify-center'>Pricing Plans</p>
+            <p className='flex text-sm lg:text-base xl:text-lg font-semibold justify-center text-center'>Choose the right plan that fits your needs</p>
           </div>
           <div className='pt-8 grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-4 gap-4 justify-center'>
             {PricingCard("Lite", "69", "Dip your toes into greatness", "30 GB", "1 Simultaneous Device")}
