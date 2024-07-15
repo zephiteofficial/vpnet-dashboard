@@ -59,9 +59,9 @@ const router = createHashRouter([
         }),
       },
       {
-        path: '/shop',
+        path: '/plans',
         lazy: async () => ({
-          Component: (await import('@/components/coming-soon')).default,
+          Component: (await import('@/pages/dashboard/plans')).default,
         }),
       },
       {

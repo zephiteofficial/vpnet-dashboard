@@ -1,9 +1,10 @@
 import ThemeSwitch from '@/components/dashboard/theme-switch'
 import { Layout } from '@/components/custom/layout'
 import { Badge } from "@/components/ui/badge"
-import { CurrencyButton } from "@/components/dashboard/home/currency-button"
+import { CurrencyButton } from "@/components/dashboard/currency-button"
 import { MonthlyUsageCard } from "@/components/dashboard/home/monthly-usage-card"
 import { AdditionalBandwidthCard } from "@/components/dashboard/home/additional-bandwidth-card"
+import { DeviceDetailsCard } from '@/components/dashboard/home/device-details-card'
 import { AnnouncementCard } from "@/components/dashboard/home/announcement-card"
 import { useAPI } from "@/hooks/use-api"
 
@@ -29,43 +30,10 @@ export default function HomePage() {
         </Layout.Header>
         <Layout.Body>
           <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4">
-            {AnnouncementCard()}
             {MonthlyUsageCard(profileData)}
             {AdditionalBandwidthCard(profileData)}
-            {/* 
-            <AlertDialog>
-              <AlertDialogContent>
-                  <AlertDialogHeader>
-                    <AlertDialogTitle>About Connected Devices</AlertDialogTitle>
-                    <AlertDialogDescription>
-                      "Connected Devices" feature is not availaible yet.
-                    </AlertDialogDescription>
-                  </AlertDialogHeader>
-                  <AlertDialogFooter>
-                    <AlertDialogAction>Okay</AlertDialogAction>
-                  </AlertDialogFooter>
-              </AlertDialogContent>
-              <Card className="bg-inherit col-span-2 col-start-5">
-                <CardHeader className="pb-0">
-                  <div className="flex">
-                    <CardDescription className="text-sm font-semibold text-secondary-foreground">Connected Devices</CardDescription>
-                    <AlertDialogTrigger  className="mt-1 ml-auto hover:cursor-pointer hover:text-muted-foreground"><IconInfoCircle size={16} /></AlertDialogTrigger>
-                  </div>
-                  <CardTitle className="text-2xl font-bold">{connectedDevicesTitle}</CardTitle>
-                </CardHeader>
-                <CardContent className="pb-4">
-                <div className="text-xs font-semibold text-muted-foreground">{connectedDevicesString}</div>
-                </CardContent>
-                <CardFooter>
-                  <AlertDialogTrigger className="w-full h-8" asChild>
-                    <Button className="w-full h-8">
-                    Disconnect
-                    </Button>
-                  </AlertDialogTrigger>
-                </CardFooter>
-              </Card>
-            </AlertDialog>
-            */}
+            {DeviceDetailsCard(profileData)}
+            {AnnouncementCard()}
           </div>
         </Layout.Body>
     </Layout>

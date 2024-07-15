@@ -24,9 +24,9 @@ export function MonthlyUsageCard(profileData:any){
     <AlertDialog>
       <AlertDialogContent>
         <AlertDialogHeader>
-          <AlertDialogTitle>About Monthly Usage Bandwidth</AlertDialogTitle>
+          <AlertDialogTitle>About Premium Bandwidth</AlertDialogTitle>
           <AlertDialogDescription>
-            This is the amount of monthly bandwidth you have used out of the total bandwidth available based on your subscription plan. It is reset every month at the beginning of your billing cycle.
+          Premium Bandwidth provides access to high-speed, low-latency servers. Your plan determines the bandwidth limit, which resets monthly. Usage of Basic Servers does not deplete your Premium Bandwidth.
           </AlertDialogDescription>
         </AlertDialogHeader>
         <AlertDialogFooter>
@@ -36,12 +36,12 @@ export function MonthlyUsageCard(profileData:any){
       <Card className="bg-inherit col-span-2">
         <CardHeader className="pb-1">
           <div className="flex">
-            <CardDescription className="text-xs md:text-sm font-semibold text-secondary-foreground">Monthly Usage</CardDescription>
+            <CardDescription className="text-xs md:text-sm font-semibold text-secondary-foreground">Premium Bandwidth</CardDescription>
             <AlertDialogTrigger  className="mt-1 ml-auto hover:cursor-pointer hover:text-muted-foreground"><IconInfoCircle size={16} /></AlertDialogTrigger>
           </div>
           <CardTitle className="text-xl md:text-2xl font-bold">
             {data ? `${(data.data.attributes.bandwidth_used/1024/1024/1024).toFixed(2)} GB`: <Skeleton className="mt-2 w-[100px] h-[24px] rounded-full" />}
-            </CardTitle>
+          </CardTitle>
         </CardHeader>
         <CardContent>
           <div className="text-xs font-semibold text-muted-foreground">

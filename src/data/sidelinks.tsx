@@ -36,9 +36,9 @@ export const sidelinks: SideLink[] = [
     icon: <IconServer size={18} />,
   },
   {
-    title: 'Shop',
+    title: 'Plans',
     label: '',
-    href: '/shop',
+    href: '/plans',
     icon: <IconShoppingCart size={18} />,
   },
   {

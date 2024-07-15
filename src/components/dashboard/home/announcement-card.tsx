@@ -3,7 +3,7 @@ import { IconBox, IconBell } from '@tabler/icons-react'
 
 export function AnnouncementCard(){
   return(
-    <Card className="col-span-2 md:col-span-4 lg:col-span-4 row-span-2 bg-inherit">
+    <Card className="col-span-2 md:col-span-4 lg:col-span-4 row-start-1 lg:row-start-2 bg-inherit">
       <CardHeader>
         <CardTitle className="text-xl sm:text-2xl font-bold">Announcements</CardTitle>
         <CardDescription className="text-sm font-medium text-muted-foreground">Latest updates and news</CardDescription>

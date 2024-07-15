@@ -1,7 +1,5 @@
 import ThemeSwitch from '@/components/dashboard/theme-switch'
-import { Button } from "@/components/ui/button"
 import { Layout } from '@/components/custom/layout'
-import { Skeleton } from "@/components/ui/skeleton"
 import { Badge } from "@/components/ui/badge"
 import {
   Table,
@@ -11,34 +9,10 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table"
-import { Card, CardHeader, CardContent, CardFooter } from '@/components/ui/card'
-import { CurrencyButton } from '@/components/dashboard/home/currency-button'
+import { Card } from '@/components/ui/card'
+import { CurrencyButton } from '@/components/dashboard/currency-button'
+import { VpnCredentailsCard } from '@/components/dashboard/servers/vpn-credentials-card'
 import { useAPI } from '@/hooks/use-api'
-
-export function VpnCredentailCard(profileData:any){
-  const data = profileData
-  return(
-    <Card className='bg-inherit'>
-      <CardHeader className='pb-2'>
-        <p className='font-medium text-lg'>VPN Credentials</p>
-        <p className='text-sm text-muted-foreground'>Your credentials are as follows:</p>
-      </CardHeader>
-      <CardContent>
-        <div className='mt-2 flex'>
-          <p className='text-sm'>Username</p>
-          {data ? <p className='ml-auto text-sm text-muted-foreground'>{data.data.vpn_credentials.username}</p> : <Skeleton className="w-[40px] h-[20px] rounded-full" />}
-        </div>
-        <div className='mt-2 flex'>
-          <p className='text-sm'>Password</p>
-          {data ? <p className='ml-auto text-sm text-muted-foreground'>{data.data.vpn_credentials.password}</p> : <Skeleton className="w-[40px] h-[20px] rounded-full" />}
-        </div>
-      </CardContent>
-      <CardFooter>
-        <Button variant='outline' className='w-full h-8'>Change Password</Button>
-      </CardFooter>
-    </Card>
-  )
-}
 
 export default function ServersPage() {
   const { profileData } = useAPI();
@@ -117,7 +91,7 @@ export default function ServersPage() {
           </div>
         
           <div className='col-span-2 mb-4 row-start-1'>
-            {VpnCredentailCard(profileData)}
+            {VpnCredentailsCard(profileData)}
           </div>
         </div>    
       </Layout.Body>
