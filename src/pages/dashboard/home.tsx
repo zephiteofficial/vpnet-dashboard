@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom"
 import ThemeSwitch from '@/components/theme-switch'
 import { Button } from "@/components/ui/button"
-import { IconBell, IconBox, IconCurrency, IconInfoCircle, IconNotification } from '@tabler/icons-react'
+import { IconBell, IconBox, IconCurrency, IconInfoCircle, /*IconNotification*/ } from '@tabler/icons-react'
 import { Layout } from '@/components/custom/layout'
 import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter } from "@/components/ui/card"
 import { Skeleton } from "@/components/ui/skeleton"
@@ -16,7 +16,6 @@ import {
   AlertDialogTrigger,
 } from "@/components/ui/alert-dialog"
 import { Badge } from "@/components/ui/badge"
-import { Car, Icon } from "lucide-react"
 
 
 export default function HomePage() {
@@ -36,9 +35,10 @@ export default function HomePage() {
   const monthlyUsageString = homepageDetailsLoaded? (`out of 1000 GB availaible`) : (<Skeleton className="mt-2 w-[128px] h-[8px] rounded-full" />);
   const additionalBandwidthTitle = homepageDetailsLoaded? (`5000 GB`) : (<Skeleton className="mt-2 w-[100px] h-[28px] rounded-full" />);
   const additionalBandwidthTitleString = homepageDetailsLoaded? (`of excess data availaible`) : (<Skeleton className="mt-2 w-[128px] h-[8px] rounded-full" />);
+  /*
   const connectedDevicesTitle = homepageDetailsLoaded? (`0 Devices`) : (<Skeleton className="mt-2 w-[100px] h-[28px] rounded-full" />);
   const connectedDevicesString = homepageDetailsLoaded? (`out of 0 supported devices`) : (<Skeleton className="mt-2 w-[128px] h-[8px] rounded-full" />);
-  
+  */
   return (
     <Layout>
 
