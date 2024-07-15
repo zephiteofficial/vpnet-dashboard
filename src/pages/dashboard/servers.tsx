@@ -1,6 +1,5 @@
-import ThemeSwitch from '@/components/theme-switch'
+import ThemeSwitch from '@/components/dashboard/theme-switch'
 import { Button } from "@/components/ui/button"
-import { IconCurrency } from '@tabler/icons-react'
 import { Layout } from '@/components/custom/layout'
 import { Skeleton } from "@/components/ui/skeleton"
 import { Badge } from "@/components/ui/badge"
@@ -13,11 +12,37 @@ import {
   TableRow,
 } from "@/components/ui/table"
 import { Card, CardHeader, CardContent, CardFooter } from '@/components/ui/card'
+import { CurrencyButton } from '@/components/dashboard/home/currency-button'
+import { useAPI } from '@/hooks/use-api'
 
+export function VpnCredentailCard(profileData:any){
+  const data = profileData
+  return(
+    <Card className='bg-inherit'>
+      <CardHeader className='pb-2'>
+        <p className='font-medium text-lg'>VPN Credentials</p>
+        <p className='text-sm text-muted-foreground'>Your credentials are as follows:</p>
+      </CardHeader>
+      <CardContent>
+        <div className='mt-2 flex'>
+          <p className='text-sm'>Username</p>
+          {data ? <p className='ml-auto text-sm text-muted-foreground'>{data.data.vpn_credentials.username}</p> : <Skeleton className="w-[40px] h-[20px] rounded-full" />}
+        </div>
+        <div className='mt-2 flex'>
+          <p className='text-sm'>Password</p>
+          {data ? <p className='ml-auto text-sm text-muted-foreground'>{data.data.vpn_credentials.password}</p> : <Skeleton className="w-[40px] h-[20px] rounded-full" />}
+        </div>
+      </CardContent>
+      <CardFooter>
+        <Button variant='outline' className='w-full h-8'>Change Password</Button>
+      </CardFooter>
+    </Card>
+  )
+}
 
-export default function ServerPage() {
-  const homepageDetailsLoaded = true;
-  const currency = homepageDetailsLoaded? (<p>{`99,999`}</p>) : (<Skeleton className="w-[100px] h-[20px] rounded-full" />);
+export default function ServersPage() {
+  const { profileData } = useAPI();
+
   const servers = [
     {
       country: 'India',
@@ -62,10 +87,7 @@ export default function ServerPage() {
             <Badge className="text-[12px]">v0.1a</Badge>
           </div>
           <div className='ml-auto flex items-center space-x-4'>
-            <Button variant='outline' size='sm'>
-              <IconCurrency size={20} className="mr-2"/>
-              {currency}
-            </Button>
+            {CurrencyButton(profileData)}
             <ThemeSwitch />
           </div>
         </Layout.Header>
@@ -78,7 +100,7 @@ export default function ServerPage() {
         <div className='grid grid-cols-2 md:grid-cols-2 lg:grid-cols-6 lg:gap-8'>
           <div className='col-span-2 lg:col-span-4 lg:row-start-1'>
             <Card className='bg-inherit p-1'>
-              <Table className='outline min-w-[550px]' >
+              <Table className='min-w-[550px]' >
                 <TableHeader>
                   <TableRow>
                     <TableHead className="w-[160px]">Country</TableHead>
@@ -92,29 +114,10 @@ export default function ServerPage() {
                 </TableBody>
               </Table>
             </Card>
-            
           </div>
         
           <div className='col-span-2 mb-4 row-start-1'>
-            <Card className='bg-inherit'>
-              <CardHeader className='pb-2'>
-                <p className='font-medium text-lg'>VPN Credentials</p>
-                <p className='text-sm text-muted-foreground'>Your credentials are as follows:</p>
-              </CardHeader>
-              <CardContent>
-                <div className='mt-2 flex'>
-                  <p className='text-sm'>Username</p>
-                  <p className='ml-auto text-sm text-muted-foreground'>testuser</p>
-                </div>
-                <div className='mt-2 flex'>
-                  <p className='text-sm'>Password</p>
-                  <p className='ml-auto text-sm text-muted-foreground'>testpassword</p>
-                </div>
-              </CardContent>
-              <CardFooter>
-                <Button variant='outline' className='w-full h-8'>Change Password</Button>
-              </CardFooter>
-            </Card>
+            {VpnCredentailCard(profileData)}
           </div>
         </div>    
       </Layout.Body>

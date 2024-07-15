@@ -25,7 +25,9 @@ export default function Sidebar({
   const navigate = useNavigate();
   useEffect(() => {
     getSession().then((data) => {
-      console.log(data);
+      if (data) {
+        console.log("User is logged in");
+      }
     }).catch((error) => {
       console.log(error);
       console.log("Redirecting to login page");
