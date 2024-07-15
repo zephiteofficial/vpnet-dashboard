@@ -17,7 +17,7 @@ import { Card, CardHeader, CardContent, CardFooter } from '@/components/ui/card'
 
 export default function ServerPage() {
   const homepageDetailsLoaded = true;
-  const currency = homepageDetailsLoaded? (<p className="mb-0.5">{`999,999,999`}</p>) : (<Skeleton className="w-[100px] h-[20px] rounded-full" />);
+  const currency = homepageDetailsLoaded? (<p>{`99,999`}</p>) : (<Skeleton className="w-[100px] h-[20px] rounded-full" />);
   const servers = [
     {
       country: 'India',
@@ -59,7 +59,7 @@ export default function ServerPage() {
       <Layout.Header>
           <div className="mr-auto flex items-center space-x-2">
             <p className="text-2xl font-medium mb-1">Servers</p>
-            <Badge className="text-[12px]">v0.1-alpha</Badge>
+            <Badge className="text-[12px]">v0.1a</Badge>
           </div>
           <div className='ml-auto flex items-center space-x-4'>
             <Button variant='outline' size='sm'>
@@ -76,14 +76,14 @@ export default function ServerPage() {
           <p className='text-sm text-muted-foreground'>You can connect to any of the servers below using the provided credentials.</p>
         </div>
         <div className='grid grid-cols-2 md:grid-cols-2 lg:grid-cols-6 lg:gap-8'>
-          <div className='col-span-4 lg:row-start-1'>
+          <div className='col-span-2 lg:col-span-4 lg:row-start-1'>
             <Card className='bg-inherit p-1'>
-              <Table className='outline' >
+              <Table className='outline min-w-[550px]' >
                 <TableHeader>
                   <TableRow>
-                    <TableHead className="w-[200px]">Country</TableHead>
-                    <TableHead className="w-[200px]">Region</TableHead>
-                    <TableHead>Address</TableHead>
+                    <TableHead className="w-[160px]">Country</TableHead>
+                    <TableHead className="w-[140px]">Region</TableHead>
+                    <TableHead className="w-[250px]">Address</TableHead>
                     <TableHead className="text-right">Type</TableHead>
                   </TableRow>
                 </TableHeader>
