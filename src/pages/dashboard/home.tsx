@@ -9,12 +9,8 @@ import { AnnouncementCard } from "@/components/dashboard/home/announcement-card"
 import { useAPI } from "@/hooks/use-api"
 
 export default function HomePage() {
-  const { profileData } = useAPI()
+  const { profileData, usageData, planData } = useAPI()
 
-  /*
-  const connectedDevicesTitle = homepageDetailsLoaded? (`0 Devices`) : (<Skeleton className="mt-2 w-[100px] h-[28px] rounded-full" />);
-  const connectedDevicesString = homepageDetailsLoaded? (`out of 0 supported devices`) : (<Skeleton className="mt-2 w-[128px] h-[8px] rounded-full" />);
-  */
   return (
     <Layout>
 
@@ -30,9 +26,9 @@ export default function HomePage() {
         </Layout.Header>
         <Layout.Body>
           <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4">
-            {MonthlyUsageCard(profileData)}
-            {AdditionalBandwidthCard(profileData)}
-            {DeviceDetailsCard(profileData)}
+            {MonthlyUsageCard(planData, usageData)}
+            {AdditionalBandwidthCard(usageData)}
+            {DeviceDetailsCard(planData, usageData)}
             {AnnouncementCard()}
           </div>
         </Layout.Body>

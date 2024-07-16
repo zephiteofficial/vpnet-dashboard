@@ -12,9 +12,9 @@ import {
 } from "@/components/ui/alert-dialog"
 import { Skeleton } from "@/components/ui/skeleton"
 import { IconInfoCircle } from '@tabler/icons-react'
+import { UserPlan, UserUsage } from "@/interfaces";
 
-export function DeviceDetailsCard(profileData:any){
-  const data = profileData
+export function DeviceDetailsCard(userPlan : UserPlan | null, userUsage: UserUsage | null){
   return(
     <AlertDialog>
       <AlertDialogContent>
@@ -35,12 +35,12 @@ export function DeviceDetailsCard(profileData:any){
             <AlertDialogTrigger  className="mt-1 ml-auto hover:cursor-pointer hover:text-muted-foreground"><IconInfoCircle size={16} /></AlertDialogTrigger>
           </div>
           <CardTitle className="text-2xl font-bold">
-            {data ? (`${data.data.attributes.connected_devices} Devices`) : (<Skeleton className="mt-2 w-[100px] h-[24px] rounded-full" />)}
+            {userUsage ? (`${userUsage.usage.active_sessions} Devices`) : (<Skeleton className="mt-2 w-[100px] h-[24px] rounded-full" />)}
           </CardTitle>
         </CardHeader>
         <CardContent>
           <div className="text-xs font-semibold text-muted-foreground">
-            {data ? (`out of ${data.data.attributes.device_limit} allowed devices`) : (<Skeleton className="mt-2 w-[128px] h-[8px] rounded-full" />)}
+            {userPlan ? (`out of ${userPlan.plan.device_limit} allowed devices`) : (<Skeleton className="mt-2 w-[128px] h-[8px] rounded-full" />)}
           </div>
         </CardContent>
         <CardFooter>

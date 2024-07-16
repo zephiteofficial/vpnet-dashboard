@@ -1,9 +1,9 @@
 import { Button } from "@/components/ui/button"
 import { Skeleton } from "@/components/ui/skeleton"
 import { Card, CardHeader, CardContent, CardFooter } from '@/components/ui/card'
+import { UserProfile } from "@/interfaces"
 
-export function VpnCredentailsCard(profileData:any){
-  const data = profileData
+export function VpnCredentailsCard(userProfile : UserProfile|null){
   return(
     <Card className='bg-inherit'>
       <CardHeader className='pb-2'>
@@ -13,11 +13,11 @@ export function VpnCredentailsCard(profileData:any){
       <CardContent>
         <div className='mt-2 flex'>
           <p className='text-sm'>Username</p>
-          {data ? <p className='ml-auto text-sm text-muted-foreground'>{data.data.vpn_credentials.username}</p> : <Skeleton className="ml-auto w-[40px] h-[20px] rounded-full" />}
+          {userProfile ? <p className='ml-auto text-sm text-muted-foreground'>{userProfile.profile.vpn_credentials.username}</p> : <Skeleton className="ml-auto w-[40px] h-[20px] rounded-full" />}
         </div>
         <div className='mt-2 flex'>
           <p className='text-sm'>Password</p>
-          {data ? <p className='ml-auto text-sm text-muted-foreground'>{data.data.vpn_credentials.password}</p> : <Skeleton className="ml-auto w-[40px] h-[20px] rounded-full" />}
+          {userProfile ? <p className='ml-auto text-sm text-muted-foreground'>{userProfile.profile.vpn_credentials.password}</p> : <Skeleton className="ml-auto w-[40px] h-[20px] rounded-full" />}
         </div>
       </CardContent>
       <CardFooter>

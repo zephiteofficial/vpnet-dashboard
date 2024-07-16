@@ -13,13 +13,13 @@ import {
 } from "@/components/ui/alert-dialog"
 import { Skeleton } from "@/components/ui/skeleton"
 import { IconInfoCircle } from '@tabler/icons-react'
+import { UserUsage } from "@/interfaces";
 
-export function AdditionalBandwidthCard(profileData:any){
+export function AdditionalBandwidthCard(userUsage: UserUsage | null){
   const navigate = useNavigate();
   function navigateToShop() {
     navigate("/shop");
   }
-  const data = profileData
   return(
     <AlertDialog>
       <AlertDialogContent>
@@ -40,12 +40,14 @@ export function AdditionalBandwidthCard(profileData:any){
             <AlertDialogTrigger  className="mt-1 ml-auto hover:cursor-pointer hover:text-muted-foreground"><IconInfoCircle size={16} /></AlertDialogTrigger>
           </div>
           <CardTitle className="text-xl md:text-2xl font-bold">
-            {data ? `${(data.data.attributes.bandwidth_surplus/1024/1024/1024).toFixed(2)} GB`: <Skeleton className="mt-2 w-[100px] h-[24px] rounded-full" />}
+            {userUsage ?
+            (((userUsage.usage.bandwidth_surplus/1024/1024/1024)>=1000) ? (`${(userUsage.usage.bandwidth_surplus/1024/1024/1024/1024).toFixed(2)} TB`) : (`${(userUsage.usage.bandwidth_surplus/1024/1024/1024).toFixed(2)} GB`)) : 
+            (<Skeleton className="mt-2 w-[100px] h-[24px] rounded-full" />) }
           </CardTitle>
         </CardHeader>
         <CardContent>
           <div className="text-xs font-semibold text-muted-foreground">
-            {data ? `of excess bandwidth availaible` :<Skeleton className="mt-2 w-[128px] h-[8px] rounded-full" />}
+            {userUsage ? (`of excess bandwidth availaible`) : (<Skeleton className="mt-2 w-[128px] h-[8px] rounded-full" />)}
           </div>
         </CardContent>
         <CardFooter>

@@ -1,30 +1,76 @@
 import { useEffect, useState } from "react";
 import useFetch from "./use-fetch";
 import { useToast } from "@/components/ui/use-toast";
+import { UserProfile, UserPlan, UserUsage } from "@/interfaces";
 
 export function useAPI() {
   const { toast } = useToast()
-  const [profileData, setProfileData] = useState();
-  const { data, error } = useFetch({
-    url: "https://api.vp-net.org/v1/profile",
+  const [profileData, setProfileData] = useState<UserProfile | null>(null);
+  const [usageData, setUsageData] = useState<UserUsage | null>(null);
+  const [planData, setPlanData] = useState<UserPlan | null>(null);
+
+
+  const { data: profileDataResponse, error: profileDataError } = useFetch({
+    url: "https://api.vp-net.org/v1/user/profile",
     method: "get",
     key: ["profile"],
+    cache: {
+      enabled: true,
+      ttl: 3600,
+    },
+  });
+  const { data: usageDataResponse, error: usageDataError } = useFetch({
+    url: "https://api.vp-net.org/v1/user/usage",
+    method: "get",
+    key: ["usage"],
     cache: {
       enabled: true,
       ttl: 5,
     },
   });
-  if(error){
+  const { data: planDataResponse, error: planDataError } = useFetch({
+    url: "https://api.vp-net.org/v1/user/plan",
+    method: "get",
+    key: ["plan"],
+    cache: {
+      enabled: true,
+      ttl: 3600,
+    },
+  });
+
+  if(profileDataError){
     toast({
       variant: "destructive",
       title: "API Error",
-      description: "Couldn't call the API endpoint"
+      description: "Couldn't call the User Profile API Endpoint"
     });
   }
+  if(usageDataError){
+    toast({
+      variant: "destructive",
+      title: "API Error",
+      description: "Couldn't call the User Usage API Endpoint"
+    });
+  }
+  if(planDataError){
+    toast({
+      variant: "destructive",
+      title: "API Error",
+      description: "Couldn't call the User Plan API Endpoint"
+    });
+  }
+
   useEffect(() => {
-    if (data) {
-      setProfileData(data);
+    if (profileDataResponse) {
+      setProfileData(profileDataResponse.data);
     }
-  }, [data]);
-  return { profileData };
+    if (usageDataResponse) {
+      setUsageData(usageDataResponse.data)
+    }
+    if (planDataResponse) {
+      setPlanData(planDataResponse.data)
+    }
+  }, [profileDataResponse, usageDataResponse, planDataResponse]);
+  
+  return { profileData, usageData, planData };
 }
