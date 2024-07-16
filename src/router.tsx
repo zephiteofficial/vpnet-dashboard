@@ -65,7 +65,7 @@ const router = createHashRouter([
         }),
       },
       {
-        path: '/profile',
+        path: '/faq',
         lazy: async () => ({
           Component: (await import('@/components/coming-soon')).default,
         }),
@@ -73,8 +73,23 @@ const router = createHashRouter([
       {
         path: '/settings',
         lazy: async () => ({
-          Component: (await import('@/components/coming-soon')).default,
+          Component: (await import('@/pages/dashboard/settings')).default,
         }),
+        errorElement: <GeneralError />,
+        children: [
+          {
+            index: true,
+            lazy: async () => ({
+              Component: (await import('@/pages/dashboard/settings/profile')).default,
+            }),
+          },
+          {
+            path: 'plan',
+            lazy: async () => ({
+              Component: (await import('@/pages/dashboard/settings/plan')).default,
+            }),
+          }
+        ],
       }
     ],
   },

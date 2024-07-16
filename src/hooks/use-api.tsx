@@ -3,7 +3,7 @@ import useFetch from "./use-fetch";
 import { useToast } from "@/components/ui/use-toast";
 import { UserProfile, UserPlan, UserUsage } from "@/interfaces";
 
-export function useAPI() {
+export default function useAPI() {
   const { toast } = useToast()
   const [profileData, setProfileData] = useState<UserProfile | null>(null);
   const [usageData, setUsageData] = useState<UserUsage | null>(null);
@@ -25,7 +25,7 @@ export function useAPI() {
     key: ["usage"],
     cache: {
       enabled: true,
-      ttl: 5,
+      ttl: 600,
     },
   });
   const { data: planDataResponse, error: planDataError } = useFetch({

@@ -1,12 +1,9 @@
 import ThemeSwitch from '@/components/dashboard/theme-switch'
 import { Layout } from '@/components/custom/layout'
 import { Badge } from "@/components/ui/badge"
-import { CurrencyButton } from "@/components/dashboard/currency-button"
-import { MonthlyUsageCard } from "@/components/dashboard/home/monthly-usage-card"
-import { AdditionalBandwidthCard } from "@/components/dashboard/home/additional-bandwidth-card"
-import { DeviceDetailsCard } from '@/components/dashboard/home/device-details-card'
-import { AnnouncementCard } from "@/components/dashboard/home/announcement-card"
-import { useAPI } from "@/hooks/use-api"
+import { BandwidthUsageCard, AdditionalBandwidthCard, DeviceDetailsCard, AnnouncementCard, CurrencyButton } from '@/components/dashboard'
+import { useAPI } from "@/hooks"
+import { Breadcrumb, BreadcrumbItem, BreadcrumbList, BreadcrumbLink, BreadcrumbSeparator } from '@/components/ui/breadcrumb'
 
 export default function HomePage() {
   const { profileData, usageData, planData } = useAPI()
@@ -16,20 +13,42 @@ export default function HomePage() {
 
         <Layout.Header>
           <div className="mr-auto flex items-center space-x-2">
-            <p className="text-2xl font-medium mb-1">Home</p>
-            <Badge className="text-[12px]">v0.1a</Badge>
+          <Breadcrumb>
+            <BreadcrumbList>
+              <BreadcrumbItem>
+                <BreadcrumbLink href="/#/">Dashboard</BreadcrumbLink>
+              </BreadcrumbItem>
+              <BreadcrumbSeparator />
+              <BreadcrumbItem>
+                <BreadcrumbLink href="/#/">Home</BreadcrumbLink>
+              </BreadcrumbItem>
+            </BreadcrumbList>
+          </Breadcrumb>
           </div>
           <div className='ml-auto flex items-center space-x-4'>
             {CurrencyButton(profileData)}
             <ThemeSwitch />
           </div>
         </Layout.Header>
-        <Layout.Body>
-          <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4">
-            {MonthlyUsageCard(planData, usageData)}
-            {AdditionalBandwidthCard(usageData)}
-            {DeviceDetailsCard(planData, usageData)}
-            {AnnouncementCard()}
+
+
+        <Layout.Body className='pt-0'>
+        <div className='space-y-0.5 mb-4 lg:mb-6'>
+          <div className=" flex items-center space-x-2">
+            <h1 className='text-2xl font-bold tracking-tight md:text-2xl'>Home</h1>
+            <Badge className="text-xs mt-1">v0.1a</Badge>
+          </div>
+          <p className='text-muted-foreground'>
+            Manage your account settings and set e-mail preferences.
+          </p>
+        </div>
+          <div className='max-w-[1000px]'>
+            <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4">
+              {BandwidthUsageCard(planData, usageData)}
+              {AdditionalBandwidthCard(usageData)}
+              {DeviceDetailsCard(planData, usageData)}
+              {AnnouncementCard()}
+            </div>
           </div>
         </Layout.Body>
     </Layout>

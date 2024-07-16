@@ -84,7 +84,7 @@ export default function Signup() {
   }
   return (
     <div className="flex justify-center items-center h-screen">
-      <Card className="mx-4 w-96">
+      <Card className="mx-4 w-96 bg-inherit">
         <CardHeader>
           <CardTitle className="text-2xl">Sign Up</CardTitle>
           <CardDescription>

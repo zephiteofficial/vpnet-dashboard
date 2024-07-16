@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button"
 import { IconHexagonLetterV } from '@tabler/icons-react'
 import { UserProfile } from "@/interfaces"
 
-export function CurrencyButton(profileData : UserProfile|null){
+export default function CurrencyButton(profileData : UserProfile|null){
   return(
     <>
     <Button variant='outline' size='sm'>

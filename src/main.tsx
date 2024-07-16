@@ -4,9 +4,7 @@ import './index.css'
 import router from './router'
 import { RouterProvider } from 'react-router-dom'
 import { Toaster } from '@/components/ui/toaster'
-import { AuthProvider } from './context/Auth.tsx'
-import { ThemeProvider } from './context/Theme'
-import { CacheProvider } from './context/Cache'
+import { ThemeProvider, AuthProvider, CacheProvider } from '@/context/'
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>

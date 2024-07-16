@@ -10,9 +10,9 @@ import {
   TableRow,
 } from "@/components/ui/table"
 import { Card } from '@/components/ui/card'
-import { CurrencyButton } from '@/components/dashboard/currency-button'
-import { VpnCredentailsCard } from '@/components/dashboard/servers/vpn-credentials-card'
-import { useAPI } from '@/hooks/use-api'
+import { CurrencyButton, VpnCredentailsCard } from '@/components/dashboard/'
+import { useAPI } from "@/hooks"
+import { Breadcrumb, BreadcrumbItem, BreadcrumbList, BreadcrumbLink, BreadcrumbSeparator } from '@/components/ui/breadcrumb'
 
 export default function ServersPage() {
   const { profileData } = useAPI();
@@ -57,8 +57,17 @@ export default function ServersPage() {
     <Layout>
       <Layout.Header>
           <div className="mr-auto flex items-center space-x-2">
-            <p className="text-2xl font-medium mb-1">Servers</p>
-            <Badge className="text-[12px]">v0.1a</Badge>
+          <Breadcrumb>
+            <BreadcrumbList>
+              <BreadcrumbItem>
+                <BreadcrumbLink href="/#/">Dashboard</BreadcrumbLink>
+              </BreadcrumbItem>
+              <BreadcrumbSeparator />
+              <BreadcrumbItem>
+                <BreadcrumbLink href="/#/servers">Servers</BreadcrumbLink>
+              </BreadcrumbItem>
+            </BreadcrumbList>
+          </Breadcrumb>
           </div>
           <div className='ml-auto flex items-center space-x-4'>
             {CurrencyButton(profileData)}
@@ -66,34 +75,41 @@ export default function ServersPage() {
           </div>
         </Layout.Header>
 
-      <Layout.Body>
-        <div className='mb-4'>
-          <p className='text-lg font-medium'>Here are all the available servers.</p>
-          <p className='text-sm text-muted-foreground'>You can connect to any of the servers below using the provided credentials.</p>
+      <Layout.Body className='pt-0'>
+        <div className='space-y-0.5 mb-4 lg:mb-6'>
+          <div className=" flex items-center space-x-2">
+            <h1 className='text-2xl font-bold tracking-tight md:text-2xl'>Servers</h1>
+            <Badge className="text-xs mt-1">v0.1a</Badge>
+          </div>
+          <p className='text-muted-foreground'>
+          You can connect to any of the servers below using the provided credentials.
+          </p>
         </div>
-        <div className='grid grid-cols-2 md:grid-cols-2 lg:grid-cols-6 lg:gap-8'>
-          <div className='col-span-2 lg:col-span-4 lg:row-start-1'>
-            <Card className='bg-inherit p-1'>
-              <Table className='min-w-[550px]' >
-                <TableHeader>
-                  <TableRow>
-                    <TableHead className="w-[160px]">Country</TableHead>
-                    <TableHead className="w-[140px]">Region</TableHead>
-                    <TableHead className="w-[250px]">Address</TableHead>
-                    <TableHead className="text-right">Type</TableHead>
-                  </TableRow>
-                </TableHeader>
-                <TableBody>
-                  {serverRows}
-                </TableBody>
-              </Table>
-            </Card>
-          </div>
-        
-          <div className='col-span-2 mb-4 row-start-1'>
-            {VpnCredentailsCard(profileData)}
-          </div>
-        </div>    
+        <div className='max-w-[1000px]'>
+          <div className='grid grid-cols-2 md:grid-cols-2 lg:grid-cols-7 lg:gap-8'>
+            <div className='col-span-2 lg:col-span-5 lg:row-start-1'>
+              <Card className='bg-inherit p-1'>
+                <Table className='min-w-[550px]' >
+                  <TableHeader>
+                    <TableRow>
+                      <TableHead className="w-[160px]">Country</TableHead>
+                      <TableHead className="w-[140px]">Region</TableHead>
+                      <TableHead className="w-[250px]">Address</TableHead>
+                      <TableHead className="text-right">Type</TableHead>
+                    </TableRow>
+                  </TableHeader>
+                  <TableBody>
+                    {serverRows}
+                  </TableBody>
+                </Table>
+              </Card>
+            </div>
+          
+            <div className='col-span-3 lg:col-span-2 mb-4 row-start-1'>
+              {VpnCredentailsCard(profileData)}
+            </div>
+          </div>    
+        </div>
       </Layout.Body>
     </Layout>
   )

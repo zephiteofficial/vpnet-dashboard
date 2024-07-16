@@ -15,10 +15,10 @@ import { Skeleton } from "@/components/ui/skeleton"
 import { IconInfoCircle } from '@tabler/icons-react'
 import { UserPlan, UserUsage } from "@/interfaces";
 
-export function MonthlyUsageCard(userPlan : UserPlan | null, userUsage: UserUsage | null){
+export default function MonthlyUsageCard(userPlan : UserPlan | null, userUsage: UserUsage | null){
   const navigate = useNavigate();
   function navigateToProfile() {
-    navigate("/profile");
+    navigate("/settings/plan");
   }
   return(
     <AlertDialog>
@@ -34,23 +34,29 @@ export function MonthlyUsageCard(userPlan : UserPlan | null, userUsage: UserUsag
         </AlertDialogFooter>
       </AlertDialogContent>
       <Card className="bg-inherit col-span-2">
-        <CardHeader className="pb-1">
+        <CardHeader className="pb-0">
           <div className="flex">
             <CardDescription className="text-xs md:text-sm font-semibold text-secondary-foreground">Premium Bandwidth</CardDescription>
-            <AlertDialogTrigger  className="mt-1 ml-auto hover:cursor-pointer hover:text-muted-foreground"><IconInfoCircle size={16} /></AlertDialogTrigger>
+            <AlertDialogTrigger  className="mt-1 ml-auto hover:cursor-pointer"><IconInfoCircle size={16} /></AlertDialogTrigger>
           </div>
           <CardTitle className="text-xl md:text-2xl font-bold">
-            {userUsage ? (((userUsage.usage.bandwidth_used/1024/1024/1024)>=1000) ? (`${(userUsage.usage.bandwidth_used/1024/1024/1024/1024).toFixed(2)} TB`) : (`${(userUsage.usage.bandwidth_used/1024/1024/1024).toFixed(2)} GB`)) : (<Skeleton className="mt-2 w-[100px] h-[24px] rounded-full" />)}
+            {userUsage 
+            ? (
+              ((((userUsage.usage.bandwidth_used+userUsage.usage.active_session_bandwidth)/1024/1024/1024)>=1000)) 
+              ? (`${((userUsage.usage.bandwidth_used+userUsage.usage.active_session_bandwidth)/1024/1024/1024/1024).toFixed(2)} TB`)
+              : (`${((userUsage.usage.bandwidth_used+userUsage.usage.active_session_bandwidth)/1024/1024/1024).toFixed(2)} GB`)
+              )
+            : (<Skeleton className="mt-2 w-[100px] h-[24px] rounded-full" />)}
           </CardTitle>
         </CardHeader>
-        <CardContent>
-          <div className="text-xs font-semibold text-muted-foreground">
+        <CardContent className="pb-4">
+          <div className="text-xs h-4 font-semibold text-muted-foreground">
             {userPlan ? (((userPlan.plan.bandwidth_limit/1024/1024/1024)>=1000) ? (`out of ${(userPlan.plan.bandwidth_limit/1024/1024/1024/1024).toFixed(2)} TB availaible`) : (`out of ${(userPlan.plan.bandwidth_limit/1024/1024/1024).toFixed(2)} GB availaible`)) : (<Skeleton className="mt-2 w-[128px] h-[8px] rounded-full" />)}
           </div>
         </CardContent>
         <CardFooter>
-          <Button onClick={navigateToProfile} className="w-full h-8">
-            <p className="text-xs md:text-sm font-semibold">Manage Plan</p>
+          <Button onClick={navigateToProfile} className="w-full h-6">
+            <p className="text-xs font-semibold">Manage Plan</p>
           </Button>
         </CardFooter>
       </Card>

@@ -1,14 +1,9 @@
 import {
-  IconBarrierBlock,
   IconHome,
   IconServer,
   IconShoppingCart,
-  IconUser,
-  IconError404,
-  IconExclamationCircle,
-  IconServerOff,
   IconSettings,
-  IconLock,
+  IconMessages,
 } from '@tabler/icons-react'
 
 export interface NavLink {
@@ -42,47 +37,15 @@ export const sidelinks: SideLink[] = [
     icon: <IconShoppingCart size={18} />,
   },
   {
-    title: 'Profile',
+    title: 'FAQ',
     label: '',
-    href: '/profile',
-    icon: <IconUser size={18} />,
+    href: '/faq',
+    icon: <IconMessages size={18} />,
   },
   {
     title: 'Settings',
     label: '',
     href: '/settings',
     icon: <IconSettings size={18} />,
-  },
-  {
-    title: 'Error Pages',
-    label: '',
-    href: '',
-    icon: <IconExclamationCircle size={18} />,
-    sub: [
-      {
-        title: 'Not Found',
-        label: '',
-        href: '/404',
-        icon: <IconError404 size={18} />,
-      },
-      {
-        title: 'Internal Server Error',
-        label: '',
-        href: '/500',
-        icon: <IconServerOff size={18} />,
-      },
-      {
-        title: 'Maintenance Error',
-        label: '',
-        href: '/503',
-        icon: <IconBarrierBlock size={18} />,
-      },
-      {
-        title: 'Unauthorised Error',
-        label: '',
-        href: '/401',
-        icon: <IconLock size={18} />,
-      },
-    ],
   },
 ]

@@ -15,10 +15,10 @@ import { Skeleton } from "@/components/ui/skeleton"
 import { IconInfoCircle } from '@tabler/icons-react'
 import { UserUsage } from "@/interfaces";
 
-export function AdditionalBandwidthCard(userUsage: UserUsage | null){
+export default function AdditionalBandwidthCard(userUsage: UserUsage | null){
   const navigate = useNavigate();
   function navigateToShop() {
-    navigate("/shop");
+    navigate("/plans");
   }
   return(
     <AlertDialog>
@@ -34,10 +34,10 @@ export function AdditionalBandwidthCard(userUsage: UserUsage | null){
           </AlertDialogFooter>
       </AlertDialogContent>
       <Card className="bg-inherit col-span-2">
-        <CardHeader className="pb-1">
+        <CardHeader className="pb-0">
           <div className="flex">
             <CardDescription className="text-xs md:text-sm font-semibold text-secondary-foreground">Excess Bandwidth</CardDescription>
-            <AlertDialogTrigger  className="mt-1 ml-auto hover:cursor-pointer hover:text-muted-foreground"><IconInfoCircle size={16} /></AlertDialogTrigger>
+            <AlertDialogTrigger  className="mt-1 ml-auto hover:cursor-pointer"><IconInfoCircle size={16} /></AlertDialogTrigger>
           </div>
           <CardTitle className="text-xl md:text-2xl font-bold">
             {userUsage ?
@@ -45,14 +45,14 @@ export function AdditionalBandwidthCard(userUsage: UserUsage | null){
             (<Skeleton className="mt-2 w-[100px] h-[24px] rounded-full" />) }
           </CardTitle>
         </CardHeader>
-        <CardContent>
-          <div className="text-xs font-semibold text-muted-foreground">
+        <CardContent className="pb-4">
+          <div className="text-xs h-4 font-semibold text-muted-foreground">
             {userUsage ? (`of excess bandwidth availaible`) : (<Skeleton className="mt-2 w-[128px] h-[8px] rounded-full" />)}
           </div>
         </CardContent>
         <CardFooter>
-          <Button onClick={navigateToShop} className="w-full h-8">
-            <p className="text-xs md:text-sm font-semibold">Buy More</p>
+          <Button onClick={navigateToShop} className="w-full h-6">
+            <p className="text-xs font-semibold">Buy More</p>
           </Button>
         </CardFooter>
       </Card>

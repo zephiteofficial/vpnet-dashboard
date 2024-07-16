@@ -3,9 +3,9 @@ import { Skeleton } from "@/components/ui/skeleton"
 import { Card, CardHeader, CardContent, CardFooter } from '@/components/ui/card'
 import { UserProfile } from "@/interfaces"
 
-export function VpnCredentailsCard(userProfile : UserProfile|null){
+export default function VpnCredentailsCard(userProfile : UserProfile|null){
   return(
-    <Card className='bg-inherit'>
+    <Card className='bg-inherit max-w-[28rem] min-w-48'>
       <CardHeader className='pb-2'>
         <p className='font-medium text-lg'>VPN Credentials</p>
         <p className='text-sm text-muted-foreground'>Your credentials are as follows:</p>
@@ -21,8 +21,8 @@ export function VpnCredentailsCard(userProfile : UserProfile|null){
         </div>
       </CardContent>
       <CardFooter>
-        <Button className='w-full h-8'>
-          <p className="text-xs md:text-sm font-semibold">Change Password</p>
+        <Button className='w-full h-6'>
+          <p className="text-xs font-semibold">Change Password</p>
         </Button>
       </CardFooter>
     </Card>

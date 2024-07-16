@@ -1,7 +1,7 @@
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "@/components/ui/card"
 import { IconBox, IconBell } from '@tabler/icons-react'
 
-export function AnnouncementCard(){
+export default function AnnouncementCard(){
   return(
     <Card className="col-span-2 md:col-span-4 lg:col-span-4 row-start-1 lg:row-start-2 bg-inherit">
       <CardHeader>
