@@ -1,5 +1,6 @@
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "@/components/ui/card"
 import { IconBox, IconBell } from '@tabler/icons-react'
+import { Link } from "react-router-dom"
 
 export default function AnnouncementCard(){
   return(
@@ -15,7 +16,7 @@ export default function AnnouncementCard(){
         </Card>
         <Card className="flex items-center h-16 px-4 bg-inherit">
           <div><IconBell className="mr-4" size={24}/></div>
-          <div><p className="text-xs md:text-sm font-semibold">This is a test announcement</p></div>
+          <div><p className="text-xs md:text-sm font-semibold">Click the link to join the community discussion on <Link className="hover:underline" to={"https://chat.whatsapp.com/IBElKMpRLoHDbyL3ZsZSXn"}>WhatsApp</Link></p></div>
         </Card>
       </CardContent>
     </Card>

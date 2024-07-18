@@ -36,6 +36,12 @@ const router = createHashRouter([
       Component: (await import('@/pages/authentication/forgot/forgot-verify')).default,
     }),
   },
+  {
+    path: '/request-access',
+    lazy: async () => ({
+      Component: (await import('@/pages/misc/access-request')).default,
+    }),
+  },
 
   // Main routes
   {
