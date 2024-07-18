@@ -6,6 +6,7 @@ import { Label } from "@/components/ui/label"
 import { useToast } from "@/components/ui/use-toast";
 import { useAuth } from "@/context/Auth"
 import { FormEvent, useState } from "react"
+import { IconLoader2 } from "@tabler/icons-react";
 
 
 export default function Verify() {
@@ -19,6 +20,7 @@ export default function Verify() {
   const navigate = useNavigate();
   const [code, setCode] = useState("")
   const { email, username } = state;
+  const [loading, setLoading] = useState(false);
   const handleSubmit = async (event: FormEvent<HTMLButtonElement>) => {
     event.preventDefault();
     if (code.length != 6 ) {
@@ -37,11 +39,14 @@ export default function Verify() {
       return;
     }
     else {
+      setLoading(true);
       confirmSignUp(username, code).then((data) => {
         console.log(data);
         navigate("/login");
+        setLoading(false);
       }).catch((error) => {
         console.log(error);
+        setLoading(false);
       });
     }
   }
@@ -72,8 +77,8 @@ export default function Verify() {
                 onChange={event=> setCode(event.target.value)}
               />
             </div>
-            <Button type="submit" className="w-full" onClick={handleSubmit}>
-              Confirm
+            <Button type="submit" className="w-full" disabled={loading} onClick={handleSubmit}>
+              {loading ? (<IconLoader2 className="mr-2 h-4 w-4 animate-spin"/>) : ("Confirm")}
             </Button>
           </div>
           <div className="mt-4 text-center text-sm">

@@ -6,10 +6,12 @@ import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { useAuth } from "@/context/Auth"
 import { useToast } from "@/components/ui/use-toast";
+import { IconLoader2 } from "@tabler/icons-react"
 
 export default function ResetPasswordForm() {
   const { forgotPassword, getSession } = useAuth();
   const [email, setEmail] = useState("")
+  const [loading, setLoading] = useState(false);
   const { toast } = useToast();
   const navigate = useNavigate();
 
@@ -40,11 +42,14 @@ export default function ResetPasswordForm() {
       });
     }
     else {
+      setLoading(true);
       forgotPassword(email).then((data) => {
         console.log(data);
         navigate("/reset-password", { state: { fromApp: true, email: email }})
+        setLoading(false);
       }).catch((error) => {
         console.log(error);
+        setLoading(false);
       });
     }
   }
@@ -69,8 +74,8 @@ export default function ResetPasswordForm() {
                 onChange={event=> setEmail(event.target.value)}
               />
             </div>
-            <Button type="submit" className="w-full" onClick={handleSubmit}>
-              Get Code
+            <Button type="submit" className="w-full" disabled={loading} onClick={handleSubmit}>
+              {loading ? (<IconLoader2 className="mr-2 h-4 w-4 animate-spin"/>) : ("Get Code")}
             </Button>
           </div>
         </CardContent>

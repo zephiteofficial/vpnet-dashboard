@@ -9,7 +9,6 @@ export default function useAPI() {
   const [usageData, setUsageData] = useState<UserUsage | null>(null);
   const [planData, setPlanData] = useState<UserPlan | null>(null);
 
-
   const { data: profileDataResponse, error: profileDataError } = useFetch({
     url: "https://api.vp-net.org/v1/user/profile",
     method: "get",
@@ -71,6 +70,6 @@ export default function useAPI() {
       setPlanData(planDataResponse.data)
     }
   }, [profileDataResponse, usageDataResponse, planDataResponse]);
-  
+
   return { profileData, usageData, planData };
 }

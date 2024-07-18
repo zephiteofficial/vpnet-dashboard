@@ -36,10 +36,10 @@ export default function HomePage() {
         <div className='space-y-0.5 mb-4 lg:mb-6'>
           <div className=" flex items-center space-x-2">
             <h1 className='text-2xl font-bold tracking-tight md:text-2xl'>Home</h1>
-            <Badge className="text-xs mt-1">v0.1a</Badge>
+            <Badge className="text-xs mt-1">v1.0a</Badge>
           </div>
           <p className='text-muted-foreground'>
-            Manage your account settings and set e-mail preferences.
+            View your premium bandwidth usage, device details and more.
           </p>
         </div>
           <div className='max-w-[1000px]'>

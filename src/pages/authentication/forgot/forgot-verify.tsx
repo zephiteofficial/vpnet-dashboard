@@ -6,6 +6,7 @@ import { Label } from "@/components/ui/label"
 import { useToast } from "@/components/ui/use-toast";
 import { useAuth } from "@/context/Auth"
 import { FormEvent, useState } from "react"
+import { IconLoader2 } from "@tabler/icons-react";
 
 
 export default function ResetPassword() {
@@ -20,6 +21,7 @@ export default function ResetPassword() {
   const [code, setCode] = useState("")
   const [password, setPassword] = useState("")
   const [confirmPassword, setConfirmPassword] = useState("")
+  const [loading, setLoading] = useState(false)
   const { email } = state;
   const handleSubmit = async (event: FormEvent<HTMLButtonElement>) => {
     event.preventDefault();
@@ -55,11 +57,14 @@ export default function ResetPassword() {
       return;
     }
     else {
+      setLoading(true);
       passwordConfirm(email, code, password).then((data) => {
         console.log(data);
         navigate("/login");
+        setLoading(false);
       }).catch((error) => {
         console.log(error);
+        setLoading(false);
       });
     }
   }
@@ -93,8 +98,8 @@ export default function ResetPassword() {
               <Label htmlFor="confirm-password">Confirm Password</Label>
               <Input id="confirm-password" placeholder="********" type="password" onChange={event=> setConfirmPassword(event.target.value)}/>
             </div>
-            <Button type="submit" className="w-full" onClick={handleSubmit}>
-              Confirm
+            <Button type="submit" className="w-full" disabled={loading} onClick={handleSubmit}>
+              {loading ? (<IconLoader2 className="mr-2 h-4 w-4 animate-spin"/>) : ("Confirm")}
             </Button>
           </div>
         </CardContent>

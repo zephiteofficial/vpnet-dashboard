@@ -46,11 +46,22 @@ const AuthProvider = ({ children }: { children: ReactNode }) => {
           ], [],
           (error, data) => {
             if (error) {
-              toast({
-                variant: "destructive",
-                title: "Error.",
-                description: error.message
-              });
+              if (error.message.startsWith("PreSignUp failed with error")) {
+                const modifiedErrorMessage = error.message.replace("PreSignUp failed with error", "").trim();
+                toast({
+                  variant: "destructive",
+                  title: "Error.",
+                  description: modifiedErrorMessage
+                });
+              }
+              else{
+                const modifiedErrorMessage = error.message
+                toast({
+                  variant: "destructive",
+                  title: "Error.",
+                  description: modifiedErrorMessage
+                });
+              }
               reject(error);
             } else if (data) {
               toast({

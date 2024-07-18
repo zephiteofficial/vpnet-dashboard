@@ -12,6 +12,7 @@ import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { useAuth } from "@/context/Auth"
 import { useToast } from "@/components/ui/use-toast";
+import { IconLoader2 } from '@tabler/icons-react'
 
 export default function Login() {
   const [email, setEmail] = useState("")
@@ -19,6 +20,7 @@ export default function Login() {
   const { toast } = useToast()
   const { getSession, logIn } = useAuth()
   const navigate = useNavigate();
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     getSession().then((data) => {
@@ -31,6 +33,7 @@ export default function Login() {
   }, [])
 
   const handleSubmit = (event: FormEvent<HTMLButtonElement>) => {
+    
     event.preventDefault()
     var validRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
     if (email.length < 1) {
@@ -55,13 +58,17 @@ export default function Login() {
       });
     }
     else {
+      setLoading(true)
       logIn(email, password).then((data) => {
         if (data) {
           navigate("/");
         }
+        setLoading(false)
       }).catch((error) => {
         console.log(error);
+        setLoading(false)
       });
+      
     }
   }
   return (
@@ -94,8 +101,8 @@ export default function Login() {
               </div>
               <Input id="password" placeholder="********" type="password" required onChange={event=> setPassword(event.target.value)} />
             </div>
-            <Button type="submit" className="w-full" onClick={handleSubmit}>
-              Login
+            <Button type="submit" className="w-full" disabled={loading} onClick={handleSubmit}>
+            { loading ?(<IconLoader2 className="mr-2 h-4 w-4 animate-spin"/>):("Login")}
             </Button>
           </div>
           <div className="mt-4 text-center text-sm text-muted-foreground">

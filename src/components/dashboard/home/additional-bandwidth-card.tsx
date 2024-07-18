@@ -52,7 +52,7 @@ export default function AdditionalBandwidthCard(userUsage: UserUsage | null){
         </CardContent>
         <CardFooter>
           <Button onClick={navigateToShop} className="w-full h-6">
-            <p className="text-xs font-semibold">Buy More</p>
+            <p className="text-xs font-semibold">View Plans</p>
           </Button>
         </CardFooter>
       </Card>

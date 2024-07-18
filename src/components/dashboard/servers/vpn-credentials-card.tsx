@@ -1,6 +1,5 @@
-import { Button } from "@/components/ui/button"
 import { Skeleton } from "@/components/ui/skeleton"
-import { Card, CardHeader, CardContent, CardFooter } from '@/components/ui/card'
+import { Card, CardHeader, CardContent } from '@/components/ui/card'
 import { UserProfile } from "@/interfaces"
 
 export default function VpnCredentailsCard(userProfile : UserProfile|null){
@@ -20,11 +19,13 @@ export default function VpnCredentailsCard(userProfile : UserProfile|null){
           {userProfile ? <p className='ml-auto text-sm text-muted-foreground'>{userProfile.profile.vpn_credentials.password}</p> : <Skeleton className="ml-auto w-[40px] h-[20px] rounded-full" />}
         </div>
       </CardContent>
+      {/*
       <CardFooter>
         <Button className='w-full h-6'>
           <p className="text-xs font-semibold">Change Password</p>
         </Button>
       </CardFooter>
+      */}
     </Card>
   )
 }

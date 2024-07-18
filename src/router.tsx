@@ -21,7 +21,7 @@ const router = createHashRouter([
   {
     path: '/verify',
     lazy: async () => ({
-      Component: (await import('@/pages/authentication/signup/verify')).default,
+      Component: (await import('@/pages/authentication/signup/signup-verify')).default,
     }),
   },
   {

@@ -1,6 +1,7 @@
 import { Outlet } from "react-router-dom";
 import { Layout } from "@/components/custom/layout";
 import { Badge } from "@/components/ui/badge";
+import { Breadcrumb, BreadcrumbItem, BreadcrumbList, BreadcrumbLink, BreadcrumbSeparator } from '@/components/ui/breadcrumb'
 import { CurrencyButton, SidebarNav } from "@/components/dashboard";
 import { ThemeSwitch } from "@/components/dashboard";
 import { useAPI } from "@/hooks";
@@ -10,26 +11,35 @@ import { IconShoppingCart, IconUser } from "@tabler/icons-react";
 
 export default function SettingsPage(){
   const { profileData } = useAPI()
-
   return(
     <Layout>
       <Layout.Header>
-          <div className="mr-auto flex items-center space-x-2">
-            <p className="text-2xl font-medium mb-1">Dashboard</p>
-            <Badge className="text-[12px]">v0.1a</Badge>
-          </div>
-          <div className='ml-auto flex items-center space-x-4'>
-            {CurrencyButton(profileData)}
-            <ThemeSwitch />
-          </div>
+        <div className="mr-auto flex items-center space-x-2">
+          <Breadcrumb>
+            <BreadcrumbList>
+              <BreadcrumbItem>
+                <BreadcrumbLink href="/#/">Dashboard</BreadcrumbLink>
+              </BreadcrumbItem>
+              <BreadcrumbSeparator />
+              <BreadcrumbItem>
+                <BreadcrumbLink href="/#/settings">Settings</BreadcrumbLink>
+              </BreadcrumbItem>
+            </BreadcrumbList>
+          </Breadcrumb>
+        </div>
+        <div className='ml-auto flex items-center space-x-4'>
+          {CurrencyButton(profileData)}
+          <ThemeSwitch />
+        </div>
       </Layout.Header>
-      <Layout.Body>
+      <Layout.Body className='pt-0'>
         <div className='space-y-0.5'>
-          <h1 className='text-2xl font-bold tracking-tight md:text-3xl'>
-            Settings
-          </h1>
+            <div className=" flex items-center space-x-2">
+              <h1 className='text-2xl font-bold tracking-tight md:text-2xl'>Settings</h1>
+              <Badge className="text-xs mt-1">v1.0a</Badge>
+            </div>
           <p className='text-muted-foreground'>
-            Manage your account settings and set e-mail preferences.
+            Manage and view your account settings and details.
           </p>
         </div>
         <Separator className='my-4 lg:my-6'/>

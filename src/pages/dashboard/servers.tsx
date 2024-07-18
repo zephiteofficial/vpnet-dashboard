@@ -37,9 +37,39 @@ export default function ServersPage() {
       type: 'Basic'
     },
     {
-      country: 'United Kingdom',
+      country: 'UK',
       region: 'London',
       address: 'uk-b1.vp-net.org',
+      type: 'Basic'
+    },
+    {
+      country: 'Canada',
+      region: 'Beauharnois',
+      address: 'cabada-b1.vp-net.org',
+      type: 'Basic'
+    },
+    {
+      country: 'Poland',
+      region: 'Warsaw',
+      address: 'poland-b1.vp-net.org',
+      type: 'Basic'
+    },
+    {
+      country: 'Germany',
+      region: 'Frankfurt',
+      address: 'germany-b1.vp-net.org',
+      type: 'Basic'
+    },
+    {
+      country: 'Australia',
+      region: 'Sydney',
+      address: 'australia-b1.vp-net.org',
+      type: 'Basic'
+    },
+    {
+      country: 'France',
+      region: 'Strasbourg',
+      address: 'france-b1.vp-net.org',
       type: 'Basic'
     },
   ]
@@ -79,7 +109,7 @@ export default function ServersPage() {
         <div className='space-y-0.5 mb-4 lg:mb-6'>
           <div className=" flex items-center space-x-2">
             <h1 className='text-2xl font-bold tracking-tight md:text-2xl'>Servers</h1>
-            <Badge className="text-xs mt-1">v0.1a</Badge>
+            <Badge className="text-xs mt-1">v1.0a</Badge>
           </div>
           <p className='text-muted-foreground'>
           You can connect to any of the servers below using the provided credentials.

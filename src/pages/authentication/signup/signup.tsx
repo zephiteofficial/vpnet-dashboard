@@ -6,6 +6,7 @@ import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { useAuth } from "@/context/Auth"
 import { useToast } from "@/components/ui/use-toast";
+import { IconLoader2 } from "@tabler/icons-react"
 
 
 export default function Signup() {
@@ -16,6 +17,7 @@ export default function Signup() {
   const [confirmPassword, setConfirmPassword] = useState("")
   const { toast } = useToast();
   const navigate = useNavigate();
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     getSession().then((data) => {
@@ -74,11 +76,14 @@ export default function Signup() {
       });
     }
     else {
+      setLoading(true)
       signUp(username, email, password).then((data) => {
-        console.log(data);
+        console.log(data)
         navigate("/verify", { state: { fromApp: true, email: email, username: username }})
+        setLoading(false)
       }).catch((error) => {
-        console.log(error);
+        console.log(error)
+        setLoading(false)
       });
     }
   }
@@ -115,8 +120,8 @@ export default function Signup() {
               <Label htmlFor="confirm-password">Confirm Password</Label>
               <Input id="confirm-password" placeholder="********" type="password" onChange={event=> setConfirmPassword(event.target.value)}/>
             </div>
-            <Button type="submit" className="w-full" onClick={handleSubmit}>
-              Create an account
+            <Button type="submit" className="w-full" disabled={loading} onClick={handleSubmit}>
+              {loading ? (<IconLoader2 className="mr-2 h-4 w-4 animate-spin"/>) : ("Create an account")}
             </Button>
           </div>
           <div className="mt-4 text-center text-sm text-muted-foreground">
