@@ -12,11 +12,11 @@ export default function AnnouncementCard(){
       <CardContent className="space-y-2">
         <Card className="flex items-center h-16 px-4 bg-inherit">
         <div><IconBox className="mr-4" size={24}/></div>
-        <div><p className="text-xs md:text-sm font-semibold">The dashboard is currently in Alpha Version 0.1</p></div>
+        <div><p className="text-xs md:text-sm font-semibold">The dashboard is currently in Alpha Version 1.0</p></div>
         </Card>
         <Card className="flex items-center h-16 px-4 bg-inherit">
           <div><IconBell className="mr-4" size={24}/></div>
-          <div><p className="text-xs md:text-sm font-semibold">Click the link to join the community discussion on <Link className="hover:underline" to={"https://chat.whatsapp.com/IBElKMpRLoHDbyL3ZsZSXn"}>WhatsApp</Link></p></div>
+          <div><p className="text-xs md:text-sm font-semibold"><Link className="hover:underline" to={"https://chat.whatsapp.com/IBElKMpRLoHDbyL3ZsZSXn"}>Join the Alpha discussion on WhatsApp</Link></p></div>
         </Card>
       </CardContent>
     </Card>

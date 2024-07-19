@@ -73,7 +73,7 @@ const router = createHashRouter([
       {
         path: '/faq',
         lazy: async () => ({
-          Component: (await import('@/components/coming-soon')).default,
+          Component: (await import('@/pages/dashboard/faq')).default,
         }),
       },
       {
