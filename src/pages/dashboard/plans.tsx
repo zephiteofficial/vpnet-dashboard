@@ -58,9 +58,9 @@ export default function PlansPage() {
           </div>
           <div className='grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4 justify-center'>
             {PricingCard(1, "Lite", "69", "Dip your toes into greatness", "15 GB", "1 Simultaneous Device", planData?.plan.id!=0)}
-            {PricingCard(2, "Basic", "139", "Elevate your experience", "60 GB", "3 Simultaneous Devices", planData?.plan.id!=0)}
-            {PricingCard(3, "Standard", "279", "For the ambitious achievers", "150 GB", "5 Simultaneous Devices", planData?.plan.id!=0)}
-            {PricingCard(4, "Premium", "489", "Unleash the ultimate potential", "450 GB", "10 Simultaneous Devices", planData?.plan.id!=0)}
+            {PricingCard(2, "Basic", "139", "Elevate your experience", "60 GB", "2 Simultaneous Devices", planData?.plan.id!=0)}
+            {PricingCard(3, "Standard", "279", "For the ambitious achievers", "160 GB", "4 Simultaneous Devices", planData?.plan.id!=0)}
+            {PricingCard(4, "Premium", "449", "Unleash the ultimate potential", "400 GB", "6 Simultaneous Devices", planData?.plan.id!=0)}
           </div>
           <div className='text-xs text-muted-foreground pt-6'>
             *The prices and features are subject to change. Please refer to the this page for the most up-to-date information.
