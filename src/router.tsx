@@ -43,6 +43,21 @@ const router = createHashRouter([
     }),
   },
 
+  // Policy routes
+
+  {
+    path: '/terms',
+    lazy: async () => ({
+      Component: (await import('@/pages/policies/terms')).default,
+    }),
+  },
+  {
+    path: '/refund',
+    lazy: async () => ({
+      Component: (await import('@/pages/policies/refund')).default,
+    }),
+  },
+
   // Main routes
   {
     path: '/',

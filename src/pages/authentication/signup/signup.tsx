@@ -9,6 +9,7 @@ import { useToast } from "@/components/ui/use-toast";
 import { IconLoader2 } from "@tabler/icons-react"
 
 
+
 export default function Signup() {
   const { signUp, getSession } = useAuth();
   const [username, setUsername] = useState("")
@@ -90,45 +91,37 @@ export default function Signup() {
   return (
     <div className="flex justify-center items-center h-screen">
       <Card className="mx-4 w-96 bg-inherit">
-        <CardHeader>
+        <CardHeader className="pb-4">
           <CardTitle className="text-2xl">Sign Up</CardTitle>
           <CardDescription>
-            Enter your information to create an account
+          <div className="text-sm text-muted-foreground">
+            Already have an account?{" "}
+            <Link to="/login" className="text-muted-foreground hover:underline hover:text-primary">
+              Log In
+            </Link>
+          </div>
           </CardDescription>
         </CardHeader>
         <CardContent>
           <div className="grid gap-4">
-            <div className="grid gap-2">
-              <Label htmlFor="username">Username</Label>
-              <Input id="username" placeholder="arsh" required onChange={event=> setUsername(event.target.value)}/>
-            </div>
-            <div className="grid gap-2">
-              <Label htmlFor="email">Email</Label>
-              <Input
-                id="email"
-                type="email"
-                placeholder="arshvimal@example.com"
-                required
-                onChange={event=> setEmail(event.target.value)}
-              />
-            </div>
-            <div className="grid gap-2">
-              <Label htmlFor="password">Password</Label>
-              <Input id="password" placeholder="********" type="password" onChange={event=> setPassword(event.target.value)} />
-            </div>
-            <div className="grid gap-2">
-              <Label htmlFor="confirm-password">Confirm Password</Label>
-              <Input id="confirm-password" placeholder="********" type="password" onChange={event=> setConfirmPassword(event.target.value)}/>
-            </div>
+            <Input id="username" placeholder="Username" required onChange={event=> setUsername(event.target.value)}/>
+            <Input
+              id="email"
+              type="email"
+              placeholder="Email"
+              required
+              onChange={event=> setEmail(event.target.value)}
+            />
+            <Input id="password" placeholder="Password" type="password" onChange={event=> setPassword(event.target.value)} />
+            <Input id="confirm-password" placeholder="Confirm Password" type="password" onChange={event=> setConfirmPassword(event.target.value)}/>
             <Button type="submit" className="w-full" disabled={loading} onClick={handleSubmit}>
               {loading ? (<IconLoader2 className="mr-2 h-4 w-4 animate-spin"/>) : ("Create an account")}
             </Button>
-          </div>
-          <div className="mt-4 text-center text-sm text-muted-foreground">
-            Already have an account?{" "}
-            <Link to="/login" className="text-muted-foreground hover:underline hover:text-primary">
-              Login
-            </Link>
+            <Label className="text-xs text-muted-foreground text-center">By signing up, you agree to our {" "}
+              <Link to="/terms" className="text-muted-foreground underline">
+                {`terms and conditions.`}
+              </Link>
+            </Label>
           </div>
         </CardContent>
       </Card>

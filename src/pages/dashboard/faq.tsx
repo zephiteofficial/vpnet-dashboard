@@ -1,4 +1,3 @@
-import ThemeSwitch from '@/components/dashboard/theme-switch'
 import { Layout } from '@/components/custom/layout'
 import { Badge } from "@/components/ui/badge"
 import {
@@ -7,7 +6,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion"
-import { CurrencyButton } from '@/components/dashboard/'
+import { HeaderRight } from '@/components/dashboard/'
 import { useAPI } from "@/hooks"
 import { Breadcrumb, BreadcrumbItem, BreadcrumbList, BreadcrumbLink, BreadcrumbSeparator } from '@/components/ui/breadcrumb'
 import { Link } from 'react-router-dom'
@@ -31,10 +30,7 @@ export default function FAQPage() {
             </BreadcrumbList>
           </Breadcrumb>
           </div>
-          <div className='ml-auto flex items-center space-x-4'>
-            {CurrencyButton(profileData)}
-            <ThemeSwitch />
-          </div>
+          {HeaderRight(profileData)}
         </Layout.Header>
 
       <Layout.Body className='pt-0'>

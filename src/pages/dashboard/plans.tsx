@@ -1,7 +1,6 @@
 import { Layout } from '@/components/custom/layout'
 import { Badge } from "@/components/ui/badge"
-import { CurrencyButton } from "@/components/dashboard/"
-import ThemeSwitch from '@/components/dashboard/theme-switch'
+import { HeaderRight } from '@/components/dashboard'
 import { useAPI } from "@/hooks"
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
@@ -40,10 +39,7 @@ export default function PlansPage() {
               </BreadcrumbList>
             </Breadcrumb>
           </div>
-          <div className='ml-auto flex items-center space-x-4'>
-            {CurrencyButton(profileData)}
-            <ThemeSwitch />
-          </div>
+          {HeaderRight(profileData)}
         </Layout.Header>
 
         <Layout.Body className='pt-0'>

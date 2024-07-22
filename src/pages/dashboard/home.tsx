@@ -1,9 +1,9 @@
-import ThemeSwitch from '@/components/dashboard/theme-switch'
 import { Layout } from '@/components/custom/layout'
 import { Badge } from "@/components/ui/badge"
-import { BandwidthUsageCard, AdditionalBandwidthCard, DeviceDetailsCard, AnnouncementCard, CurrencyButton } from '@/components/dashboard'
+import { BandwidthUsageCard, AdditionalBandwidthCard, DeviceDetailsCard, AnnouncementCard } from '@/components/dashboard'
 import { useAPI } from "@/hooks"
 import { Breadcrumb, BreadcrumbItem, BreadcrumbList, BreadcrumbLink, BreadcrumbSeparator } from '@/components/ui/breadcrumb'
+import { HeaderRight } from '@/components/dashboard/'
 
 export default function HomePage() {
   const { profileData, usageData, planData } = useAPI()
@@ -25,10 +25,7 @@ export default function HomePage() {
             </BreadcrumbList>
           </Breadcrumb>
           </div>
-          <div className='ml-auto flex items-center space-x-4'>
-            {CurrencyButton(profileData)}
-            <ThemeSwitch />
-          </div>
+          {HeaderRight(profileData)}
         </Layout.Header>
 
 

@@ -9,7 +9,6 @@ import {
   CardTitle,
 } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
 import { useAuth } from "@/context/Auth"
 import { useToast } from "@/components/ui/use-toast";
 import { IconLoader2 } from '@tabler/icons-react'
@@ -74,41 +73,32 @@ export default function Login() {
   return (
     <div className="flex justify-center items-center h-screen">
       <Card className="mx-4 w-96 bg-inherit">
-        <CardHeader>
-          <CardTitle className="text-2xl">Login</CardTitle>
+        <CardHeader className="pb-4">
+          <CardTitle className="text-2xl">Log In</CardTitle>
           <CardDescription>
-            Enter your credentials to log into your account
+          <div className="text-sm text-muted-foreground">
+            Don&apos;t have an account?{" "}
+            <Link to="/signup" className="text-muted-foreground hover:underline hover:text-primary">
+              Sign up
+            </Link>
+          </div>
           </CardDescription>
         </CardHeader>
         <CardContent>
           <div className="grid gap-4">
-            <div className="grid gap-2">
-              <Label htmlFor="email">Email</Label>
-              <Input
-                id="email"
-                type="email"
-                placeholder="arshvimal@example.com"
-                required
-                onChange={event=> setEmail(event.target.value)}
-              />
-            </div>
-            <div className="grid gap-2">
-              <div className="flex items-center">
-                <Label htmlFor="password">Password</Label>
-                <Link to="/forgot-password" className="ml-auto inline-block text-sm text-muted-foreground hover:underline hover:text-primary">
-                  Forgot your password?
-                </Link>
-              </div>
-              <Input id="password" placeholder="********" type="password" required onChange={event=> setPassword(event.target.value)} />
-            </div>
-            <Button type="submit" className="w-full" disabled={loading} onClick={handleSubmit}>
+            <Input
+              id="email"
+              type="email"
+              placeholder="Email"
+              required
+              onChange={event=> setEmail(event.target.value)}
+            />
+              <Input id="password" placeholder="Password" type="password" required onChange={event=> setPassword(event.target.value)} />
+              <Button type="submit" className="w-full" disabled={loading} onClick={handleSubmit}>
             { loading ?(<IconLoader2 className="mr-2 h-4 w-4 animate-spin"/>):("Login")}
             </Button>
-          </div>
-          <div className="mt-4 text-center text-sm text-muted-foreground">
-            Don&apos;t have an account?{" "}
-            <Link to="/signup" className="text-muted-foreground hover:underline hover:text-primary">
-              Sign up
+            <Link to="/forgot-password" className="text-xs font-medium text-muted-foreground text-center hover:underline hover:text-primary">
+              Forgot your password?
             </Link>
           </div>
         </CardContent>

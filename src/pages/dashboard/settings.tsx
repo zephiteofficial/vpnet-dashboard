@@ -2,8 +2,7 @@ import { Outlet } from "react-router-dom";
 import { Layout } from "@/components/custom/layout";
 import { Badge } from "@/components/ui/badge";
 import { Breadcrumb, BreadcrumbItem, BreadcrumbList, BreadcrumbLink, BreadcrumbSeparator } from '@/components/ui/breadcrumb'
-import { CurrencyButton, SidebarNav } from "@/components/dashboard";
-import { ThemeSwitch } from "@/components/dashboard";
+import { SidebarNav, HeaderRight } from "@/components/dashboard";
 import { useAPI } from "@/hooks";
 import { Separator } from "@/components/ui/separator";
 import { IconShoppingCart, IconUser } from "@tabler/icons-react";
@@ -27,10 +26,7 @@ export default function SettingsPage(){
             </BreadcrumbList>
           </Breadcrumb>
         </div>
-        <div className='ml-auto flex items-center space-x-4'>
-          {CurrencyButton(profileData)}
-          <ThemeSwitch />
-        </div>
+        {HeaderRight(profileData)}
       </Layout.Header>
       <Layout.Body className='pt-0'>
         <div className='space-y-0.5'>

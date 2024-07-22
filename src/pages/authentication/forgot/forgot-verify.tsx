@@ -2,7 +2,6 @@ import { Navigate , useLocation, useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
 import { useToast } from "@/components/ui/use-toast";
 import { useAuth } from "@/context/Auth"
 import { FormEvent, useState } from "react"
@@ -74,7 +73,7 @@ export default function ResetPassword() {
   else return (
     <div className="flex justify-center items-center h-screen">
       <Card className="mx-4 w-96 bg-inherit">
-        <CardHeader>
+        <CardHeader className="pb-4">
           <CardTitle className="text-2xl">Password Reset</CardTitle>
           <CardDescription>
             Reset code has been sent to {email}. Please check your inbox and enter it below.
@@ -82,22 +81,14 @@ export default function ResetPassword() {
         </CardHeader>
         <CardContent>
           <div className="grid gap-4">
-            <div className="grid gap-2">
-              <Label htmlFor="confirmation-code">Confirmation Code</Label>
               <Input
                 id="code"
+                placeholder="Code"
                 required
                 onChange={event=> setCode(event.target.value)}
               />
-            </div>
-            <div className="grid gap-2">
-              <Label htmlFor="password">New Password</Label>
-              <Input id="password" placeholder="********" type="password" onChange={event=> setPassword(event.target.value)} />
-            </div>
-            <div className="grid gap-2">
-              <Label htmlFor="confirm-password">Confirm Password</Label>
-              <Input id="confirm-password" placeholder="********" type="password" onChange={event=> setConfirmPassword(event.target.value)}/>
-            </div>
+              <Input id="password" placeholder="New Password" type="password" onChange={event=> setPassword(event.target.value)} />
+              <Input id="confirm-password" placeholder="Confirm Password" type="password" onChange={event=> setConfirmPassword(event.target.value)}/>
             <Button type="submit" className="w-full" disabled={loading} onClick={handleSubmit}>
               {loading ? (<IconLoader2 className="mr-2 h-4 w-4 animate-spin"/>) : ("Confirm")}
             </Button>
