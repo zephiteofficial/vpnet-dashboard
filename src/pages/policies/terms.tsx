@@ -1,13 +1,16 @@
 import { Layout } from "@/components/custom/layout";
 import { Label } from "@/components/ui/label";
 import { ThemeSwitch } from "@/components/dashboard";
+import { TooltipProvider } from "@/components/ui/tooltip";
 
 export default function Terms() {
   return (
     <Layout>
       <Layout.Header className="pb-0">
         <div className='ml-auto flex items-center space-x-4'>
-          <ThemeSwitch />
+          <TooltipProvider>
+            <ThemeSwitch />
+          </TooltipProvider>
         </div>
       </Layout.Header>
       <Layout.Body>
