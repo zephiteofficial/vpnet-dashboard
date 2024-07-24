@@ -115,13 +115,13 @@ export default function Login() {
           </Card>
         </div>
         <div className="flex justify-center items-end text-muted-foreground text-xs font-semibold h-[10%]">
-          <Link to="" className="hover:underline">About Us</Link>
+          <Link to="" target="_blank" rel="noopener noreferrer" className="hover:underline">About Us</Link>
           <div className="mx-4">•</div>
-          <Link to="https://dashboard.vp-net.org/privacy" className="hover:underline">Privacy Policy</Link>
+          <Link to="https://dashboard.vp-net.org/privacy"  target="_blank" rel="noopener noreferrer" className="hover:underline">Privacy Policy</Link>
           <div className="mx-4">•</div>
-          <Link to="" className="hover:underline">Contact Us</Link>
+          <Link to="" target="_blank" rel="noopener noreferrer" className="hover:underline">Contact Us</Link>
           <div className="mx-4">•</div>
-          <Link to="" className="hover:underline">Refund Policy</Link>
+          <Link to="" target="_blank" rel="noopener noreferrer" className="hover:underline">Refund Policy</Link>
         </div>
       </Layout.Body>
     </Layout>
