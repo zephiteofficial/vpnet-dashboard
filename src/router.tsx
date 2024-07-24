@@ -57,6 +57,12 @@ const router = createHashRouter([
       Component: (await import('@/pages/policies/refund')).default,
     }),
   },
+  {
+    path: '/contact',
+    lazy: async () => ({
+      Component: (await import('@/pages/policies/contact')).default,
+    }),
+  },
 
   // Main routes
   {
