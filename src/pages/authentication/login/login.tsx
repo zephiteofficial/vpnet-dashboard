@@ -64,6 +64,7 @@ export default function Login() {
       logIn(email, password).then((data) => {
         if (data) {
           navigate("/");
+          window.location.reload();
         }
         setLoading(false)
       }).catch((error) => {
