@@ -13,19 +13,19 @@ export default function Terms() {
           </TooltipProvider>
         </div>
       </Layout.Header>
-      <Layout.Body>
-        <div className="grid gap-8">
+      <Layout.Body className="flex flex-col space-y-8">
+        <div className="flex flex-col space-y-4">
           <Label className="text-4xl text-center">Terms and Conditions</Label>
           <Label className="text-lg text-center font-medium">Last Updated: Jul 21 2024</Label>
         </div>
-        <div className="grid gap-8 text-sm py-12 mx-24">
+        <div className="flex flex-col space-y-8">
           <div>
           For the purpose of these Terms and Conditions, The term "we", "us", "our" used anywhere on this page shall mean ARSH VIMAL, whose registered/operational office is New Moti Bagh Delhi DELHI 110022 . "you", “your”, "user", “visitor” shall mean any natural or legal person who is visiting our website and/or agreed to purchase from us.
           </div>
-          <div className="font-semibold">
-          Your use of the website and/or purchase from us are governed by following Terms and Conditions:
-          </div>
-          <div className="mx-8 space-y-4">
+          <div className="space-y-4">
+            <div className="font-semibold">
+            Your use of the website and/or purchase from us are governed by following Terms and Conditions:
+            </div>
             <div className="flex space-x-2">
               <div>-</div>
               <div>The content of the pages of this website is subject to change without notice.</div>

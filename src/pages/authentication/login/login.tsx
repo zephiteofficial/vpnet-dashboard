@@ -12,6 +12,9 @@ import { Input } from "@/components/ui/input"
 import { useAuth } from "@/context/Auth"
 import { useToast } from "@/components/ui/use-toast";
 import { IconLoader2 } from '@tabler/icons-react'
+import { Layout } from "@/components/custom/layout"
+import { TooltipProvider } from "@radix-ui/react-tooltip"
+import { ThemeSwitch } from "@/components/dashboard"
 
 export default function Login() {
   const [email, setEmail] = useState("")
@@ -71,38 +74,56 @@ export default function Login() {
     }
   }
   return (
-    <div className="flex justify-center items-center h-screen">
-      <Card className="mx-4 w-96 bg-inherit">
-        <CardHeader className="pb-4">
-          <CardTitle className="text-2xl">Log In</CardTitle>
-          <CardDescription>
-          <div className="text-sm text-muted-foreground">
-            Don&apos;t have an account?{" "}
-            <Link to="/signup" className="text-muted-foreground hover:underline hover:text-primary">
-              Sign up
-            </Link>
+    <Layout className="h-screen">
+      <Layout.Header className="h-[10%]">
+          <div className='ml-auto flex items-center space-x-4'>
+            <TooltipProvider>
+              <ThemeSwitch />
+            </TooltipProvider>
           </div>
-          </CardDescription>
-        </CardHeader>
-        <CardContent>
-          <div className="grid gap-4">
-            <Input
-              id="email"
-              type="email"
-              placeholder="Email"
-              required
-              onChange={event=> setEmail(event.target.value)}
-            />
-              <Input id="password" placeholder="Password" type="password" required onChange={event=> setPassword(event.target.value)} />
-              <Button type="submit" className="w-full" disabled={loading} onClick={handleSubmit}>
-            { loading ?(<IconLoader2 className="mr-2 h-4 w-4 animate-spin"/>):("Login")}
-            </Button>
-            <Link to="/forgot-password" className="text-xs font-medium text-muted-foreground text-center hover:underline hover:text-primary">
-              Forgot your password?
-            </Link>
-          </div>
-        </CardContent>
-      </Card>
-    </div>
-  )
+      </Layout.Header>
+      <Layout.Body className="h-[90%]">
+        <div className="flex justify-center items-center h-[90%]">
+          <Card className="mx-4 w-96 bg-inherit">
+            <CardHeader className="pb-4">
+              <CardTitle className="text-2xl">Log In</CardTitle>
+              <CardDescription className="text-sm text-muted-foreground">
+                Don&apos;t have an account?{" "}
+                <Link to="/signup" className="text-muted-foreground hover:underline hover:text-primary">
+                  Sign up
+                </Link>
+              </CardDescription>
+            </CardHeader>
+            <CardContent>
+              <div className="grid gap-4">
+                <Input
+                  id="email"
+                  type="email"
+                  placeholder="Email"
+                  required
+                  onChange={event=> setEmail(event.target.value)}
+                />
+                  <Input id="password" placeholder="Password" type="password" required onChange={event=> setPassword(event.target.value)} />
+                  <Button type="submit" className="w-full" disabled={loading} onClick={handleSubmit}>
+                { loading ?(<IconLoader2 className="mr-2 h-4 w-4 animate-spin"/>):("Login")}
+                </Button>
+                <Link to="/forgot-password" className="text-sm font-medium text-muted-foreground text-center hover:underline hover:text-primary">
+                  Forgot your password?
+                </Link>
+              </div>
+            </CardContent>
+          </Card>
+        </div>
+        <div className="flex justify-center items-end text-muted-foreground text-xs font-semibold h-[10%]">
+          <Link to="" className="hover:underline">About Us</Link>
+          <div className="mx-4">•</div>
+          <Link to="https://dashboard.vp-net.org/privacy" className="hover:underline">Privacy Policy</Link>
+          <div className="mx-4">•</div>
+          <Link to="" className="hover:underline">Contact Us</Link>
+          <div className="mx-4">•</div>
+          <Link to="" className="hover:underline">Refund Policy</Link>
+        </div>
+      </Layout.Body>
+    </Layout>
+    )
 }

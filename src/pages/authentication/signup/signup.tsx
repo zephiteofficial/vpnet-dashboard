@@ -7,8 +7,9 @@ import { Label } from "@/components/ui/label"
 import { useAuth } from "@/context/Auth"
 import { useToast } from "@/components/ui/use-toast";
 import { IconLoader2 } from "@tabler/icons-react"
-
-
+import { Layout } from "@/components/custom/layout"
+import { TooltipProvider } from "@/components/ui/tooltip"
+import { ThemeSwitch } from "@/components/dashboard"
 
 export default function Signup() {
   const { signUp, getSession } = useAuth();
@@ -89,42 +90,49 @@ export default function Signup() {
     }
   }
   return (
-    <div className="flex justify-center items-center h-screen">
-      <Card className="mx-4 w-96 bg-inherit">
-        <CardHeader className="pb-4">
-          <CardTitle className="text-2xl">Sign Up</CardTitle>
-          <CardDescription>
-          <div className="text-sm text-muted-foreground">
-            Already have an account?{" "}
-            <Link to="/login" className="text-muted-foreground hover:underline hover:text-primary">
-              Log In
-            </Link>
-          </div>
-          </CardDescription>
-        </CardHeader>
-        <CardContent>
-          <div className="grid gap-4">
-            <Input id="username" placeholder="Username" required onChange={event=> setUsername(event.target.value)}/>
-            <Input
-              id="email"
-              type="email"
-              placeholder="Email"
-              required
-              onChange={event=> setEmail(event.target.value)}
-            />
-            <Input id="password" placeholder="Password" type="password" onChange={event=> setPassword(event.target.value)} />
-            <Input id="confirm-password" placeholder="Confirm Password" type="password" onChange={event=> setConfirmPassword(event.target.value)}/>
-            <Button type="submit" className="w-full" disabled={loading} onClick={handleSubmit}>
-              {loading ? (<IconLoader2 className="mr-2 h-4 w-4 animate-spin"/>) : ("Create an account")}
-            </Button>
-            <Label className="text-xs text-muted-foreground text-center">By signing up, you agree to our {" "}
-              <Link to="/terms" className="text-muted-foreground underline">
-                {`terms and conditions.`}
+    <Layout className="h-screen">
+      <Layout.Header>
+        <div className='ml-auto flex items-center space-x-4'>
+          <TooltipProvider>
+            <ThemeSwitch />
+          </TooltipProvider>
+        </div>
+      </Layout.Header>
+      <Layout.Body className="flex justify-center items-center h-5/6">
+        <Card className="mx-4 w-96 bg-inherit">
+          <CardHeader className="pb-4">
+            <CardTitle className="text-2xl">Sign Up</CardTitle>
+            <CardDescription className="text-sm text-muted-foreground">
+              Already have an account?{" "}
+              <Link to="/login" className="text-muted-foreground hover:underline hover:text-primary">
+                Log In
               </Link>
-            </Label>
-          </div>
-        </CardContent>
-      </Card>
-    </div>
+            </CardDescription>
+          </CardHeader>
+          <CardContent>
+            <div className="grid gap-4">
+              <Input id="username" placeholder="Username" required onChange={event=> setUsername(event.target.value)}/>
+              <Input
+                id="email"
+                type="email"
+                placeholder="Email"
+                required
+                onChange={event=> setEmail(event.target.value)}
+              />
+              <Input id="password" placeholder="Password" type="password" onChange={event=> setPassword(event.target.value)} />
+              <Input id="confirm-password" placeholder="Confirm Password" type="password" onChange={event=> setConfirmPassword(event.target.value)}/>
+              <Button type="submit" className="w-full" disabled={loading} onClick={handleSubmit}>
+                {loading ? (<IconLoader2 className="mr-2 h-4 w-4 animate-spin"/>) : ("Create an account")}
+              </Button>
+              <Label className="text-xs text-muted-foreground text-center">By signing up, you agree to our {" "}
+                <Link to="/terms" className="text-muted-foreground underline">
+                  {`terms and conditions.`}
+                </Link>
+              </Label>
+            </div>
+          </CardContent>
+        </Card>
+      </Layout.Body>
+    </Layout>
   )
 }

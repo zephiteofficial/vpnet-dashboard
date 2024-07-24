@@ -13,16 +13,16 @@ export default function Refund() {
           </TooltipProvider>
         </div>
       </Layout.Header>
-      <Layout.Body>
-        <div className="grid gap-8">
+      <Layout.Body className="flex flex-col space-y-8">
+        <div className="flex flex-col space-y-4">
           <Label className="text-4xl text-center">Cancellation and Refund Policy</Label>
           <Label className="text-lg text-center font-medium">Last Updated: Jul 21 2024</Label>
         </div>
-        <div className="grid gap-8 text-sm py-12 mx-24">
+        <div className="flex flex-col space-y-4">
           <div className="font-semibold">
           ARSH VIMAL believes in helping its customers as far as possible, and has therefore a liberal cancellation policy. Under this policy:
           </div>
-          <div className="mx-8 space-y-4">
+          <div className="space-y-4">
             <div className="flex space-x-2">
               <div>-</div>
               <div>Cancellations will be considered only if the request is made within 7 days of placing the order. However, the cancellation request may not be entertained if the orders have been communicated to the vendors/merchants and they have initiated the process of shipping them.</div>
