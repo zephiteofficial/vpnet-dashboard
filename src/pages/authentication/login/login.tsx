@@ -77,11 +77,11 @@ export default function Login() {
   return (
     <Layout className="h-screen">
       <Layout.Header className="h-[10%]">
-          <div className='ml-auto flex items-center space-x-4'>
-            <TooltipProvider>
-              <ThemeSwitch />
-            </TooltipProvider>
-          </div>
+        <div className='ml-auto flex items-center space-x-4'>
+          <TooltipProvider>
+            <ThemeSwitch />
+          </TooltipProvider>
+        </div>
       </Layout.Header>
       <Layout.Body className="h-[90%]">
         <div className="flex justify-center items-center h-[90%]">
@@ -115,7 +115,7 @@ export default function Login() {
             </CardContent>
           </Card>
         </div>
-        <div className="hidden md:flex justify-center items-end text-muted-foreground text-xs font-semibold h-[10%]">
+        <div className="hidden md:flex justify-center items-end pb-2 text-muted-foreground text-xs font-semibold h-[10%]">
           <Link to="/terms" target="_blank" rel="noopener noreferrer" className="hover:underline text-center">Terms and Conditions</Link>
           <div className="mx-4">•</div>
           <Link to="https://dashboard.vp-net.org/privacy"  target="_blank" rel="noopener noreferrer" className="hover:underline text-center">Privacy Policy</Link>
