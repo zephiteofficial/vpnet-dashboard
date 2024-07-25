@@ -141,7 +141,7 @@ export default function Signup() {
           <div className="mx-4">•</div>
           <Link to="/contact" target="_blank" rel="noopener noreferrer" className="hover:underline text-center">Contact Us</Link>
           <div className="mx-4">•</div>
-          <Link to="/refund" target="_blank" rel="noopener noreferrer" className="hover:underline text-center">Refund Policy</Link>
+          <Link to="/refund" target="_blank" rel="noopener noreferrer" className="hover:underline text-center">Cancellation and Refund Policy</Link>
         </div>
       </Layout.Body>
     </Layout>
