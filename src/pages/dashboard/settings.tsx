@@ -14,7 +14,7 @@ export default function SettingsPage(){
     <Layout>
       <Layout.Header>
         <div className="mr-auto flex items-center space-x-2">
-          <Breadcrumb>
+          <Breadcrumb className='hidden sm:flex'>
             <BreadcrumbList>
               <BreadcrumbItem>
                 <BreadcrumbLink href="/#/">Dashboard</BreadcrumbLink>

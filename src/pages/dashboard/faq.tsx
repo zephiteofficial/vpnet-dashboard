@@ -18,7 +18,7 @@ export default function FAQPage() {
     <Layout>
       <Layout.Header>
           <div className="mr-auto flex items-center space-x-2">
-          <Breadcrumb>
+          <Breadcrumb className='hidden sm:flex'>
             <BreadcrumbList>
               <BreadcrumbItem>
                 <BreadcrumbLink href="/#/">Dashboard</BreadcrumbLink>
@@ -43,8 +43,8 @@ export default function FAQPage() {
             Look here for answers to common questions
           </p>
         </div>
-        <div className='w-[1000px]'>
-          <Accordion type="single" collapsible>
+        <div className=''>
+          <Accordion type="single" collapsible defaultValue={window.screen.width >= 768 ? "item" : ""}>
             <AccordionItem value="vpn-guide">
               <AccordionTrigger>How to Set Up A VPNet VPN Connection on Windows</AccordionTrigger>
               <AccordionContent className='space-y-2'>

@@ -14,7 +14,7 @@ export default function Contact() {
   return (
     <div className='mt-1.5'>
       <Dialog>
-        <DialogContent className='w-auto'>
+        <DialogContent className='w-64'>
           <DialogHeader>
             <DialogTitle>Contact Us</DialogTitle>
           </DialogHeader>
@@ -31,7 +31,7 @@ export default function Contact() {
           </DialogDescription>
         </DialogContent>
         <Tooltip>
-          <DialogTrigger>
+          <DialogTrigger asChild>
             <TooltipTrigger>
               <IconHeadset size={18} className='hover:cursor-pointer'/>
             </TooltipTrigger>

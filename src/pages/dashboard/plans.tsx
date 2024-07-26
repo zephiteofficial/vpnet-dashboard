@@ -27,7 +27,7 @@ export default function PlansPage() {
     <Layout>
       <Layout.Header>
           <div className="mr-auto flex items-center space-x-2">
-            <Breadcrumb>
+            <Breadcrumb className='hidden sm:flex'>
               <BreadcrumbList>
                 <BreadcrumbItem>
                   <BreadcrumbLink href="/#/">Dashboard</BreadcrumbLink>
@@ -60,6 +60,9 @@ export default function PlansPage() {
           </div>
           <div className='text-xs text-muted-foreground pt-6'>
             *The prices and features are subject to change. Please refer to the this page for the most up-to-date information.
+          </div>
+          <div className='text-xs text-muted-foreground pt-1'>
+            **Please contact us if you wish to upgrade or downgrade your plan.
           </div>
         </Layout.Body>
     </Layout>

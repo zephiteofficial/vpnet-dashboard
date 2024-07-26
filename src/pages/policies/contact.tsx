@@ -2,7 +2,7 @@ import { Layout } from "@/components/custom/layout";
 import { Label } from "@/components/ui/label";
 import { ThemeSwitch } from "@/components/dashboard";
 import { TooltipProvider } from "@/components/ui/tooltip";
-import { IconBrandWhatsapp, IconMapPin, IconMail } from "@tabler/icons-react";
+import { IconBrandWhatsapp, IconMail } from "@tabler/icons-react";
 import { Link } from "react-router-dom";
 
 export default function Contact() {
@@ -20,7 +20,7 @@ export default function Contact() {
           <Label className="text-4xl">Contact Us</Label>
           <div className="flex flex-col space-y-2">
             <div className="text-lg font-semibold pb-2">
-            You can contact Arsh Vimal at:
+            You can contact us at:
             </div>
             <div className="flex">
               <IconMail size={24} className="mt-0.5" />
@@ -29,10 +29,6 @@ export default function Contact() {
             <div className="flex">
               <IconBrandWhatsapp size={24} />
               <Link to="https://wa.me/message/C3OWYU3XR64CA1" className="ml-2">+91 83059 86362</Link>
-            </div>
-            <div className="flex">
-              <IconMapPin size={24} />
-              <p className="ml-2">New Moti Bagh, New Delhi 110022</p>
             </div>
           </div>
         </div>
