@@ -10,7 +10,7 @@ export default function useAPI() {
   const [planData, setPlanData] = useState<UserPlan | null>(null);
 
   const { data: profileDataResponse, error: profileDataError } = useFetch({
-    url: "https://api.vp-net.org/v1/user/profile",
+    url: import.meta.env.VITE_BASE_API_URL+"/v1/user/profile",
     method: "get",
     key: ["profile"],
     cache: {
@@ -19,7 +19,7 @@ export default function useAPI() {
     },
   });
   const { data: usageDataResponse, error: usageDataError } = useFetch({
-    url: "https://api.vp-net.org/v1/user/usage",
+    url: import.meta.env.VITE_BASE_API_URL+"/v1/user/usage",
     method: "get",
     key: ["usage"],
     cache: {
@@ -28,7 +28,7 @@ export default function useAPI() {
     },
   });
   const { data: planDataResponse, error: planDataError } = useFetch({
-    url: "https://api.vp-net.org/v1/user/plan",
+    url: import.meta.env.VITE_BASE_API_URL+"/v1/user/plan",
     method: "get",
     key: ["plan"],
     cache: {

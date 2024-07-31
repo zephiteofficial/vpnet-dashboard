@@ -29,7 +29,7 @@ export default function ProfileSettings(){
     const idToken = await getIdToken();
     try{
       if(newState===true){
-        await axios.post(`https://api.vp-net.org/v1/user/profile?renew=1`, {}, {
+        await axios.post(`${import.meta.env.VITE_BASE_API_URL}/v1/user/profile?renew=1`, {}, {
           headers: {
             'Authorization': `Bearer ${idToken}`
           }
@@ -42,7 +42,7 @@ export default function ProfileSettings(){
           setChecked(true)
         })
       }else{
-        await axios.post(`https://api.vp-net.org/v1/user/profile?renew=0`, {}, {
+        await axios.post(`${import.meta.env.VITE_BASE_API_URL}/v1/user/profile?renew=0`, {}, {
           headers: {
             'Authorization': `Bearer ${idToken}`
           }

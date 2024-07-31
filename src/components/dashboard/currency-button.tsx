@@ -7,25 +7,15 @@ import {
   TooltipContent,
   TooltipTrigger,
 } from "@/components/ui/tooltip"
-import {
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogHeader,
-  DialogTitle,
-  DialogFooter,
-  DialogTrigger,
-  DialogClose
-} from "@/components/ui/dialog"
-import { useState } from "react"
-import { Input } from "../ui/input"
-import { Label } from "@/components/ui/label"
-import { Link } from "react-router-dom"
-import { useAuth } from "@/context/Auth"
-import axios from "axios"
-import { useToast } from "@/components/ui/use-toast"
 
 export default function CurrencyButton(profileData : UserProfile|null){
+  /*
+  const { getSession } = useAuth();
+  async function getIdToken() {
+    const data = await getSession();
+    return data.session.idToken.jwtToken;
+  }
+  const { toast } = useToast()
   const [ amount, setAmount ] = useState(10)
   const maxAmount = 5000
   const minAmount = 10
@@ -37,12 +27,6 @@ export default function CurrencyButton(profileData : UserProfile|null){
     if (amount <= minAmount) return
     setAmount(amount - 1)
   }
-  const { getSession } = useAuth();
-  async function getIdToken() {
-    const data = await getSession();
-    return data.session.idToken.jwtToken;
-  }
-  const { toast } = useToast()
   const handlePurchase = async () => {
     const idToken = await getIdToken();
     try{
@@ -66,7 +50,6 @@ export default function CurrencyButton(profileData : UserProfile|null){
       })
     }
   }
-
   return(
       <Dialog>
         <DialogContent className="w-64">
@@ -115,5 +98,20 @@ export default function CurrencyButton(profileData : UserProfile|null){
           </TooltipTrigger>
         </Tooltip>
       </Dialog>
+  )
+  */
+  
+  const handleClicked = () => {
+    window.open(import.meta.env.VITE_RAZORPAY_PAYMENT_URL, "_blank", "noreferrer");
+  }
+  return(
+    <Tooltip>
+      <TooltipContent>Buy Credits</TooltipContent>
+        <TooltipTrigger asChild>
+          <Button variant='outline' onClick={handleClicked} size='sm'>
+            {profileData ? <><IconHexagonLetterV size={18} className="mr-1 mt-0.5"/><p className="text-base font-semibold">{profileData.profile.credit_balance}</p></> : <Skeleton className="w-[60px] h-[20px] rounded-full" />}
+          </Button>
+      </TooltipTrigger>
+    </Tooltip>
   )
 }

@@ -5,7 +5,6 @@ import MaintenanceError from '@/pages/errors/maintenance-error.tsx'
 import UnauthorisedError from '@/pages/errors/unauthorised-error.tsx'
 
 const router = createHashRouter([
-  /*
   // Auth routes
   {
     path: '/login',
@@ -40,7 +39,8 @@ const router = createHashRouter([
   {
     path: '/request-access',
     lazy: async () => ({
-      Component: (await import('@/pages/misc/access-request')).default,
+      //Component: (await import('@/pages/misc/access-request')).default,
+      Component: NotFoundError,
     }),
   },
 
@@ -93,9 +93,9 @@ const router = createHashRouter([
         }),
       },
       {
-        path: '/faq',
+        path: '/guides',
         lazy: async () => ({
-          Component: (await import('@/pages/dashboard/faq')).default,
+          Component: (await import('@/pages/dashboard/guides')).default,
         }),
       },
       {
@@ -121,7 +121,6 @@ const router = createHashRouter([
       }
     ],
   },
-  */
   { path: '/500', Component: GeneralError },
   { path: '/404', Component: NotFoundError },
   { path: '/503', Component: MaintenanceError },

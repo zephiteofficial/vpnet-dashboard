@@ -27,7 +27,7 @@ export default function PlansPage() {
     <Layout>
       <Layout.Header>
           <div className="mr-auto flex items-center space-x-2">
-            <Breadcrumb className='hidden sm:flex'>
+            <Breadcrumb>
               <BreadcrumbList>
                 <BreadcrumbItem>
                   <BreadcrumbLink href="/#/">Dashboard</BreadcrumbLink>
@@ -46,14 +46,14 @@ export default function PlansPage() {
           <div className='space-y-0.5 mb-4 lg:mb-6'>
             <div className=" flex items-center space-x-2">
               <h1 className='text-2xl font-bold tracking-tight md:text-2xl'>Pricing Plans</h1>
-              <Badge className="text-xs mt-1">v1.0a</Badge>
+              <Badge className="text-xs mt-1">v1.0b</Badge>
             </div>
             <p className='text-muted-foreground'>
             Choose the right plan for yourself
             </p>
           </div>
           <div className='grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4 justify-center'>
-            {PricingCard(1, "Lite", "69", "Dip your toes into greatness", "15 GB", "1 Simultaneous Device", planData?.plan.id!=0)}
+            {PricingCard(1, "Lite", "69", "Dip your toes into greatness", "20 GB", "1 Simultaneous Device", planData?.plan.id!=0)}
             {PricingCard(2, "Basic", "139", "Elevate your experience", "60 GB", "2 Simultaneous Devices", planData?.plan.id!=0)}
             {PricingCard(3, "Standard", "279", "For the ambitious achievers", "160 GB", "4 Simultaneous Devices", planData?.plan.id!=0)}
             {PricingCard(4, "Premium", "449", "Unleash the ultimate potential", "400 GB", "6 Simultaneous Devices", planData?.plan.id!=0)}
@@ -81,23 +81,27 @@ export function PricingFeatureText(text: string) {
 export function PricingCard(id: number, name: string, cost: string, description: string, bandwidth: string, devices: string, disabled?: boolean) {
   const { getSession } = useAuth();
   const { toast } = useToast();
+  async function timeout(delay: number) {
+    return new Promise( res => setTimeout(res, delay) );
+  }
   async function getIdToken() {
     const data = await getSession();
     return data.session.idToken.jwtToken;
   }
   const handleSubscribe = async () => {
     const idToken = await getIdToken();
-    await axios.post(`https://api.vp-net.org/v1/user/plan/subscribe?id=${id}`, {}, {
+    await axios.post(`${import.meta.env.VITE_BASE_API_URL}/v1/user/plan/subscribe?id=${id}`, {}, {
       headers: {
         'Authorization': `Bearer ${idToken}`
       }
-    }).then((res) => {
+    }).then(async (res) => {
       console.log(res)
-      window.location.reload();
       toast({
         title: 'Subscription Successful',
-        description: 'You have successfully subscribed to the plan'
+        description: 'You have successfully subscribed to the plan. Check out the guides page on how to setup your VPN.'
       })
+      await timeout(5000);
+      window.location.reload();
     }).catch((err) => {
       console.log(err)
       toast({
@@ -138,7 +142,7 @@ export function PricingCard(id: number, name: string, cost: string, description:
         <CardContent>
           {PricingFeatureText(`${bandwidth} of Premium Bandiwdth`)}
           {PricingFeatureText(`${devices}`)}
-          {PricingFeatureText('Access to Basic Servers')}
+          {PricingFeatureText(`Unlimited Access to Basic Servers`)}
         </CardContent>
         <CardFooter>
         
