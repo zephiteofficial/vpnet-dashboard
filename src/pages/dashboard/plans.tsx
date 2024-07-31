@@ -90,7 +90,7 @@ export function PricingCard(id: number, name: string, cost: string, description:
   }
   const handleSubscribe = async () => {
     const idToken = await getIdToken();
-    await axios.post(`https://api.vp-net.org/v1/user/plan/subscribe?id=${id}`, {}, {
+    await axios.post(`${import.meta.env.VITE_BASE_API_URL}/v1/user/plan/subscribe?id=${id}`, {}, {
       headers: {
         'Authorization': `Bearer ${idToken}`
       }

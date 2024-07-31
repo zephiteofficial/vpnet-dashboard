@@ -48,7 +48,7 @@ export default function AdditionalBandwidthCard(userUsage: UserUsage | null){
   const handlePurchase = async () => {
     const idToken = await getIdToken();
     try{
-      await axios.get(`https://api.vp-net.org/v1/user/bandwidth?amount=${amount}`, {
+      await axios.get(`${import.meta.env.VITE_BASE_API_URL}/v1/user/bandwidth?amount=${amount}`, {
         headers: {
           'Authorization': `Bearer ${idToken}`
         }

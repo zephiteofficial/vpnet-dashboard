@@ -102,7 +102,7 @@ export default function CurrencyButton(profileData : UserProfile|null){
   */
   
   const handleClicked = () => {
-    window.open("https://pages.razorpay.com/vpnet", "_blank", "noreferrer");
+    window.open(import.meta.env.VITE_RAZORPAY_PAYMENT_URL, "_blank", "noreferrer");
   }
   return(
     <Tooltip>
