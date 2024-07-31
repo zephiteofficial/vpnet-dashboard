@@ -45,7 +45,7 @@ export default function ServersPage() {
     {
       country: 'Canada',
       region: 'Beauharnois',
-      address: 'cabada-b1.vp-net.org',
+      address: 'canada-b1.vp-net.org',
       type: 'Basic'
     },
     {
