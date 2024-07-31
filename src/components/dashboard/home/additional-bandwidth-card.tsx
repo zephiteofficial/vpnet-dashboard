@@ -1,4 +1,3 @@
-import { useNavigate } from "react-router-dom"
 import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter } from "@/components/ui/card"
 import { Button } from "@/components/ui/button";
 import {
@@ -12,15 +11,107 @@ import {
   AlertDialogTrigger,
 } from "@/components/ui/alert-dialog"
 import { Skeleton } from "@/components/ui/skeleton"
-import { IconInfoCircle } from '@tabler/icons-react'
+import { IconHexagonLetterV, IconInfoCircle } from '@tabler/icons-react'
 import { UserUsage } from "@/interfaces";
+import { useAuth } from "@/context/Auth";
+import { useToast } from "@/components/ui/use-toast";
+import { useState } from "react";
+import axios from "axios";
+import { Dialog, DialogContent, DialogTitle, DialogDescription, DialogHeader, DialogClose, DialogFooter } from "@/components/ui/dialog";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { Link } from "react-router-dom";
+import { DialogTrigger } from "@radix-ui/react-dialog";
 
 export default function AdditionalBandwidthCard(userUsage: UserUsage | null){
-  const navigate = useNavigate();
-  function navigateToShop() {
-    navigate("/plans");
+  const { getSession } = useAuth();
+  async function getIdToken() {
+    const data = await getSession();
+    return data.session.idToken.jwtToken;
+  }
+  async function timeout(delay: number) {
+    return new Promise( res => setTimeout(res, delay) );
+  }
+  
+  const { toast } = useToast()
+  const [ amount, setAmount ] = useState(10)
+  const maxAmount = 99999
+  const minAmount = 1
+  const increment = () => {
+    if (amount >= maxAmount) return
+    setAmount(amount + 1)
+  }
+  const decrement = () => {
+    if (amount <= minAmount) return
+    setAmount(amount - 1)
+  }
+  const handlePurchase = async () => {
+    const idToken = await getIdToken();
+    try{
+      await axios.get(`https://api.vp-net.org/v1/user/bandwidth?amount=${amount}`, {
+        headers: {
+          'Authorization': `Bearer ${idToken}`
+        }
+      }).then(async (res) => {
+        console.log(res)
+        toast({
+          title: 'Bandwidth Purchased',
+          description: `You have successfully purchased ${amount} GB of excess bandwidth`
+        })
+        await timeout(2000);
+        window.location.reload();
+      })
+    }catch(err){
+      console.log(err)
+      toast({
+        title: 'Error',
+        description: 'An error occurred while purchasing bandwidth'
+      })
+    }
   }
   return(
+    <Dialog>
+      <DialogContent className="w-72">
+          <DialogHeader className="flex">
+            <DialogTitle className="text-xl">Excess Bandwidth</DialogTitle>
+            <DialogDescription>Buy {amount} GB of bandwidth for {amount*2} credits.</DialogDescription>
+          </DialogHeader>
+          <div className="flex items-center justify-center space-x-1">
+            <Button className="h-8" variant="outline" onClick={decrement}>-</Button>
+            <Input className="h-8 w-2/3 text-center" type="number" value={amount} 
+            onChange={(e) => {
+              const newValue = parseInt(e.target.value);
+              if (newValue >= minAmount && newValue <= maxAmount) {
+                setAmount(newValue);
+              } else if (newValue > maxAmount) {
+                setAmount(maxAmount);
+              } else {
+                setAmount(minAmount);
+              }
+            }} 
+            />
+            <Button className="h-8" variant="outline" onClick={increment}>+</Button>
+          </div>
+          <DialogClose asChild>
+            <Button className="w-full hover:bg-primary hover:text-primary-foreground" variant='outline' size='sm' onClick={handlePurchase}>
+              <div className="flex">
+                <p>Pay </p>
+                <IconHexagonLetterV size={18} className="mt-[1.5px] ml-2 mr-0.5"/>
+                <p className="font-semibold">{amount*2}</p>
+              </div>
+              
+              </Button>
+          </DialogClose>
+          <DialogFooter>
+            <div className="w-full flex justify-center">
+              <Label className="text-xs text-muted-foreground text-center">Read our {" "}
+                <Link to="/refund" className="text-muted-foreground underline">
+                  {`cancellation and refund policy.`}
+                </Link>
+              </Label>
+            </div>
+          </DialogFooter>
+        </DialogContent>
     <AlertDialog>
       <AlertDialogContent>
           <AlertDialogHeader>
@@ -51,11 +142,14 @@ export default function AdditionalBandwidthCard(userUsage: UserUsage | null){
           </div>
         </CardContent>
         <CardFooter>
-          <Button onClick={navigateToShop} className="w-full h-6">
-            <p className="text-xs font-semibold">View Plans</p>
-          </Button>
+          <DialogTrigger asChild>
+            <Button className="w-full h-6">
+              <p className="text-xs font-semibold bg-inherit">Buy Bandwidth</p>
+            </Button>
+          </DialogTrigger>
         </CardFooter>
       </Card>
     </AlertDialog>
+    </Dialog>
   )
 }

@@ -12,7 +12,7 @@ import { Link } from 'react-router-dom'
 
 export default function Contact() {
   return (
-    <div className='mt-1.5'>
+    <div className='hidden sm:flex'>
       <Dialog>
         <DialogContent className='w-64'>
           <DialogHeader>

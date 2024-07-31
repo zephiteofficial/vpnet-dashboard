@@ -3,7 +3,7 @@ import {
   IconServer,
   IconShoppingCart,
   IconSettings,
-  IconMessages,
+  IconBook2,
 } from '@tabler/icons-react'
 
 export interface NavLink {
@@ -37,10 +37,10 @@ export const sidelinks: SideLink[] = [
     icon: <IconShoppingCart size={18} />,
   },
   {
-    title: 'FAQ',
+    title: 'Guides',
     label: '',
-    href: '/faq',
-    icon: <IconMessages size={18} />,
+    href: '/guides',
+    icon: <IconBook2 size={18} />,
   },
   {
     title: 'Settings',
