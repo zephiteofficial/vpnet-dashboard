@@ -34,7 +34,9 @@ export default function ProfileSettings(){
             'Authorization': `Bearer ${idToken}`
           }
         }).then((res) => {
-          console.log(res)
+          if(import.meta.env.VITE_ENV === 'development'){
+            console.log(res)
+          }
           toast({
             title: 'Automatic Renewal Enabled',
             description: 'You have successfully enabled automatic renewal'
@@ -47,7 +49,9 @@ export default function ProfileSettings(){
             'Authorization': `Bearer ${idToken}`
           }
         }).then((res) => {
-          console.log(res)
+          if(import.meta.env.VITE_ENV === 'development'){
+            console.log(res)
+          }
           toast({
             title: 'Automatic Renewal Disabled',
             description: 'You have successfully disabled automatic renewal'
@@ -57,7 +61,9 @@ export default function ProfileSettings(){
       }
     }
     catch(err){
-      console.log(err)
+      if(import.meta.env.VITE_ENV === 'development'){
+        console.log(err)
+      }
       toast({
         variant: 'destructive',
         title: 'Automatic Renewal Failed',

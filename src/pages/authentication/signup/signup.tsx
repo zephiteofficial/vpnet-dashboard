@@ -23,11 +23,15 @@ export default function Signup() {
 
   useEffect(() => {
     getSession().then((data) => {
-      console.log(data);
-      console.log("User is already logged in");
+      if(import.meta.env.VITE_ENV === 'development'){
+        console.log(data);
+        console.log("User is already logged in");
+      }
       navigate("/");
     }).catch((error) => {
-      console.log(error);
+      if(import.meta.env.VITE_ENV === 'development'){
+        console.log(error);
+      }
     });
   }, [])
 
@@ -80,11 +84,15 @@ export default function Signup() {
     else {
       setLoading(true)
       signUp(username, email, password).then((data) => {
-        console.log(data)
+        if(import.meta.env.VITE_ENV === 'development'){
+          console.log(data)
+        }
         navigate("/verify", { state: { fromApp: true, email: email, username: username }})
         setLoading(false)
       }).catch((error) => {
-        console.log(error)
+        if(import.meta.env.VITE_ENV === 'development'){
+          console.log(error)
+        }
         setLoading(false)
       });
     }

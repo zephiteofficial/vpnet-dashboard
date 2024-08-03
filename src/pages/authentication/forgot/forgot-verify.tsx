@@ -58,11 +58,15 @@ export default function ResetPassword() {
     else {
       setLoading(true);
       passwordConfirm(email, code, password).then((data) => {
-        console.log(data);
+        if(import.meta.env.VITE_ENV === 'development'){
+          console.log(data);
+        }
         navigate("/login");
         setLoading(false);
       }).catch((error) => {
-        console.log(error);
+        if(import.meta.env.VITE_ENV === 'development'){
+          console.log(error);
+        }
         setLoading(false);
       });
     }

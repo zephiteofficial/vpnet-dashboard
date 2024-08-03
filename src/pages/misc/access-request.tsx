@@ -18,11 +18,15 @@ export default function AccessRequestForm() {
 
   useEffect(() => {
     getSession().then((data) => {
-      console.log(data);
-      console.log("User is already logged in");
+      if(import.meta.env.VITE_ENV === 'development'){
+        console.log(data);
+        console.log("User is already logged in");
+      }
       navigate("/");
     }).catch((error) => {
-      console.log(error);
+      if(import.meta.env.VITE_ENV === 'development'){
+        console.log(error);
+      }
     });
   }, [])
   const handleSubmit = async (event: FormEvent<HTMLButtonElement>) => {
@@ -46,7 +50,9 @@ export default function AccessRequestForm() {
       setLoading(true);
       await axios.post(`https://api.vp-net.org/v1/request-access?email=${email}`)
       .then((res) => {
-        console.log(res);
+        if(import.meta.env.VITE_ENV === 'development'){
+          console.log(res);
+        }
         toast({
           title: 'Request Granted',
           description: 'You have been successfully added to the whitelist.'
@@ -54,7 +60,9 @@ export default function AccessRequestForm() {
         navigate("/signup");
         setLoading(false);
       }).catch((error) => {
-        console.log(error);
+        if(import.meta.env.VITE_ENV === 'development'){
+          console.log(error);
+        }
         toast({
           variant: "destructive",
           title: 'Request Denied',

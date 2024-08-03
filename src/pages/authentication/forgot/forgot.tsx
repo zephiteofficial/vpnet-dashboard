@@ -16,11 +16,15 @@ export default function ResetPasswordForm() {
 
   useEffect(() => {
     getSession().then((data) => {
-      console.log(data);
-      console.log("User is already logged in");
+      if(import.meta.env.VITE_ENV === 'development'){
+        console.log(data);
+        console.log("User is already logged in");
+      }
       navigate("/");
     }).catch((error) => {
-      console.log(error);
+      if(import.meta.env.VITE_ENV === 'development'){
+        console.log(error);
+      }
     });
   }, [])
   const handleSubmit = async (event: FormEvent<HTMLButtonElement>) => {
@@ -43,11 +47,15 @@ export default function ResetPasswordForm() {
     else {
       setLoading(true);
       forgotPassword(email).then((data) => {
-        console.log(data);
+        if(import.meta.env.VITE_ENV === 'development'){
+          console.log(data);
+        }
         navigate("/reset-password", { state: { fromApp: true, email: email }})
         setLoading(false);
       }).catch((error) => {
-        console.log(error);
+        if(import.meta.env.VITE_ENV === 'development'){
+          console.log(error);
+        }
         setLoading(false);
       });
     }

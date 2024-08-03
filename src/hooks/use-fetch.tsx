@@ -41,7 +41,10 @@ export default function useFetch<T = any>({
       return;
     }
     getSession().then((data) => {
-      console.log("Calling API: ", axiosConfig.url);
+      if(import.meta.env.VITE_ENV === 'development'){
+        console.log("Calling API: ", axiosConfig.url);
+      }
+      
       const axiosConfigwithAuth = {
         ...axiosConfig,
         headers: {

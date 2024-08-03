@@ -53,7 +53,10 @@ export default function AdditionalBandwidthCard(userUsage: UserUsage | null){
           'Authorization': `Bearer ${idToken}`
         }
       }).then(async (res) => {
-        console.log(res)
+        if(import.meta.env.VITE_ENV === 'development'){
+          console.log(res)
+        }
+        
         toast({
           title: 'Bandwidth Purchased',
           description: `You have successfully purchased ${amount} GB of excess bandwidth`
@@ -62,7 +65,9 @@ export default function AdditionalBandwidthCard(userUsage: UserUsage | null){
         window.location.reload();
       })
     }catch(err){
-      console.log(err)
+      if(import.meta.env.VITE_ENV === 'development'){
+        console.log(err)
+      }
       toast({
         title: 'Error',
         description: 'An error occurred while purchasing bandwidth'

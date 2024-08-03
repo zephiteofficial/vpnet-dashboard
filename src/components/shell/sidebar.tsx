@@ -26,11 +26,15 @@ export default function Sidebar({
   useEffect(() => {
     getSession().then((data) => {
       if (data) {
-        console.log("User is logged in");
+        if(import.meta.env.VITE_ENV === 'development'){
+          console.log("User is logged in");
+        }
       }
     }).catch((error) => {
-      console.log(error);
-      console.log("Redirecting to login page");
+      if(import.meta.env.VITE_ENV === 'development'){
+        console.log(error);
+        console.log("Redirecting to login page");
+      }
       navigate("/login");
     });
   }, [])

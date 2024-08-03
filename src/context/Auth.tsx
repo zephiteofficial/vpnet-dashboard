@@ -174,7 +174,9 @@ const AuthProvider = ({ children }: { children: ReactNode }) => {
         User.getSession(
           async (error: unknown, session: CognitoUserSession) => {
             if (error) {
-              console.log("Error");
+              if(import.meta.env.VITE_ENV === 'development'){
+                console.log("Error getting session: ", error);
+              }
             } else {
               const attributes = await new Promise((resolve, reject) => {
                 User.getUserAttributes((error, attributes) => {

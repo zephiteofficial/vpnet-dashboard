@@ -95,7 +95,9 @@ export function PricingCard(id: number, name: string, cost: string, description:
         'Authorization': `Bearer ${idToken}`
       }
     }).then(async (res) => {
-      console.log(res)
+      if(import.meta.env.VITE_ENV === 'development'){
+        console.log(res)
+      }
       toast({
         title: 'Subscription Successful',
         description: 'You have successfully subscribed to the plan. Check out the guides page on how to setup your VPN.'
@@ -103,7 +105,9 @@ export function PricingCard(id: number, name: string, cost: string, description:
       await timeout(5000);
       window.location.reload();
     }).catch((err) => {
-      console.log(err)
+      if(import.meta.env.VITE_ENV === 'development'){
+        console.log(err)
+      }
       toast({
         variant: 'destructive',
         title: 'Subscription Failed',
