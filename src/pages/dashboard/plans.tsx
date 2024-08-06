@@ -144,7 +144,7 @@ export function PricingCard(id: number, name: string, cost: string, description:
           </CardTitle>
         </CardHeader>
         <CardContent>
-          {PricingFeatureText(`${bandwidth} of Premium Bandiwdth`)}
+          {PricingFeatureText(`${bandwidth} of Premium Bandwidth`)}
           {PricingFeatureText(`${devices}`)}
           {PricingFeatureText(`Unlimited Access to Basic Servers`)}
         </CardContent>
