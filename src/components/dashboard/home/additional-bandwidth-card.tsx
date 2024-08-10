@@ -143,7 +143,7 @@ export default function AdditionalBandwidthCard(userUsage: UserUsage | null){
         </CardHeader>
         <CardContent className="pb-4">
           <div className="text-xs h-4 font-semibold text-muted-foreground">
-            {userUsage ? (`of excess bandwidth availaible`) : (<Skeleton className="mt-2 w-[128px] h-[8px] rounded-full" />)}
+            {userUsage ? (`of excess bandwidth remaining`) : (<Skeleton className="mt-2 w-[128px] h-[8px] rounded-full" />)}
           </div>
         </CardContent>
         <CardFooter>

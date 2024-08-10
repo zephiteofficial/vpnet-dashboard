@@ -40,7 +40,7 @@ export default function DeviceDetailsCard(userPlan : UserPlan | null, userUsage:
         </CardHeader>
         <CardContent className="pb-4">
           <div className="text-xs h-4 font-semibold text-muted-foreground">
-            {userPlan ? (`out of ${userPlan.plan.device_limit} allowed devices`) : (<Skeleton className="mt-2 w-[128px] h-[8px] rounded-full" />)}
+            {userPlan ? (`connected out of ${userPlan.plan.device_limit} devices`) : (<Skeleton className="mt-2 w-[128px] h-[8px] rounded-full" />)}
           </div>
         </CardContent>
         <CardFooter>

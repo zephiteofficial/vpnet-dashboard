@@ -40,18 +40,18 @@ export default function MonthlyUsageCard(userPlan : UserPlan | null, userUsage: 
             <AlertDialogTrigger  className="mt-1 ml-auto hover:cursor-pointer"><IconInfoCircle size={16} /></AlertDialogTrigger>
           </div>
           <CardTitle className="text-xl md:text-2xl font-bold">
-            {userUsage 
+            {userUsage&&userPlan 
             ? (
-              ((((userUsage.usage.bandwidth_used+userUsage.usage.active_session_bandwidth)/1024/1024/1024)>=1000)) 
-              ? (`${((userUsage.usage.bandwidth_used+userUsage.usage.active_session_bandwidth)/1024/1024/1024/1024).toFixed(2)} TB`)
-              : (`${((userUsage.usage.bandwidth_used+userUsage.usage.active_session_bandwidth)/1024/1024/1024).toFixed(2)} GB`)
+              ((((userPlan.plan.bandwidth_limit-userUsage.usage.bandwidth_used+userUsage.usage.active_session_bandwidth)/1024/1024/1024)>=1000)) 
+              ? (`${((userPlan.plan.bandwidth_limit-userUsage.usage.bandwidth_used+userUsage.usage.active_session_bandwidth)/1024/1024/1024/1024).toFixed(2)} TB`)
+              : (`${((userPlan.plan.bandwidth_limit-userUsage.usage.bandwidth_used+userUsage.usage.active_session_bandwidth)/1024/1024/1024).toFixed(2)} GB`)
               )
             : (<Skeleton className="mt-2 w-[100px] h-[24px] rounded-full" />)}
           </CardTitle>
         </CardHeader>
         <CardContent className="pb-4">
           <div className="text-xs h-4 font-semibold text-muted-foreground">
-            {userPlan ? (((userPlan.plan.bandwidth_limit/1024/1024/1024)>=1000) ? (`used out of ${(userPlan.plan.bandwidth_limit/1024/1024/1024/1024).toFixed(2)} TB availaible`) : (`used out of ${(userPlan.plan.bandwidth_limit/1024/1024/1024).toFixed(2)} GB availaible`)) : (<Skeleton className="mt-2 w-[128px] h-[8px] rounded-full" />)}
+            {userPlan ? (((userPlan.plan.bandwidth_limit/1024/1024/1024)>=1000) ? (`remaining out of ${(userPlan.plan.bandwidth_limit/1024/1024/1024/1024).toFixed(2)} TB`) : (`remaining out of ${(userPlan.plan.bandwidth_limit/1024/1024/1024).toFixed(2)} GB`)) : (<Skeleton className="mt-2 w-[128px] h-[8px] rounded-full" />)}
           </div>
         </CardContent>
         <CardFooter>
