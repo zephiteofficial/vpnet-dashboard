@@ -102,7 +102,7 @@ export default function AdditionalBandwidthCard(userUsage: UserUsage | null){
               <div className="flex">
                 <p>Pay </p>
                 <IconHexagonLetterV size={18} className="mt-[1.5px] ml-2 mr-0.5"/>
-                <p className="font-semibold">{amount*2}</p>
+                <p className="font-semibold">{amount*3}</p>
               </div>
               
               </Button>
