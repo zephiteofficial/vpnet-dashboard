@@ -79,7 +79,7 @@ export default function AdditionalBandwidthCard(userUsage: UserUsage | null){
       <DialogContent className="w-72">
           <DialogHeader className="flex">
             <DialogTitle className="text-xl">Excess Bandwidth</DialogTitle>
-            <DialogDescription>Buy {amount} GB of bandwidth for {amount*2} credits.</DialogDescription>
+            <DialogDescription>Buy {amount} GB of bandwidth for {amount*3} credits.</DialogDescription>
           </DialogHeader>
           <div className="flex items-center justify-center space-x-1">
             <Button className="h-8" variant="outline" onClick={decrement}>-</Button>
