@@ -63,6 +63,15 @@ export default function AdditionalBandwidthCard(userUsage: UserUsage | null){
         })
         await timeout(2000);
         window.location.reload();
+      }).catch((err) => {
+        if(import.meta.env.VITE_ENV === 'development'){
+          console.log(err)
+        }
+        toast({
+          variant: 'destructive',
+          title: 'Purchase Failed',
+          description: err.response.data.message
+        })
       })
     }catch(err){
       if(import.meta.env.VITE_ENV === 'development'){
@@ -70,7 +79,7 @@ export default function AdditionalBandwidthCard(userUsage: UserUsage | null){
       }
       toast({
         title: 'Error',
-        description: 'An error occurred while purchasing bandwidth'
+        description: 'An error occurred while purchasing bandwidt'
       })
     }
   }

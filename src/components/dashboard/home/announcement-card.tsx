@@ -1,5 +1,5 @@
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "@/components/ui/card"
-import { IconBox, IconBell } from '@tabler/icons-react'
+import { IconBell } from '@tabler/icons-react'
 import { Link } from "react-router-dom"
 
 export default function AnnouncementCard(){
@@ -10,10 +10,12 @@ export default function AnnouncementCard(){
         <CardDescription className="text-sm font-medium text-muted-foreground">Latest updates and news</CardDescription>
       </CardHeader>
       <CardContent className="space-y-2">
+        {/*
         <Card className="flex items-center h-16 px-4 bg-inherit">
         <div><IconBox className="mr-4" size={24}/></div>
         <div><p className="text-xs md:text-sm font-semibold">The dashboard is currently in Beta 1.0</p></div>
         </Card>
+        */}
         <Card className="flex items-center h-16 px-4 bg-inherit">
           <div><IconBell className="mr-4" size={24}/></div>
           <div><p className="text-xs md:text-sm font-semibold"><Link className="hover:underline" to={"https://chat.whatsapp.com/EzpMuTqsept5iMMFBO0nbf"}>Join the WhatsApp Community</Link></p></div>
