@@ -16,6 +16,10 @@ export default function AnnouncementCard(){
         <div><p className="text-xs md:text-sm font-semibold">The dashboard is currently in Beta 1.0</p></div>
         </Card>
         */}
+        <Card className="flex items-center h-24 sm:h-20 px-4 bg-inherit">
+          <div><IconBell className="mr-4" size={24}/></div>
+          <div><p className="text-xs md:text-sm font-medium">VPNet is rebranding as ZephyrVPN as part of its transition to becoming a registered business entity.</p></div>
+        </Card>
         <Card className="flex items-center h-16 px-4 bg-inherit">
           <div><IconBell className="mr-4" size={24}/></div>
           <div><p className="text-xs md:text-sm font-semibold"><Link className="hover:underline" to={"https://chat.whatsapp.com/EzpMuTqsept5iMMFBO0nbf"}>Join the WhatsApp Community</Link></p></div>
