@@ -53,7 +53,7 @@ export default function PlansPage() {
             </p>
           </div>
           <div className='grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4 justify-center'>
-            {PricingCard(1, "Lite", "69", "Dip your toes into greatness", "10 GB", "1 Simultaneous Device", planData?.plan.id!=0)}
+            {PricingCard(1, "Lite", "69", "Dip your toes into greatness", "5 GB", "1 Simultaneous Device", planData?.plan.id!=0)}
             {PricingCard(2, "Basic", "139", "Elevate your experience", "40 GB", "2 Simultaneous Devices", planData?.plan.id!=0)}
             {PricingCard(3, "Standard", "279", "For the ambitious achievers", "120 GB", "4 Simultaneous Devices", planData?.plan.id!=0)}
             {PricingCard(4, "Plus", "449", "Unleash the ultimate potential", "300 GB", "6 Simultaneous Devices", planData?.plan.id!=0)}
