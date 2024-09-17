@@ -11,7 +11,7 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog"
 import { Input } from "@/components/ui/input"
-import { FormEvent, useState } from "react"
+import { useState } from "react"
 import { IconLoader2 } from "@tabler/icons-react"
 import { useAuth } from "@/context/Auth"
 import { useToast } from "@/components/ui/use-toast"
