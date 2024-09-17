@@ -32,7 +32,7 @@ export default function SettingsPage(){
         <div className='space-y-0.5'>
             <div className=" flex items-center space-x-2">
               <h1 className='text-2xl font-bold tracking-tight md:text-2xl'>Settings</h1>
-              <Badge className="text-xs mt-1">v1.1b</Badge>
+              <Badge className="text-xs mt-1">v1.2b</Badge>
             </div>
           <p className='text-muted-foreground'>
             Manage and view your account settings and details.
