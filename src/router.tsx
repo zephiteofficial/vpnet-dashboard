@@ -65,6 +65,15 @@ const router = createHashRouter([
     }),
   },
 
+  // Misc routes
+
+  {
+    path: '/migration',
+    lazy: async () => ({
+      Component: (await import('@/pages/misc/migration')).default
+    }),
+  },
+
   // Main routes
   {
     path: '/',
