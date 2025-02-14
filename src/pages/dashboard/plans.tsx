@@ -53,14 +53,14 @@ export default function PlansPage() {
             </p>
           </div>
           <div className='grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4 justify-center'>
+          {SpecialPricingCard(7, "VRGC Solo Day Pass", "9", "One Day, One Mission - Game On!", "5 GB", "1 day", "2 Simultaneous Device", planData?.plan.id!=0)}
+            {SpecialPricingCard(8, "VRGC Team Day Pass", "29", "Squad Up for a Day of Victory!", "30 GB", "1 day", "6 Simultaneous Devices", planData?.plan.id!=0)}
+            {SpecialPricingCard(9, "VRGC Solo Week Pass", "39", "7 Days of Glory - Go All In!", "30 GB", "7 days", "2 Simultaneous Devices", planData?.plan.id!=0)}
+            {SpecialPricingCard(10, "VRGC Team Week Pass", "129", "A Full Week to Dominate the Arena!", "200 GB", "7 days", "6 Simultaneous Devices", planData?.plan.id!=0)}
             {PricingCard(1, "Lite", "69", "Dip your toes into greatness", "5 GB", "1 Simultaneous Device", planData?.plan.id!=0)}
             {PricingCard(2, "Basic", "139", "Elevate your experience", "40 GB", "2 Simultaneous Devices", planData?.plan.id!=0)}
             {PricingCard(3, "Standard", "279", "For the ambitious achievers", "120 GB", "4 Simultaneous Devices", planData?.plan.id!=0)}
             {PricingCard(4, "Plus", "449", "Unleash the ultimate potential", "300 GB", "6 Simultaneous Devices", planData?.plan.id!=0)}
-            {SpecialPricingCard(7, "VRGC Solo Day Pass", "9", "One Day, One Mission - Game On!", "5 GB", "1 day", "2 Simultaneous Device", planData?.plan.id!=0)}
-            {SpecialPricingCard(8, "VRGC Team Day Pass", "29", "Squad Up for a Day of Victory!", "30 GB", "1 day", "6 Simultaneous Devices", planData?.plan.id!=0)}
-            {SpecialPricingCard(9, "VRGC Solo Week Pass", "39", "7 Days of Glory - Go All In!", "30 GB", "7 days", "2 Simultaneous Devices", planData?.plan.id!=0)}
-            {SpecialPricingCard(10, "VRGC Team Week Pass", "129", "A Full Week to Dominate the Arena!", "200 GB", "7 days", "6 Simultaneous Devices", planData?.plan.id!=0)}
           </div>
           <div className='text-xs text-muted-foreground pt-6'>
             *The prices and features are subject to change. Please refer to the this page for the most up-to-date information.

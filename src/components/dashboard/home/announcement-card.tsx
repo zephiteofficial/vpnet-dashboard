@@ -18,7 +18,7 @@ export default function AnnouncementCard(){
         */}
         <Card className="flex items-center h-24 sm:h-20 px-4 bg-inherit">
           <div><IconBell className="mr-4" size={24}/></div>
-          <div><p className="text-xs md:text-sm font-medium">VPNet is rebranding as ZephyrVPN as part of its transition to becoming a registered business entity.</p></div>
+          <div><p className="text-xs md:text-sm font-medium"><Link className="hover:underline" to={"https://dash.zephyrvpn.com/#/plans"}>Ready to dominate? 🎮 Grab limited-time VRGC plans for your tournament matches! ⏳🔥</Link></p></div>
         </Card>
         <Card className="flex items-center h-16 px-4 bg-inherit">
           <div><IconBell className="mr-4" size={24}/></div>
