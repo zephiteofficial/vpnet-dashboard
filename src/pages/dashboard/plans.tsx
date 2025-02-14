@@ -57,6 +57,10 @@ export default function PlansPage() {
             {PricingCard(2, "Basic", "139", "Elevate your experience", "40 GB", "2 Simultaneous Devices", planData?.plan.id!=0)}
             {PricingCard(3, "Standard", "279", "For the ambitious achievers", "120 GB", "4 Simultaneous Devices", planData?.plan.id!=0)}
             {PricingCard(4, "Plus", "449", "Unleash the ultimate potential", "300 GB", "6 Simultaneous Devices", planData?.plan.id!=0)}
+            {SpecialPricingCard(7, "VRGC Solo Day Pass", "9", "One Day, One Mission - Game On!", "5 GB", "1 day", "2 Simultaneous Device", planData?.plan.id!=0)}
+            {SpecialPricingCard(8, "VRGC Team Day Pass", "29", "Squad Up for a Day of Victory!", "30 GB", "1 day", "6 Simultaneous Devices", planData?.plan.id!=0)}
+            {SpecialPricingCard(9, "VRGC Solo Week Pass", "39", "7 Days of Glory - Go All In!", "30 GB", "7 days", "2 Simultaneous Devices", planData?.plan.id!=0)}
+            {SpecialPricingCard(10, "VRGC Team Week Pass", "129", "A Full Week to Dominate the Arena!", "200 GB", "7 days", "6 Simultaneous Devices", planData?.plan.id!=0)}
           </div>
           <div className='text-xs text-muted-foreground pt-6'>
             *The prices and features are subject to change. Please refer to the this page for the most up-to-date information.
@@ -164,3 +168,122 @@ export function PricingCard(id: number, name: string, cost: string, description:
     </AlertDialog>
   )
 }
+export function SpecialPricingCard(
+    id: number,
+    name: string,
+    cost: string,
+    description: string,
+    bandwidth: string,
+    days: string,
+    devices: string,
+    disabled?: boolean
+  ) {
+    const { getSession } = useAuth();
+    const { toast } = useToast();
+    
+    async function timeout(delay: number) {
+      return new Promise((res) => setTimeout(res, delay));
+    }
+    
+    async function getIdToken() {
+      const data = await getSession();
+      return data.session.idToken.jwtToken;
+    }
+    
+    const handleSubscribe = async () => {
+      const idToken = await getIdToken();
+      await axios
+        .post(
+          `${import.meta.env.VITE_BASE_API_URL}/v1/user/plan/subscribe?id=${id}`,
+          {},
+          {
+            headers: {
+              Authorization: `Bearer ${idToken}`,
+            },
+          }
+        )
+        .then(async (res) => {
+          if (import.meta.env.VITE_ENV === "development") {
+            console.log(res);
+          }
+          toast({
+            title: "Subscription Successful",
+            description:
+              "You have successfully subscribed to the plan. Check out the guides page on how to setup your VPN.",
+          });
+          await timeout(5000);
+          window.location.reload();
+        })
+        .catch((err) => {
+          if (import.meta.env.VITE_ENV === "development") {
+            console.log(err);
+          }
+          toast({
+            variant: "destructive",
+            title: "Subscription Failed",
+            description: err.response.data.message,
+          });
+        });
+    };
+    
+    return (
+      <AlertDialog>
+        <AlertDialogContent>
+          <AlertDialogHeader>
+            <AlertDialogTitle>Do you wish to continue?</AlertDialogTitle>
+            <AlertDialogDescription>
+              This action will deduct {cost} credits from your account and subscribe
+              you to the {name} plan.
+            </AlertDialogDescription>
+          </AlertDialogHeader>
+          <AlertDialogFooter>
+            <AlertDialogCancel>Cancel</AlertDialogCancel>
+            <AlertDialogAction onClick={handleSubscribe}>
+              Subscribe
+            </AlertDialogAction>
+          </AlertDialogFooter>
+        </AlertDialogContent>
+        {/* Use the custom metallic-card class */}
+        <Card className="metallic-card">
+          <CardHeader className="pb-4">
+            <CardTitle className="text-xl text-muted-foreground">{name}</CardTitle>
+            <CardTitle className="text-2xl font-semibold">
+              <div className="flex items-center">
+                <IconHexagonLetterV size={28} className="mr-1 mt-0.5" />
+                {cost} for {days}
+              </div>
+            </CardTitle>
+            <CardTitle className="text-sm font-medium text-muted-foreground">
+              <p className="h-8">{description}</p>
+            </CardTitle>
+          </CardHeader>
+          <CardContent>
+            {PricingFeatureText(`${bandwidth} of Premium Bandwidth`)}
+            {PricingFeatureText(`Unlimited Basic Bandwidth`)}
+            {PricingFeatureText(`${devices}`)}
+          </CardContent>
+          <CardFooter>
+            {disabled ? (
+              <Button
+                variant="outline"
+                disabled
+                className="w-full h-8 bg-transparent hover:bg-background"
+              >
+                Unavailaible
+              </Button>
+            ) : (
+              <AlertDialogTrigger className="w-full" asChild>
+                <Button
+                  variant="outline"
+                  className="w-full h-8 bg-transparent hover:bg-background"
+                >
+                  Subscribe
+                </Button>
+              </AlertDialogTrigger>
+            )}
+          </CardFooter>
+        </Card>
+      </AlertDialog>
+    );
+  }
+  

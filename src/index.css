@@ -64,3 +64,40 @@
       @apply bg-background text-foreground;
     }
   }
+
+  @layer components {
+    /* Metallic card for light theme */
+    .metallic-card {
+      @apply rounded-lg shadow-xl border text-foreground;
+      border-color: #cfcfcf; /* Tailwind gray-400 */
+      background: linear-gradient(135deg, #f9f7ff, #aaa9ad, #f9f7ff);
+      background-size: 200% 200%;
+      position: relative;
+      overflow: hidden;
+      animation: metallicShine 5s linear infinite;
+    }
+  
+    /* Override for dark mode */
+    .dark .metallic-card {
+      @apply rounded-lg shadow-xl border;
+      border-color: #181717; /* Tailwind gray-600 */
+      background: linear-gradient(135deg, #0c0a09, #151618, #0c0a09);
+      background-size: 200% 200%;
+      position: relative;
+      overflow: hidden;
+      animation: metallicShine 5s linear infinite;
+    }
+  }
+  
+  @keyframes metallicShine {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+  
