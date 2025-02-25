@@ -172,7 +172,7 @@ export default function CurrencyButton(profileData : UserProfile|null){
       if(import.meta.env.VITE_ENV === 'development'){
         console.log(res)
       }
-      window.open(res.data.invoice.URL)
+      window.open(res.data.invoice.URL,"_self")
     }).catch((err) => {
       if(import.meta.env.VITE_ENV === 'development'){
         console.log(err)
