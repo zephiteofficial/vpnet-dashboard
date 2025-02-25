@@ -114,9 +114,7 @@ export default function CurrencyButton(profileData : UserProfile|null){
           </TooltipTrigger>
         </Tooltip>
       </Dialog>
-  )
-  */
-  /*
+  ) 
   const handleClicked = () => {
     window.open(import.meta.env.VITE_RAZORPAY_PAYMENT_URL, "_blank", "noreferrer");
   }
