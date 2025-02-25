@@ -8,7 +8,6 @@ import {
   TooltipTrigger,
 } from "@/components/ui/tooltip"
 
-/*
 import type React from "react"
 import { useState } from "react"
 import { Minus, Plus } from "lucide-react"
@@ -26,13 +25,15 @@ import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { useAuth } from "@/context/Auth"
 import axios from "axios"
-*/
+import { toast } from "../ui/use-toast"
+
 export default function CurrencyButton(profileData : UserProfile|null){
+    /*
   const handleClicked = () => {
     window.open(import.meta.env.VITE_RAZORPAY_PAYMENT_URL, "_blank", "noreferrer");
   }
-  
-/*
+  */
+
   const [price, setPrice] = useState(69)
   const { getSession } = useAuth();
   async function getIdToken() {
@@ -85,15 +86,24 @@ export default function CurrencyButton(profileData : UserProfile|null){
       if(import.meta.env.VITE_ENV === 'development'){
         console.log(res)
       }
-      window.open(res.data.invoice.URL,"_self")
+      toast({
+        title: 'Invoice Created',
+        description: `Invoice for ₹${price} has been created Successfully. Redirecting to payment gateway.`
+      })
+      window.open(res.data.invoice.URL)
     }).catch((err) => {
       if(import.meta.env.VITE_ENV === 'development'){
         console.log(err)
       }
+      toast({
+        variant: 'destructive',
+        title: 'Invoice Failed',
+        description: `Failed to create an invoice. Please try again later.`
+      })
     })
     // Here you would typically send the data to your backend
   }
-  */
+/*
   return(
     <Tooltip>
         <TooltipContent>Buy Credits</TooltipContent>
@@ -104,7 +114,7 @@ export default function CurrencyButton(profileData : UserProfile|null){
         </TooltipTrigger>
       </Tooltip>
   )
-/*
+ */
   return(
     <Drawer>
       <Tooltip>
@@ -160,9 +170,8 @@ export default function CurrencyButton(profileData : UserProfile|null){
               </div>
             </div>
             <DrawerFooter>
-              <Button type="submit">Submit</Button>
               <DrawerClose asChild>
-                <Button variant="outline">Cancel</Button>
+              <Button type="submit">Submit</Button>
               </DrawerClose>
             </DrawerFooter>
           </form>
@@ -170,5 +179,5 @@ export default function CurrencyButton(profileData : UserProfile|null){
       </DrawerContent>
     </Drawer>
   )
-    */
+   
 }
