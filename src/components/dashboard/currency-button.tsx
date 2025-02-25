@@ -7,7 +7,6 @@ import {
   TooltipContent,
   TooltipTrigger,
 } from "@/components/ui/tooltip"
-
 import type React from "react"
 
 import { useState } from "react"
@@ -116,9 +115,7 @@ export default function CurrencyButton(profileData : UserProfile|null){
           </TooltipTrigger>
         </Tooltip>
       </Dialog>
-  )
-  */
-  /*
+  ) 
   const handleClicked = () => {
     window.open(import.meta.env.VITE_RAZORPAY_PAYMENT_URL, "_blank", "noreferrer");
   }
