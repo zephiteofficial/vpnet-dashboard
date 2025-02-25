@@ -24,7 +24,8 @@ import {
 } from "@/components/ui/drawer"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
-
+import { useAuth } from "@/context/Auth"
+import axios from "axios"
 export default function CurrencyButton(profileData : UserProfile|null){
   /*
   const { getSession } = useAuth();
@@ -124,8 +125,11 @@ export default function CurrencyButton(profileData : UserProfile|null){
   */
 
   const [price, setPrice] = useState(69)
-  const [phoneNumber, setPhoneNumber] = useState("")
-
+  const { getSession } = useAuth();
+  async function getIdToken() {
+    const data = await getSession();
+    return data.session.idToken.jwtToken;
+  }
   const incrementPrice = () => {
     if (price >= 5000){
       setPrice(5000)
@@ -160,23 +164,24 @@ export default function CurrencyButton(profileData : UserProfile|null){
 
   }
 
-  const handlePhoneNumberChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    // Strip all non-digit characters
-    const rawDigits = e.target.value.replace(/\D/g, "");
-    const digits = rawDigits.substring(2)
-    // Format the number and add +91 prefix
-    let formattedNumber = "";
-    
-    formattedNumber = digits.slice(0, 5) + 
-    (digits.length > 5 ? " " + digits.slice(5, 10) : "");
-    
-    // Ensure we don't store more than 10 digits (plus the +91 prefix)
-    setPhoneNumber(formattedNumber.length <= 15 ? formattedNumber : formattedNumber.slice(0, 15));
-  }
-
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    console.log("Submitted:", { price, phoneNumber })
+    console.log("Submitted:", { price })
+    const idToken = await getIdToken();
+    await axios.get(`${import.meta.env.VITE_BASE_API_URL}/v1/user/credits?amount=${price}`, {
+      headers: {
+        'Authorization': `Bearer ${idToken}`
+      }
+    }).then(async (res) => {
+      if(import.meta.env.VITE_ENV === 'development'){
+        console.log(res)
+      }
+      window.open(res.data.invoice.URL)
+    }).catch((err) => {
+      if(import.meta.env.VITE_ENV === 'development'){
+        console.log(err)
+      }
+    })
     // Here you would typically send the data to your backend
   }
   return(
@@ -231,16 +236,6 @@ export default function CurrencyButton(profileData : UserProfile|null){
                     <Plus className="h-4 w-4" />
                   </Button>
                 </div>
-              </div>
-              <div className="grid gap-2">
-                <Label htmlFor="phone">Phone Number</Label>
-                <Input
-                  id="phone"
-                  type="tel"
-                  placeholder="9876543210"
-                  value={`+91 `+phoneNumber}
-                  onChange={handlePhoneNumberChange}
-                />
               </div>
             </div>
             <DrawerFooter>
