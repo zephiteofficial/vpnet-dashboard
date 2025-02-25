@@ -73,6 +73,18 @@ const router = createHashRouter([
       Component: (await import('@/pages/misc/migration')).default
     }),
   },
+  {
+    path: '/payment-success',
+    lazy: async () => ({
+      Component: (await import('@/pages/misc/paymentsuccess')).default
+    }),
+  },
+  {
+    path: '/payment-failure',
+    lazy: async () => ({
+      Component: (await import('@/pages/misc/paymentfail')).default
+    }),
+  },
 
   // Main routes
   {
