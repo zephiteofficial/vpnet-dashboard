@@ -134,7 +134,7 @@ const router = createHashRouter([
   { path: '/404', Component: NotFoundError },
   { path: '/503', Component: MaintenanceError },
   { path: '/401', Component: UnauthorisedError },
-  { path: '*', Component: MaintenanceError },
+  { path: '*', Component: NotFoundError },
 ])
 
 export default router
