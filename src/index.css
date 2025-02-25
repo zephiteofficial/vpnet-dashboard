@@ -81,7 +81,7 @@
     .dark .metallic-card {
       @apply rounded-lg shadow-xl border;
       border-color: #181717; /* Tailwind gray-600 */
-      background: linear-gradient(135deg, #0c0a09, #151618, #0c0a09);
+      background: linear-gradient(135deg, #0c0a09, #1c1d1d, #0c0a09);
       background-size: 200% 200%;
       position: relative;
       overflow: hidden;
