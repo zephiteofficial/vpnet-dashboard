@@ -112,7 +112,7 @@ export default function ServersPage() {
         <div className='space-y-0.5 mb-4 lg:mb-6'>
           <div className=" flex items-center space-x-2">
             <h1 className='text-2xl font-bold tracking-tight md:text-2xl'>Servers</h1>
-            <Badge className="text-xs mt-1">v1.2b</Badge>
+            <Badge className="text-xs mt-1">v1.3b</Badge>
           </div>
           <p className='text-muted-foreground'>
           You can connect to any of the servers below using the provided credentials.
