@@ -8,6 +8,23 @@ import {
   TooltipTrigger,
 } from "@/components/ui/tooltip"
 
+import type React from "react"
+
+import { useState } from "react"
+import { Minus, Plus } from "lucide-react"
+import {
+  Drawer,
+  DrawerClose,
+  DrawerContent,
+  DrawerDescription,
+  DrawerFooter,
+  DrawerHeader,
+  DrawerTitle,
+  DrawerTrigger,
+} from "@/components/ui/drawer"
+import { Input } from "@/components/ui/input"
+import { Label } from "@/components/ui/label"
+
 export default function CurrencyButton(profileData : UserProfile|null){
   /*
   const { getSession } = useAuth();
@@ -100,18 +117,141 @@ export default function CurrencyButton(profileData : UserProfile|null){
       </Dialog>
   )
   */
-  
+  /*
   const handleClicked = () => {
     window.open(import.meta.env.VITE_RAZORPAY_PAYMENT_URL, "_blank", "noreferrer");
   }
+  */
+
+  const [price, setPrice] = useState(69)
+  const [phoneNumber, setPhoneNumber] = useState("")
+
+  const incrementPrice = () => {
+    if (price >= 5000){
+      setPrice(5000)
+    }
+    else {
+      setPrice(price + 1)
+    }
+  }
+  
+
+  const decrementPrice = () => {
+    if (price <= 5){
+      setPrice(5)
+    }
+    else {
+      setPrice(price - 1)
+    }
+  }
+  const checkValue = (value: number) => {
+    if(value < 5){
+      setPrice(5)
+  
+    }
+    else if(value > 5000){
+      setPrice(5000)
+
+    }
+    else{
+      setPrice(value)
+    }
+
+
+  }
+
+  const handlePhoneNumberChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    // Strip all non-digit characters
+    const rawDigits = e.target.value.replace(/\D/g, "");
+    const digits = rawDigits.substring(2)
+    // Format the number and add +91 prefix
+    let formattedNumber = "";
+    
+    formattedNumber = digits.slice(0, 5) + 
+    (digits.length > 5 ? " " + digits.slice(5, 10) : "");
+    
+    // Ensure we don't store more than 10 digits (plus the +91 prefix)
+    setPhoneNumber(formattedNumber.length <= 15 ? formattedNumber : formattedNumber.slice(0, 15));
+  }
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault()
+    console.log("Submitted:", { price, phoneNumber })
+    // Here you would typically send the data to your backend
+  }
   return(
-    <Tooltip>
-      <TooltipContent>Buy Credits</TooltipContent>
-        <TooltipTrigger asChild>
-          <Button variant='outline' onClick={handleClicked} size='sm'>
-            {profileData ? <><IconHexagonLetterV size={18} className="mr-1 mt-0.5"/><p className="text-base font-semibold">{profileData.profile.credit_balance}</p></> : <Skeleton className="w-[60px] h-[20px] rounded-full" />}
-          </Button>
-      </TooltipTrigger>
-    </Tooltip>
+    <Drawer>
+      <Tooltip>
+        <TooltipContent>Buy Credits</TooltipContent>
+          <TooltipTrigger asChild>
+          <DrawerTrigger asChild>
+            <Button variant='outline' size='sm'>
+              {profileData ? <><IconHexagonLetterV size={18} className="mr-1 mt-0.5"/><p className="text-base font-semibold">{profileData.profile.credit_balance}</p></> : <Skeleton className="w-[60px] h-[20px] rounded-full" />}
+            </Button>
+            </DrawerTrigger>
+        </TooltipTrigger>
+      </Tooltip>
+      <DrawerContent>
+        <div className="mx-auto w-full max-w-sm">
+          <DrawerHeader>
+            <DrawerTitle>Set Your Price</DrawerTitle>
+            <DrawerDescription>Adjust your price and provide your contact information.</DrawerDescription>
+          </DrawerHeader>
+          <form onSubmit={handleSubmit} className="px-4">
+            <div className="grid gap-6 py-4">
+              <div className="grid gap-2">
+                <Label htmlFor="price">Price (₹)</Label>
+                <div className="flex items-center">
+                  <Button
+                    type="button"
+                    variant="outline"
+                    size="icon"
+                    className="h-10 w-10 rounded-r-none"
+                    onClick={decrementPrice}
+                    aria-label="Decrease price"
+                  >
+                    <Minus className="h-4 w-4" />
+                  </Button>
+                  <Input
+                    id="price"
+                    type="number"
+                    value={price}
+                    onChange={(e) => checkValue(Number.parseInt(e.target.value) || 0)}
+                    className="h-10 rounded-none text-center"
+                    min="0"
+                  />
+                  <Button
+                    type="button"
+                    variant="outline"
+                    size="icon"
+                    className="h-10 w-10 rounded-l-none"
+                    onClick={incrementPrice}
+                    aria-label="Increase price"
+                  >
+                    <Plus className="h-4 w-4" />
+                  </Button>
+                </div>
+              </div>
+              <div className="grid gap-2">
+                <Label htmlFor="phone">Phone Number</Label>
+                <Input
+                  id="phone"
+                  type="tel"
+                  placeholder="9876543210"
+                  value={`+91 `+phoneNumber}
+                  onChange={handlePhoneNumberChange}
+                />
+              </div>
+            </div>
+            <DrawerFooter>
+              <Button type="submit">Submit</Button>
+              <DrawerClose asChild>
+                <Button variant="outline">Cancel</Button>
+              </DrawerClose>
+            </DrawerFooter>
+          </form>
+        </div>
+      </DrawerContent>
+    </Drawer>
   )
 }
