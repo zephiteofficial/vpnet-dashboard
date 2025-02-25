@@ -130,8 +130,8 @@ export default function CurrencyButton(profileData : UserProfile|null){
       <DrawerContent>
         <div className="mx-auto w-full max-w-sm">
           <DrawerHeader>
-            <DrawerTitle>Set Your Price</DrawerTitle>
-            <DrawerDescription>Adjust your price and provide your contact information.</DrawerDescription>
+            <DrawerTitle>Buy Zephyr Credits</DrawerTitle>
+            <DrawerDescription>Enter the amount of credits you want to buy.</DrawerDescription>
           </DrawerHeader>
           <form onSubmit={handleSubmit} className="px-4">
             <div className="grid gap-6 py-4">
