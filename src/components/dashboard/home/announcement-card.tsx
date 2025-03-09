@@ -1,5 +1,5 @@
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "@/components/ui/card"
-import { IconBell } from '@tabler/icons-react'
+import { IconAlertCircle, IconBell } from '@tabler/icons-react'
 import { Link } from "react-router-dom"
 
 export default function AnnouncementCard(){
@@ -17,8 +17,8 @@ export default function AnnouncementCard(){
         </Card>
         */}
         <Card className="flex items-center h-24 sm:h-20 px-4 bg-inherit">
-          <div><IconBell className="mr-4" size={24}/></div>
-          <div><p className="text-xs md:text-sm font-medium"><Link className="hover:underline" to={"https://dash.zephyrvpn.com/#/plans"}>Ready to dominate? 🎮 Grab limited-time VRGC plans for your tournament matches! ⏳🔥</Link></p></div>
+          <div><IconAlertCircle className="mr-4" size={24}/></div>
+          <div><p className="text-xs md:text-sm font-medium">Certain games like Valorant are not working on mumbai-p1 currently. Please use mumbai-p2.vp-net.org for games till further notice.</p></div>
         </Card>
         <Card className="flex items-center h-16 px-4 bg-inherit">
           <div><IconBell className="mr-4" size={24}/></div>
