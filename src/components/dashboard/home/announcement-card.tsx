@@ -18,7 +18,7 @@ export default function AnnouncementCard(){
         */}
         <Card className="flex items-center h-24 sm:h-20 px-4 bg-inherit">
           <div><IconAlertCircle className="mr-4" size={24}/></div>
-          <div><p className="text-xs md:text-sm font-medium">Certain games like Valorant are not working on mumbai-p1 currently. Please use mumbai-p2.vp-net.org for games till further notice.</p></div>
+          <div><p className="text-xs md:text-sm font-medium">Certain games like Valorant are not working on mumbai-p4 currently. Please use other premium servers for such games till further notice.</p></div>
         </Card>
         <Card className="flex items-center h-16 px-4 bg-inherit">
           <div><IconBell className="mr-4" size={24}/></div>
