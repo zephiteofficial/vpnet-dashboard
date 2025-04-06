@@ -39,8 +39,8 @@ export default function ServersPage() {
       {
         country: 'India',
         region: 'Mumbai',
-        address: 'mumbai-p4.vp-net.org',
-        type: 'Premium'
+        address: 'mumbai-bgmi.vp-net.org',
+        type: 'BGMI Premium'
       },
     {
       country: 'India',
