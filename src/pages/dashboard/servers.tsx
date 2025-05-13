@@ -79,21 +79,9 @@ export default function ServersPage() {
       type: 'Basic'
     },
     {
-      country: 'Poland',
-      region: 'Warsaw',
-      address: 'poland-b1.vp-net.org',
-      type: 'Basic'
-    },
-    {
       country: 'Germany',
       region: 'Frankfurt',
       address: 'germany-b1.vp-net.org',
-      type: 'Basic'
-    },
-    {
-      country: 'Australia',
-      region: 'Sydney',
-      address: 'australia-b1.vp-net.org',
       type: 'Basic'
     },
     {
