@@ -18,7 +18,7 @@ export default function AnnouncementCard(){
         */}
         <Card className="flex items-center h-24 sm:h-20 px-4 bg-inherit">
           <div><IconAlertCircle className="mr-4" size={24}/></div>
-          <div><p className="text-xs md:text-sm font-medium">BGMI is currently not working on most servers due to their network restrictions. Please use mumbai-bgmi.vp-net.org for now.</p></div>
+          <div><p className="text-xs md:text-sm font-medium">BGMI is currently not working on servers due to network restrictions implemented by KRAFTON.</p></div>
         </Card>
         <Card className="flex items-center h-16 px-4 bg-inherit">
           <div><IconBell className="mr-4" size={24}/></div>
