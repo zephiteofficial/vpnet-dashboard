@@ -20,9 +20,109 @@ import {
   AlertDialogTitle,
   AlertDialogTrigger,
 } from "@/components/ui/alert-dialog"
+import { useState } from 'react'
+import { Switch } from '@/components/ui/switch'
+
+interface PlanConfig {
+  id: number;
+  name: string;
+  cost: string;
+  description: string;
+  bandwidth: string;
+  devices: string;
+}
+
+const plans: Record<'monthly' | 'quarterly', PlanConfig[]> = {
+  monthly: [
+    {
+      id: 1,
+      name: "Lite",
+      cost: "69",
+      description: "Dip your toes into greatness",
+      bandwidth: "5 GB",
+      devices: "1 Simultaneous Device"
+    },
+    {
+      id: 2,
+      name: "Basic",
+      cost: "139",
+      description: "Elevate your experience",
+      bandwidth: "40 GB",
+      devices: "2 Simultaneous Devices"
+    },
+    {
+      id: 11,
+      name: "Essential",
+      cost: "199",
+      description: "Elevate your experience",
+      bandwidth: "80 GB",
+      devices: "3 Simultaneous Devices"
+    },
+    {
+      id: 3,
+      name: "Standard",
+      cost: "279",
+      description: "For the ambitious achievers",
+      bandwidth: "120 GB",
+      devices: "4 Simultaneous Devices"
+    },
+    {
+      id: 4,
+      name: "Plus",
+      cost: "449",
+      description: "Unleash the ultimate potential",
+      bandwidth: "300 GB",
+      devices: "6 Simultaneous Devices"
+    }
+  ],
+  quarterly: [
+    {
+      id: 12,
+      name: "Lite Quarterly",
+      cost: "189",
+      description: "Dip your toes into greatness",
+      bandwidth: "25 GB",
+      devices: "1 Simultaneous Device"
+    },
+    {
+      id: 13,
+      name: "Basic Quarterly",
+      cost: "379",
+      description: "Elevate your experience",
+      bandwidth: "150 GB",
+      devices: "2 Simultaneous Devices"
+    },
+    {
+      id: 14,
+      name: "Essential Quarterly",
+      cost: "549",
+      description: "For the ambitious achievers",
+      bandwidth: "280 GB",
+      devices: "3 Simultaneous Devices"
+    },
+    {
+      id: 15,
+      name: "Standard Quarterly",
+      cost: "769",
+      description: "For the ambitious achievers",
+      bandwidth: "400 GB",
+      devices: "4 Simultaneous Devices"
+    },
+    {
+      id: 16,
+      name: "Plus Quarterly",
+      cost: "1249",
+      description: "Unleash the ultimate potential",
+      bandwidth: "1 TB",
+      devices: "6 Simultaneous Devices"
+    }
+  ]
+};
 
 export default function PlansPage() {
   const { profileData, planData } = useAPI();
+  const [billingCycle, setBillingCycle] = useState<'monthly' | 'quarterly'>('monthly');
+  
   return (
     <Layout>
       <Layout.Header>
@@ -43,7 +143,7 @@ export default function PlansPage() {
         </Layout.Header>
 
         <Layout.Body className='pt-0'>
-          <div className='space-y-0.5 mb-4 lg:mb-6'>
+          <div className='space-y-0.5 mb-4'>
             <div className=" flex items-center space-x-2">
               <h1 className='text-2xl font-bold tracking-tight md:text-2xl'>Pricing Plans</h1>
               <Badge className="text-xs mt-1">v1.3b</Badge>
@@ -51,18 +151,43 @@ export default function PlansPage() {
             <p className='text-muted-foreground'>
             Choose the right plan for yourself
             </p>
+            <div className='flex items-center'>
+            <Switch className='mr-2 h-4 w-9'
+              checked={billingCycle === 'quarterly'}
+              onCheckedChange={(checked) => setBillingCycle(checked ? 'quarterly' : 'monthly')}
+            />
+            {billingCycle === 'monthly' ? (
+              <p className='text-md text-muted-foreground'>Monthly</p>
+            ) : (
+              <p className='text-md text-muted-foreground'>Quarterly</p>
+            )}
           </div>
-          <div className='grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4 justify-center'>
+          </div>
+          <div className='grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4 justify-center'>
             {/*
             {SpecialPricingCard(7, "VRGC Solo Day Pass", "9", "One Day, One Mission - Game On!", "5 GB", "1 day", "1 Simultaneous Device", planData?.plan.id!=0)}
             {SpecialPricingCard(8, "VRGC Team Day Pass", "29", "Squad Up for a Day of Victory!", "30 GB", "1 day", "6 Simultaneous Devices", planData?.plan.id!=0)}
             {SpecialPricingCard(9, "VRGC Solo Week Pass", "39", "7 Days of Glory - Go All In!", "30 GB", "7 days", "1 Simultaneous Devices", planData?.plan.id!=0)}
             {SpecialPricingCard(10, "VRGC Team Week Pass", "129", "A Full Week to Dominate the Arena!", "200 GB", "7 days", "6 Simultaneous Devices", planData?.plan.id!=0)}
-            */}
+            
             {PricingCard(1, "Lite", "69", "Dip your toes into greatness", "5 GB", "1 Simultaneous Device", planData?.plan.id!=0)}
-            {SpecialPricingCard(2, "Basic", "139", "Elevate your experience", "40 GB", "1 month", "2 Simultaneous Devices", planData?.plan.id!=0)}
+            {PricingCard(2, "Basic", "139", "Elevate your experience", "40 GB", "2 Simultaneous Devices", planData?.plan.id!=0)}
             {PricingCard(3, "Standard", "279", "For the ambitious achievers", "120 GB", "4 Simultaneous Devices", planData?.plan.id!=0)}
             {PricingCard(4, "Plus", "449", "Unleash the ultimate potential", "300 GB", "6 Simultaneous Devices", planData?.plan.id!=0)}
+            */}
+            {plans[billingCycle].map((plan) => (
+              <PricingCard
+                key={plan.id}
+                id={plan.id}
+                name={plan.name}
+                cost={plan.cost}
+                description={plan.description}
+                bandwidth={plan.bandwidth}
+                devices={plan.devices}
+                disabled={planData?.plan.id !== 0}
+                billingCycle={billingCycle}
+              />
+            ))}
           </div>
           <div className='text-xs text-muted-foreground pt-6'>
             *The prices and features are subject to change. Please refer to the this page for the most up-to-date information.
@@ -84,7 +209,17 @@ export function PricingFeatureText(text: string) {
   )
 }
 
-export function PricingCard(id: number, name: string, cost: string, description: string, bandwidth: string, devices: string, disabled?: boolean) {
+export function PricingCard(props: {
+  id: number;
+  name: string;
+  cost: string;
+  description: string;
+  bandwidth: string;
+  devices: string;
+  disabled?: boolean;
+  billingCycle: 'monthly' | 'quarterly';
+}) {
+  const { id, name, cost, description, bandwidth, devices, disabled, billingCycle } = props;
   const { getSession } = useAuth();
   const { toast } = useToast();
   async function timeout(delay: number) {
@@ -127,7 +262,7 @@ export function PricingCard(id: number, name: string, cost: string, description:
         <AlertDialogHeader>
           <AlertDialogTitle>Do you wish to continue?</AlertDialogTitle>
           <AlertDialogDescription>
-            This action will deduct {cost} credits from your account and subscribe you to the {name} plan.
+            This action will deduct {cost} credits from your account and subscribe you to the {name} plan for {billingCycle === 'quarterly' ? '3 months' : '1 month'}.
           </AlertDialogDescription>
         </AlertDialogHeader>
         <AlertDialogFooter>
@@ -142,7 +277,9 @@ export function PricingCard(id: number, name: string, cost: string, description:
             <div className='flex items-center'>
               <IconHexagonLetterV size={28} className='mr-1 mt-0.5'/>
               {cost}
-              <p className='text-lg font-semibold ml-1 mt-1'>/ month</p>
+              <p className='text-lg font-semibold ml-1 mt-1'>
+                / {billingCycle === 'quarterly' ? '3 months' : 'month'}
+                </p>
             </div>
           </CardTitle>
           <CardTitle className='text-sm font-medium text-muted-foreground'>
