@@ -10,6 +10,7 @@ import { HeaderRight } from '@/components/dashboard/'
 import { useAPI } from "@/hooks"
 import { Breadcrumb, BreadcrumbItem, BreadcrumbList, BreadcrumbLink, BreadcrumbSeparator } from '@/components/ui/breadcrumb'
 import { Link } from 'react-router-dom'
+import VersionBadge from '@/components/custom/version-badge'
 
 export default function GuidesPage() {
   const { profileData } = useAPI();
@@ -37,7 +38,7 @@ export default function GuidesPage() {
         <div className='space-y-0.5 mb-4 lg:mb-6'>
           <div className=" flex items-center space-x-2">
             <h1 className='text-2xl font-bold tracking-tight md:text-2xl'>Guides</h1>
-            <Badge className="text-xs mt-1">v1.3b</Badge>
+            <VersionBadge />
           </div>
           <p className='text-muted-foreground'>
             Look here for answers to common questions

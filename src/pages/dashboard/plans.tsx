@@ -22,6 +22,7 @@ import {
 } from "@/components/ui/alert-dialog"
 import { useState } from 'react'
 import { Switch } from '@/components/ui/switch'
+import VersionBadge from '@/components/custom/version-badge'
 
 interface PlanConfig {
   id: number;
@@ -146,7 +147,7 @@ export default function PlansPage() {
           <div className='space-y-0.5 mb-4'>
             <div className=" flex items-center space-x-2">
               <h1 className='text-2xl font-bold tracking-tight md:text-2xl'>Pricing Plans</h1>
-              <Badge className="text-xs mt-1">v1.3b</Badge>
+              <VersionBadge />
             </div>
             <p className='text-muted-foreground'>
             Choose the right plan for yourself

@@ -13,15 +13,65 @@ import {
 import { Skeleton } from "@/components/ui/skeleton"
 import { IconInfoCircle } from '@tabler/icons-react'
 import { UserPlan, UserUsage } from "@/interfaces";
+import { useAuth } from "@/context/Auth";
+import { useToast } from "@/components/ui/use-toast";
+import axios from "axios";
+import { useState } from "react";
 
 export default function DeviceDetailsCard(userPlan : UserPlan | null, userUsage: UserUsage | null){
+  const [isLoading, setIsLoading] = useState(false);
+  const { getSession } = useAuth();
+  async function getIdToken() {
+    const data = await getSession();
+    return data.session.idToken.jwtToken;
+  }
+  const { toast } = useToast()
+  const handleDisconnect = async () => {
+    setIsLoading(true);
+    const idToken = await getIdToken();
+    try{
+      await axios.get(`${import.meta.env.VITE_BASE_API_URL}/v1/user/disconnect`, {
+        headers: {
+          'Authorization': `Bearer ${idToken}`
+        }
+      }).then(async (res) => {
+        if(import.meta.env.VITE_ENV === 'development'){
+          console.log(res)
+        }
+        if(res.status === 200){
+          toast({
+            title: "Success",
+            description: res.data.message,
+          })
+        }
+        else {
+          toast({
+            title: "Error",
+            description: "An unexpected error occurred.",
+            variant: "destructive"
+          })
+        }
+        setIsLoading(false);
+      })
+    } catch (error) {
+      if(import.meta.env.VITE_ENV === 'development'){
+        console.error(error)
+      }
+      toast({
+        title: "Error",
+        description: "An unexpected error occurred.",
+        variant: "destructive"
+      })
+      setIsLoading(false);
+    }
+  }
   return(
     <AlertDialog>
       <AlertDialogContent>
           <AlertDialogHeader>
             <AlertDialogTitle>About Connected Devices</AlertDialogTitle>
             <AlertDialogDescription>
-              "Disconnect Devices" feature is not availaible yet.
+              This shows your connected devices. Click the button below to disconnect all devices at once. Note that some devices may automatically reconnect, and you might need to disconnect them from their own settings. You may need to try disconnecting multiple times for some devices.
             </AlertDialogDescription>
           </AlertDialogHeader>
           <AlertDialogFooter>
@@ -44,13 +94,12 @@ export default function DeviceDetailsCard(userPlan : UserPlan | null, userUsage:
           </div>
         </CardContent>
         <CardFooter>
-          <AlertDialogTrigger className="w-full h-8" asChild>
-            <Button className="w-full h-6">
-            <p className="text-xs font-semibold">Disconnect</p>
+            <Button className="w-full h-6" onClick={handleDisconnect} disabled={isLoading}>
+              {isLoading ? "Disconnecting..." : "Disconnect"}
             </Button>
-          </AlertDialogTrigger>
         </CardFooter>
       </Card>
     </AlertDialog>
   )
 }
+
