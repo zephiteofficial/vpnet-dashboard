@@ -1,6 +1,5 @@
 import { Outlet } from "react-router-dom";
 import { Layout } from "@/components/custom/layout";
-import { Badge } from "@/components/ui/badge";
 import { Breadcrumb, BreadcrumbItem, BreadcrumbList, BreadcrumbLink, BreadcrumbSeparator } from '@/components/ui/breadcrumb'
 import { SidebarNav, HeaderRight } from "@/components/dashboard";
 import { useAPI } from "@/hooks";

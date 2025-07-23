@@ -1,5 +1,4 @@
 import { Layout } from '@/components/custom/layout'
-import { Badge } from "@/components/ui/badge"
 import { HeaderRight } from '@/components/dashboard'
 import { useAPI } from "@/hooks"
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card'

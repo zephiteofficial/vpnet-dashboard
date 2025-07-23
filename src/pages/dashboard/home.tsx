@@ -1,5 +1,4 @@
 import { Layout } from '@/components/custom/layout'
-import { Badge } from "@/components/ui/badge"
 import { BandwidthUsageCard, AdditionalBandwidthCard, DeviceDetailsCard, AnnouncementCard } from '@/components/dashboard'
 import { useAPI } from "@/hooks"
 import { Breadcrumb, BreadcrumbItem, BreadcrumbList, BreadcrumbLink, BreadcrumbSeparator } from '@/components/ui/breadcrumb'

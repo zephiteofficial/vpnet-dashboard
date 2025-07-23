@@ -1,5 +1,4 @@
 import { Layout } from '@/components/custom/layout'
-import { Badge } from "@/components/ui/badge"
 import {
   Table,
   TableBody,
