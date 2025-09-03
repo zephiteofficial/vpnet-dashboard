@@ -62,26 +62,14 @@ export default function ServersPage() {
     },
     {
       country: 'UK',
-      region: 'London',
+      region: 'Portsmouth',
       address: 'uk-b1.vp-net.org',
       type: 'Basic'
     },
     {
-      country: 'Canada',
-      region: 'Beauharnois',
-      address: 'canada-b1.vp-net.org',
-      type: 'Basic'
-    },
-    {
-      country: 'Germany',
-      region: 'Frankfurt',
-      address: 'germany-b1.vp-net.org',
-      type: 'Basic'
-    },
-    {
-      country: 'France',
-      region: 'Strasbourg',
-      address: 'france-b1.vp-net.org',
+      country: 'US',
+      region: 'St. Louis',
+      address: 'us-b1.vp-net.org',
       type: 'Basic'
     },
   ]
