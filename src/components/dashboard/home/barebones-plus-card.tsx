@@ -3,7 +3,6 @@ import { Card, CardHeader, CardTitle, CardContent, CardDescription } from "@/com
 import {
   Table,
   TableBody,
-  TableCaption,
   TableCell,
   TableFooter,
   TableHead,
@@ -15,22 +14,18 @@ import {
   Dialog,
   DialogContent,
   DialogDescription,
-  DialogFooter,
   DialogHeader,
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog"
-import { Link } from 'react-router-dom'
 import { useAuth } from "@/context/Auth"
 import { toast } from "@/components/ui/use-toast"
 import axios from "axios"
 import { Textarea } from "@/components/ui/textarea"
 import { useEffect, useState } from "react"
 import { DialogClose } from "@radix-ui/react-dialog"
-import { set } from "react-hook-form"
 import { Input } from "@/components/ui/input"
 import UserPlanData from "@/interfaces/user-plan-data"
-import { time } from "console"
 
 export default function BarebonesPlusCard(planData: UserPlanData | null) {
   return(
