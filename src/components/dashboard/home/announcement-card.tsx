@@ -16,9 +16,9 @@ export default function AnnouncementCard(){
         <div><p className="text-xs md:text-sm font-semibold">The dashboard is currently in Beta 1.0</p></div>
         </Card>
         */}
-        <Card className="flex items-center h-24 sm:h-20 px-4 bg-inherit">
+        <Card className="flex items-center h-28 sm:h-24 px-4 bg-inherit">
           <div><IconAlertCircle className="mr-4" size={24}/></div>
-          <div><p className="text-xs md:text-sm font-medium">If you are unable to connect to any of the Mumbai basic servers, use mumbai-backup.vp-net.org</p></div>
+          <div><p className="text-xs md:text-sm font-medium">The IPSec Protocol may not work on certain networks. A new protocol called "Plus" has been added to work on those more restrictive networks.</p></div>
         </Card>
         <Card className="flex items-center h-16 px-4 bg-inherit">
           <div><IconBell className="mr-4" size={24}/></div>

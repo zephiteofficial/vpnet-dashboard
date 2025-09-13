@@ -4,6 +4,8 @@ import { useAPI } from "@/hooks"
 import { Breadcrumb, BreadcrumbItem, BreadcrumbList, BreadcrumbLink, BreadcrumbSeparator } from '@/components/ui/breadcrumb'
 import { HeaderRight } from '@/components/dashboard/'
 import VersionBadge from '@/components/custom/version-badge'
+import BarebonesPlusCard from '@/components/dashboard/home/barebones-plus-card'
+import ZephyrPlusDownloads from '@/components/dashboard/home/zephyrplus-downloads'
 
 export default function HomePage() {
   const { profileData, usageData, planData } = useAPI()
@@ -45,6 +47,8 @@ export default function HomePage() {
               {AdditionalBandwidthCard(usageData)}
               {DeviceDetailsCard(planData, usageData)}
               {AnnouncementCard()}
+              {ZephyrPlusDownloads()}
+              {BarebonesPlusCard(planData)}
             </div>
           </div>
         </Layout.Body>
