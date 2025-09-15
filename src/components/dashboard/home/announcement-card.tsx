@@ -16,6 +16,10 @@ export default function AnnouncementCard(){
         <div><p className="text-xs md:text-sm font-semibold">The dashboard is currently in Beta 1.0</p></div>
         </Card>
         */}
+        <Card className="flex items-center h-20 px-4 bg-inherit">
+          <div><IconAlertCircle className="mr-4" size={24}/></div>
+          <div><p>Please recreate your access tokens if they were generated on or before 15 September 2025, 19:30.</p></div>
+        </Card>
         <Card className="flex items-center h-28 sm:h-24 px-4 bg-inherit">
           <div><IconAlertCircle className="mr-4" size={24}/></div>
           <div><p className="text-xs md:text-sm font-medium">The IPSec Protocol may not work on certain networks. A new protocol called "Plus" has been added to work on those more restrictive networks.</p></div>
