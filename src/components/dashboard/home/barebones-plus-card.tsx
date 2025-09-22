@@ -167,7 +167,7 @@ export function AddToken() {
     }
   }
   return (
-    <div className='hidden sm:flex w-full justify-center'>
+    <div className='flex w-full justify-center'>
       <Dialog>
         <DialogContent className='w-72'>
           <DialogHeader>
