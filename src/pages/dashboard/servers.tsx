@@ -54,6 +54,18 @@ export default function ServersPage() {
         address: 'mumbai-b3.vp-net.org',
         type: 'Basic'
       },
+      {
+        country: 'India',
+        region: 'Mumbai',
+        address: 'mumbai-b4.vp-net.org',
+        type: 'Basic'
+      },
+      {
+        country: 'India',
+        region: 'Mumbai',
+        address: 'mumbai-b5.vp-net.org',
+        type: 'Basic'
+      },
     {
       country: 'Singapore',
       region: 'Singapore',
