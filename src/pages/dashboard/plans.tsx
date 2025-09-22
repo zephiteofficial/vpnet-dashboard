@@ -40,7 +40,7 @@ const plans: Record<'monthly' | 'quarterly', PlanConfig[]> = {
       cost: "69",
       description: "Dip your toes into greatness",
       bandwidth: "5 GB",
-      devices: 1
+      devices: 2
     },
     {
       id: 2,
@@ -48,7 +48,7 @@ const plans: Record<'monthly' | 'quarterly', PlanConfig[]> = {
       cost: "139",
       description: "Elevate your experience",
       bandwidth: "40 GB",
-      devices: 2
+      devices: 3
     },
     {
       id: 11,
@@ -56,7 +56,7 @@ const plans: Record<'monthly' | 'quarterly', PlanConfig[]> = {
       cost: "199",
       description: "Elevate your experience",
       bandwidth: "80 GB",
-      devices: 3
+      devices: 4
     },
     {
       id: 3,
@@ -64,7 +64,7 @@ const plans: Record<'monthly' | 'quarterly', PlanConfig[]> = {
       cost: "279",
       description: "For the ambitious achievers",
       bandwidth: "120 GB",
-      devices: 4
+      devices: 5
     },
     {
       id: 4,
@@ -72,7 +72,7 @@ const plans: Record<'monthly' | 'quarterly', PlanConfig[]> = {
       cost: "449",
       description: "Unleash the ultimate potential",
       bandwidth: "300 GB",
-      devices: 6
+      devices: 7
     }
   ],
   quarterly: [
@@ -82,7 +82,7 @@ const plans: Record<'monthly' | 'quarterly', PlanConfig[]> = {
       cost: "189",
       description: "Dip your toes into greatness",
       bandwidth: "25 GB",
-      devices: 1
+      devices: 2
     },
     {
       id: 13,
@@ -90,7 +90,7 @@ const plans: Record<'monthly' | 'quarterly', PlanConfig[]> = {
       cost: "379",
       description: "Elevate your experience",
       bandwidth: "150 GB",
-      devices: 2
+      devices: 3
     },
     {
       id: 14,
@@ -98,7 +98,7 @@ const plans: Record<'monthly' | 'quarterly', PlanConfig[]> = {
       cost: "549",
       description: "For the ambitious achievers",
       bandwidth: "280 GB",
-      devices: 3
+      devices: 4
     },
     {
       id: 15,
@@ -106,7 +106,7 @@ const plans: Record<'monthly' | 'quarterly', PlanConfig[]> = {
       cost: "769",
       description: "For the ambitious achievers",
       bandwidth: "400 GB",
-      devices: 4
+      devices: 5
     },
     {
       id: 16,
@@ -114,7 +114,7 @@ const plans: Record<'monthly' | 'quarterly', PlanConfig[]> = {
       cost: "1249",
       description: "Unleash the ultimate potential",
       bandwidth: "1 TB",
-      devices: 6
+      devices: 7
     }
   ]
 };
@@ -289,7 +289,7 @@ export function PricingCard(props: {
         <CardContent>
           {PricingFeatureText(`${bandwidth} of Premium Bandwidth`)}
           {PricingFeatureText(`Unlimited Basic Bandwidth`)}
-          {PricingFeatureText(`${devices+1} ZephyrPlus Connections`)}
+          {PricingFeatureText(`${devices} ZephyrPlus Connections`)}
           {PricingFeatureText(`${devices} IKEv2 Connections`)}
         </CardContent>
         <CardFooter>
