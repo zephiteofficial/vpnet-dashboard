@@ -27,50 +27,44 @@ export default function ServersPage() {
     {
       country: 'India',
       region: 'Mumbai',
-      address: 'mumbai-b1.vp-net.org',
+      address: 'b1.mb.vp-net.org',
       type: 'Basic'
     },
     {
       country: 'India',
       region: 'Mumbai',
-      address: 'mumbai-b2.vp-net.org',
+      address: 'b2.mb.vp-net.org',
       type: 'Basic'
     },
     {
         country: 'India',
         region: 'Mumbai',
-        address: 'mumbai-b3.vp-net.org',
-        type: 'Basic'
-      },
-      {
-        country: 'India',
-        region: 'Mumbai',
-        address: 'mumbai-b4.vp-net.org',
-        type: 'Basic'
-      },
-      {
-        country: 'India',
-        region: 'Mumbai',
-        address: 'mumbai-b5.vp-net.org',
+        address: 'b3.mb.vp-net.org',
         type: 'Basic'
       },
     {
       country: 'Singapore',
       region: 'Singapore',
-      address: 'singapore-b1.vp-net.org',
+      address: 'b1.sg.vp-net.org',
       type: 'Basic'
     },
     {
       country: 'UK',
       region: 'Portsmouth',
-      address: 'uk-b1.vp-net.org',
+      address: 'b1.uk.vp-net.org',
       type: 'Basic'
     },
     {
       country: 'US',
       region: 'St. Louis',
-      address: 'us-b1.vp-net.org',
+      address: 'b1.us.vp-net.org',
       type: 'Basic'
+    },
+    {
+      country: 'India',
+      region: 'Mumbai',
+      address: 'mumbai-backup.vp-net.org',
+      type: 'Backup'
     },
   ]
 

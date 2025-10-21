@@ -18,7 +18,7 @@ export default function AnnouncementCard(){
         */}
         <Card className="flex items-center h-20 px-4 bg-inherit">
           <div><IconAlertCircle className="mr-4" size={24}/></div>
-          <div><p>Please recreate your access tokens if they were generated on or before 15 September 2025, 19:30.</p></div>
+          <div><p>Please recreate your access tokens if they were generated on or before 21 September 2025, 6:00 AM.</p></div>
         </Card>
         <Card className="flex items-center h-28 sm:h-24 px-4 bg-inherit">
           <div><IconAlertCircle className="mr-4" size={24}/></div>
