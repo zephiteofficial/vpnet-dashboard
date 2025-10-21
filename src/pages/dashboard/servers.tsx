@@ -56,7 +56,7 @@ export default function ServersPage() {
     },
     {
       country: 'US',
-      region: 'St. Louis',
+      region: 'Orangeburg',
       address: 'b1.us.vp-net.org',
       type: 'Basic'
     },
