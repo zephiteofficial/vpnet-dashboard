@@ -8,24 +8,24 @@ import {
   TooltipTrigger,
 } from "@/components/ui/tooltip"
 
-import type React from "react"
-import { useState } from "react"
-import { Minus, Plus } from "lucide-react"
+//import type React from "react"
+//import { useState } from "react"
+//import { Minus, Plus } from "lucide-react"
 import {
   Drawer,
-  DrawerClose,
+  //DrawerClose,
   DrawerContent,
-  DrawerDescription,
-  DrawerFooter,
+  //DrawerDescription,
+  //DrawerFooter,
   DrawerHeader,
   DrawerTitle,
   DrawerTrigger,
 } from "@/components/ui/drawer"
-import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
-import { useAuth } from "@/context/Auth"
-import axios from "axios"
-import { toast } from "../ui/use-toast"
+//import { Input } from "@/components/ui/input"
+//import { Label } from "@/components/ui/label"
+//import { useAuth } from "@/context/Auth"
+//import axios from "axios"
+//import { toast } from "../ui/use-toast"
 
 export default function CurrencyButton(profileData : UserProfile|null){
     /*
@@ -34,6 +34,7 @@ export default function CurrencyButton(profileData : UserProfile|null){
   }
   */
 
+  /*
   const [price, setPrice] = useState(69)
   const { getSession } = useAuth();
   async function getIdToken() {
@@ -48,8 +49,6 @@ export default function CurrencyButton(profileData : UserProfile|null){
       setPrice(price + 1)
     }
   }
-  
-
   const decrementPrice = () => {
     if (price <= 5){
       setPrice(5)
@@ -73,7 +72,6 @@ export default function CurrencyButton(profileData : UserProfile|null){
 
 
   }
-
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     console.log("Submitted:", { price })
@@ -103,6 +101,8 @@ export default function CurrencyButton(profileData : UserProfile|null){
     })
     // Here you would typically send the data to your backend
   }
+*/
+
 /*
   return(
     <Tooltip>
