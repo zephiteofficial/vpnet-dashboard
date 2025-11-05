@@ -129,6 +129,8 @@ export default function CurrencyButton(profileData : UserProfile|null){
       </Tooltip>
       <DrawerContent>
         <div className="mx-auto w-full max-w-sm">
+
+          {/* Drawer Header 
           <DrawerHeader>
             <DrawerTitle>Buy Zephyr Credits</DrawerTitle>
             <DrawerDescription>Enter the amount of credits you want to buy.</DrawerDescription>
@@ -175,6 +177,10 @@ export default function CurrencyButton(profileData : UserProfile|null){
               </DrawerClose>
             </DrawerFooter>
           </form>
+          */}
+          <DrawerHeader>
+            <DrawerTitle>New Payments are currently paused due to a bug with creating tokens.</DrawerTitle>
+          </DrawerHeader>
         </div>
       </DrawerContent>
     </Drawer>
