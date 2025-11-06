@@ -7,25 +7,24 @@ import {
   TooltipContent,
   TooltipTrigger,
 } from "@/components/ui/tooltip"
-
-//import type React from "react"
-//import { useState } from "react"
-//import { Minus, Plus } from "lucide-react"
+import type React from "react"
+import { useState } from "react"
+import { Minus, Plus } from "lucide-react"
 import {
   Drawer,
-  //DrawerClose,
+  DrawerClose,
   DrawerContent,
-  //DrawerDescription,
-  //DrawerFooter,
+  DrawerDescription,
+  DrawerFooter,
   DrawerHeader,
   DrawerTitle,
   DrawerTrigger,
 } from "@/components/ui/drawer"
-//import { Input } from "@/components/ui/input"
-//import { Label } from "@/components/ui/label"
-//import { useAuth } from "@/context/Auth"
-//import axios from "axios"
-//import { toast } from "../ui/use-toast"
+import { Input } from "@/components/ui/input"
+import { Label } from "@/components/ui/label"
+import { useAuth } from "@/context/Auth"
+import axios from "axios"
+import { toast } from "../ui/use-toast"
 
 export default function CurrencyButton(profileData : UserProfile|null){
     /*
@@ -34,7 +33,7 @@ export default function CurrencyButton(profileData : UserProfile|null){
   }
   */
 
-  /*
+
   const [price, setPrice] = useState(69)
   const { getSession } = useAuth();
   async function getIdToken() {
@@ -101,7 +100,6 @@ export default function CurrencyButton(profileData : UserProfile|null){
     })
     // Here you would typically send the data to your backend
   }
-*/
 
 /*
   return(
@@ -129,8 +127,6 @@ export default function CurrencyButton(profileData : UserProfile|null){
       </Tooltip>
       <DrawerContent>
         <div className="mx-auto w-full max-w-sm">
-
-          {/* Drawer Header 
           <DrawerHeader>
             <DrawerTitle>Buy Zephyr Credits</DrawerTitle>
             <DrawerDescription>Enter the amount of credits you want to buy.</DrawerDescription>
@@ -177,10 +173,6 @@ export default function CurrencyButton(profileData : UserProfile|null){
               </DrawerClose>
             </DrawerFooter>
           </form>
-          */}
-          <DrawerHeader>
-            <DrawerTitle>New Payments are currently paused due to a bug with creating tokens.</DrawerTitle>
-          </DrawerHeader>
         </div>
       </DrawerContent>
     </Drawer>
