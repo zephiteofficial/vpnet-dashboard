@@ -74,7 +74,13 @@ export default function CurrencyButton(profileData : UserProfile|null){
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     console.log("Submitted:", { price })
-    const idToken = await getIdToken();
+    toast({
+        variant: 'destructive',
+        title: 'We are shutting down',
+        description: `We are sorry to inform you that the service is being discontinued. It was a pleasure serving you. If you have any questions, please contact support.`
+      })
+      /*
+      const idToken = await getIdToken();
     await axios.get(`${import.meta.env.VITE_BASE_API_URL}/v1/user/credits?amount=${price}`, {
       headers: {
         'Authorization': `Bearer ${idToken}`
@@ -98,7 +104,7 @@ export default function CurrencyButton(profileData : UserProfile|null){
         description: `Failed to create an invoice. Please try again later.`
       })
     })
-    // Here you would typically send the data to your backend
+      */
   }
 
 /*
