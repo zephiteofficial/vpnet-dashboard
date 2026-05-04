@@ -22,8 +22,8 @@ import {
 } from "@/components/ui/drawer"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
-import { useAuth } from "@/context/Auth"
-import axios from "axios"
+//import { useAuth } from "@/context/Auth"
+//import axios from "axios"
 import { toast } from "../ui/use-toast"
 
 export default function CurrencyButton(profileData : UserProfile|null){
@@ -35,11 +35,13 @@ export default function CurrencyButton(profileData : UserProfile|null){
 
 
   const [price, setPrice] = useState(69)
-  const { getSession } = useAuth();
+  // const { getSession } = useAuth();
+  /*
   async function getIdToken() {
     const data = await getSession();
     return data.session.idToken.jwtToken;
   }
+    */
   const incrementPrice = () => {
     if (price >= 5000){
       setPrice(5000)
